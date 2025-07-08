@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sách liên quan - Green Groves</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../styles/main.css">
+    <style>
+        :root {
+            --primary-color: #28a745;
+            --secondary-color: #20c997;
+            --accent-color: #ffc107;
+            --dark-color: #343a40;
+            --light-color: #f8f9fa;
+            --success-color: #198754;
+            --info-color: #0dcaf0;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: #f8f9fa;
+        }
+
+        /* Header Styles */
+        .header-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary-color) !important;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .brand-name {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .brand-subtitle {
+            color: var(--secondary-color);
+            font-size: 0.8rem;
+        }
+
+        .nav-link {
+            color: var(--dark-color) !important;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            margin: 0 2px;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color) !important;
+            background-color: rgba(40, 167, 69, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .nav-link.active {
+            color: var(--primary-color) !important;
+            background-color: rgba(40, 167, 69, 0.15);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            padding: 120px 0 80px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        /* Book Categories */
+        .categories-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            color: #6c757d;
+            font-size: 1.1rem;
+        }
+
+        .category-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+            border: 2px solid transparent;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border-color: var(--primary-color);
+        }
+
+        .category-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .category-title {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .category-description {
+            color: #6c757d;
+            margin-bottom: 1.5rem;
+        }
+
+        .category-count {
+            background: var(--light-color);
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        /* Books Grid */
+        .books-section {
+            padding: 80px 0;
+            background: var(--light-color);
+        }
+
+        .book-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .book-image {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .book-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .book-card:hover .book-image img {
+            transform: scale(1.1);
+        }
+
+        .book-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .book-content {
+            padding: 1.5rem;
+        }
+
+        .book-title {
+            color: var(--dark-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .book-author {
+            color: var(--primary-color);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .book-description {
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .book-rating {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .stars {
+            color: var(--warning-color);
+            margin-right: 0.5rem;
+        }
+
+        .rating-text {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        .book-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        .book-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-detail {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            flex: 1;
+            text-align: center;
+        }
+
+        .btn-detail:hover {
+            background: var(--success-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .btn-cart {
+            background: var(--accent-color);
+            color: var(--dark-color);
+            border: none;
+            padding: 0.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-cart:hover {
+            background: #e0a800;
+            transform: translateY(-2px);
+        }
+
+        /* Featured Books */
+        .featured-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .featured-book {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            border-radius: 20px;
+            padding: 3rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-book::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .featured-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .featured-badge {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .featured-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .featured-author {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .featured-description {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        .featured-price {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+
+        .btn-featured {
+            background: white;
+            color: var(--primary-color);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-featured:hover {
+            background: var(--light-color);
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        /* Newsletter Section */
+        .newsletter-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+        }
+
+        .newsletter-content {
+            text-align: center;
+        }
+
+        .newsletter-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .newsletter-form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            background: rgba(255,255,255,0.9);
+            border: none;
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(255,255,255,0.3);
+        }
+
+        .btn-newsletter {
+            background: var(--accent-color);
+            color: var(--dark-color);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-newsletter:hover {
+            background: #e0a800;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer-section {
+            background: var(--dark-color);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h5 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #adb5bd;
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #495057;
+            padding-top: 2rem;
+            text-align: center;
+            color: #adb5bd;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .featured-title {
+                font-size: 2rem;
+            }
+            
+            .newsletter-title {
+                font-size: 2rem;
+            }
+            
+            .navbar {
+                margin: 0 5px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+<!-- Header -->
+<header id="header" class="header-section">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container" id="header-container">
+            <!-- Logo and Visit Counter -->
+            <div class="d-flex align-items-center">
+                <a class="navbar-brand me-4" href="../index.html">
+                    <div class="d-flex align-items-center">
+                        <div class="logo-icon">
+                            <img src="../public/image/logo.png" alt="Green Groves Logo" class="img-fluid" style="max-width: 50px;">
+                        </div>
+                        <div class="ms-2">
+                            <h4 class="mb-0 brand-name">Green Groves</h4>
+                            <small class="brand-subtitle">Dụng cụ làm vườn</small>
+                        </div>
+                    </div>
+                </a>
+                <div class="visit-counter d-none d-sm-block">
+                    <div class="icon-views">
+                        <i class="fas fa-eye me-1"></i>
+                        <span id="visitCount">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navigation Menu -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="titleMenuMobile">
+                    <ul class="navbar">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../index.html">
+                                <i class="fas fa-home me-1"></i>Trang chủ
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="kythuatvameo.html">
+                                <i class="fas fa-seedling me-1"></i>Kỹ thuật và mẹo
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="congcualamvuon.html">
+                                <i class="fas fa-tools me-1"></i>Công cụ làm vườn
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="yeutocanthietcholamvuon.html">
+                                <i class="fas fa-list-check me-1"></i>Yếu tố cần thiết
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="chauvavatchua.html">
+                                <i class="fas fa-box me-1"></i>Chậu và vật chứa
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="phukienlamvuon.html">
+                                <i class="fas fa-puzzle-piece me-1"></i>Phụ kiện
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="goiysanpham.html">
+                                <i class="fas fa-lightbulb me-1"></i>Gợi ý sản phẩm
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="videogiaoduc.html">
+                                <i class="fas fa-video me-1"></i>Video giới thiệu
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="gioithieuvalienhe.html">
+                                <i class="fas fa-info-circle me-1"></i>Giới thiệu & Liên hệ
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="navbarMobile">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">
+                            <i class="fas fa-home me-1"></i>Trang chủ
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="kythuatvameo.html">
+                            <i class="fas fa-seedling me-1"></i>Kỹ thuật và mẹo
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="congcualamvuon.html">
+                            <i class="fas fa-tools me-1"></i>Công cụ làm vườn
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="yeutocanthietcholamvuon.html">
+                            <i class="fas fa-list-check me-1"></i>Yếu tố cần thiết
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="chauvavatchua.html">
+                            <i class="fas fa-box me-1"></i>Chậu và vật chứa
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="phukienlamvuon.html">
+                            <i class="fas fa-puzzle-piece me-1"></i>Phụ kiện
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="goiysanpham.html">
+                            <i class="fas fa-lightbulb me-1"></i>Gợi ý sản phẩm
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="videogiaoduc.html">
+                            <i class="fas fa-video me-1"></i>Video giới thiệu
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="gioithieuvalienhe.html">
+                            <i class="fas fa-info-circle me-1"></i>Giới thiệu & Liên hệ
+                        </a>
+                    </li>
+                </ul>
+                <!-- Menu PC dạng dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="menuDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-bars me-1"></i> Danh mục
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="menuDropdown">
+                        <li><a class="dropdown-item" href="../index.html"><i class="fas fa-home me-1"></i>Trang chủ</a></li>
+                        <li><a class="dropdown-item" href="kythuatvameo.html"><i class="fas fa-seedling me-1"></i>Kỹ thuật và mẹo</a></li>
+                        <li><a class="dropdown-item" href="congcualamvuon.html"><i class="fas fa-tools me-1"></i>Công cụ làm vườn</a></li>
+                        <li><a class="dropdown-item" href="yeutocanthietcholamvuon.html"><i class="fas fa-list-check me-1"></i>Yếu tố cần thiết</a></li>
+                        <li><a class="dropdown-item" href="chauvavatchua.html"><i class="fas fa-box me-1"></i>Chậu và vật chứa</a></li>
+                        <li><a class="dropdown-item" href="phukienlamvuon.html"><i class="fas fa-puzzle-piece me-1"></i>Phụ kiện</a></li>
+                        <li><a class="dropdown-item" href="goiysanpham.html"><i class="fas fa-lightbulb me-1"></i>Gợi ý sản phẩm</a></li>
+                        <li><a class="dropdown-item" href="videogiaoduc.html"><i class="fas fa-video me-1"></i>Video giới thiệu</a></li>
+                        <li><a class="dropdown-item" href="gioithieuvalienhe.html"><i class="fas fa-info-circle me-1"></i>Giới thiệu & Liên hệ</a></li>
+                    </ul>
+                </li>
+                <div class="search-cart">
+                    <!-- Cart Button -->
+                    <div>
+                        <button class="btn btn-outline-success cart-btn" data-bs-toggle="modal" data-bs-target="#cartModal">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count" id="cartCount">0</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8 mx-auto text-center">
+                    <div class="hero-content animate-fade-in-up">
+                        <h1 class="hero-title">Sách và Tài liệu Làm vườn</h1>
+                        <p class="hero-subtitle">Khám phá bộ sưu tập sách chuyên sâu về kỹ thuật làm vườn, từ cơ bản đến nâng cao</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Book Categories -->
+    <section class="categories-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Danh mục Sách</h2>
+                <p>Chọn lọc những cuốn sách hay nhất về làm vườn</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <h4 class="category-title">Cơ bản</h4>
+                        <p class="category-description">Sách dành cho người mới bắt đầu làm vườn</p>
+                        <span class="category-count">15 cuốn</span>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h4 class="category-title">Kỹ thuật</h4>
+                        <p class="category-description">Hướng dẫn kỹ thuật làm vườn chuyên sâu</p>
+                        <span class="category-count">22 cuốn</span>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-tree"></i>
+                        </div>
+                        <h4 class="category-title">Cây cảnh</h4>
+                        <p class="category-description">Sách về chăm sóc và tạo dáng cây cảnh</p>
+                        <span class="category-count">18 cuốn</span>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-apple-alt"></i>
+                        </div>
+                        <h4 class="category-title">Rau quả</h4>
+                        <p class="category-description">Hướng dẫn trồng rau quả sạch tại nhà</p>
+                        <span class="category-count">25 cuốn</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Book -->
+    <section class="featured-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="featured-book">
+                        <div class="featured-content">
+                            <img src="image/nghệ thuật làm vườn.jpeg">
+                            <span class="featured-badge">Sách nổi bật</span>
+                            
+                            <h2 class="featured-title">Nghệ thuật Làm vườn Hiện đại</h2>
+                            <p class="featured-author">Tác giả: Nguyễn Văn Hoa</p>
+                            <p class="featured-description">
+                                Cuốn sách toàn diện về kỹ thuật làm vườn hiện đại, từ thiết kế không gian xanh đến chăm sóc cây trồng theo phương pháp khoa học. Phù hợp cho cả người mới bắt đầu và những người đã có kinh nghiệm.
+                            </p>
+                            <div class="featured-price">299.000đ</div>
+                            <a href="#" class="btn-featured">
+                                <i class="fas fa-shopping-cart me-2"></i>Mua ngay
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Books Grid -->
+    <section class="books-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Sách Bán chạy</h2>
+                <p>Những cuốn sách được yêu thích nhất</p>
+            </div>
+            
+            <div class="row g-4">
+                <!-- Book 1 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="book-card">
+                        <div class="book-image">
+                            <img src="image/sách hướng dẫn làm vườn.webp" alt="sách hướng dẫn làm vườn">
+                            <span class="book-badge">Bestseller</span>
+                        </div>
+                        <div class="book-content">
+                            <h5 class="book-title">Hướng dẫn Làm vườn Cơ bản</h5>
+                            <p class="book-author">Trần Thị Mai</p>
+                            <p class="book-description">Cuốn sách dành cho người mới bắt đầu, hướng dẫn từng bước cách làm vườn hiệu quả.</p>
+                            <div class="book-rating">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="rating-text">(4.8/5)</span>
+                            </div>
+                            <div class="book-price">
+                                <div>
+                                    <span class="price">150.000đ</span>
+                                    <span class="original-price">180.000đ</span>
+                                </div>
+                            </div>
+                            <div class="book-actions">
+                                <a href="#" class="btn-detail">Chi tiết</a>
+                                <button class="btn-cart">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                                <button class="btn btn-success ms-2">Mua hàng</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Book 2 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="book-card">
+                        <div class="book-image">
+                            <img src="image/người làm vườn hoàn hảo.jpg" alt="người làm vườn hoàn hảo">
+                            <span class="book-badge">Mới</span>
+                        </div>
+                        <div class="book-content">
+                            <h5 class="book-title">người làm vườn hoàn hảo</h5>
+                            <p class="book-author">Lê Văn Sinh</p>
+                            <p class="book-description">Hướng dẫn chi tiết cách trồng rau sạch tại nhà, đảm bảo an toàn và năng suất cao.</p>
+                            <div class="book-rating">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <span class="rating-text">(4.2/5)</span>
+                            </div>
+                            <div class="book-price">
+                                <div>
+                                    <span class="price">200.000đ</span>
+                                    <span class="original-price">250.000đ</span>
+                                </div>
+                            </div>
+                            <div class="book-actions">
+                                <a href="#" class="btn-detail">Chi tiết</a>
+                                <button class="btn-cart">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                                <button class="btn btn-success ms-2">Mua hàng</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Book 3 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="book-card">
+                        <div class="book-image">
+                            <img src="image/khu vườn của gaia.jpg" alt="khu vườn của gaia">
+                            <span class="book-badge">Hot</span>
+                        </div>
+                        <div class="book-content">
+                            <h5 class="book-title">khu vườn của gaia</h5>
+                            <p class="book-author">Phạm Văn Tùng</p>
+                            <p class="book-description">Khám phá nghệ thuật tạo dáng bonsai, từ cơ bản đến nâng cao với hình ảnh minh họa đẹp.</p>
+                            <div class="book-rating">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="rating-text">(4.9/5)</span>
+                            </div>
+                            <div class="book-price">
+                                <div>
+                                    <span class="price">350.000đ</span>
+                                    <span class="original-price">400.000đ</span>
+                                </div>
+                            </div>
+                            <div class="book-actions">
+                                <a href="#" class="btn-detail">Chi tiết</a>
+                                <button class="btn-cart">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                                <button class="btn btn-success ms-2">Mua hàng</button>
+                            </div>thuật Trồng Rau Sạch
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Book 4 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="book-card">
+                        <div class="book-image">
+                            <img src="image/làm thế nào để trồng mọi thứ.jpg" alt="làm thế nào để trồng mọi thứ">
+                            <span class="book-badge">Giảm giá</span>
+                        </div>
+                        <div class="book-content">
+                            <h5 class="book-title">làm thế nào để trồng mọi thứ</h5>
+                            <p class="book-author">Nguyễn Thị Lan</p>
+                            <p class="book-description">Hướng dẫn thiết kế và tạo lập không gian vườn đẹp, phù hợp với từng loại nhà.</p>
+                            <div class="book-rating">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <span class="rating-text">(4.5/5)</span>
+                            </div>
+                            <div class="book-price">
+                                <div>
+                                    <span class="price">180.000đ</span>
+                                    <span class="original-price">220.000đ</span>
+                                </div>
+                            </div>
+                            <div class="book-actions">
+                                <a href="#" class="btn-detail">Chi tiết</a>
+                                <button class="btn-cart">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                                <button class="btn btn-success ms-2">Mua hàng</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Book 5 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="book-card">
+                        <div class="book-image">
+                            <img src="image/một góc nhìn mới về vườn.jpg" alt="một góc nhìn mới về vườn">
+                            <span class="book-badge">Phổ biến</span>
+                        </div>
+                        <div class="book-content">
+                            <h5 class="book-title">một góc nhìn mới về vườn</h5>
+                            <p class="book-author">Hoàng Văn Minh</p>
+                            <p class="book-description">Cẩm nang chăm sóc cây trồng theo mùa, phòng trừ sâu bệnh và dinh dưỡng cây.</p>
+                            <div class="book-rating">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="rating-text">(4.7/5)</span>
+                            </div>
+                            <div class="book-price">
+                                <div>
+                                    <span class="price">220.000đ</span>
+                                    <span class="original-price">280.000đ</span>
+                                </div>
+                            </div>
+                            <div class="book-actions">
+                                <a href="#" class="btn-detail">Chi tiết</a>
+                                <button class="btn-cart">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                                <button class="btn btn-success ms-2">Mua hàng</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Book 6 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="book-card">
+                        <div class="book-image">
+                            <img src="image/thiết kế sân vườn biệt thự'.webp" alt="thiết kế sân vườn biệt thự">
+                            <span class="book-badge">Mới</span>
+                        </div>
+                        <div class="book-content">
+                            <h5 class="book-title">thiết kế sân vườn biệt thự</h5>
+                            <p class="book-author">Trần Văn Hùng</p>
+                            <p class="book-description">thiết kế sân vườn biệt thự phổ biến ở Việt Nam và cách chăm sóc hiệu quả.</p>
+                            <div class="book-rating">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <span class="rating-text">(4.3/5)</span>
+                            </div>
+                            <div class="book-price">
+                                <div>
+                                    <span class="price">160.000đ</span>
+                                    <span class="original-price">200.000đ</span>
+                                </div>
+                            </div>
+                            <div class="book-actions">
+                                <a href="#" class="btn-detail">Chi tiết</a>
+                                <button class="btn-cart">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                                <button class="btn btn-success ms-2">Mua hàng</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2 class="newsletter-title">Đăng ký Nhận Tin</h2>
+                <p class="newsletter-subtitle">Nhận thông báo về sách mới và ưu đãi đặc biệt</p>
+                <form class="newsletter-form">
+                    <div class="row g-2">
+                        <div class="col-md-8">
+                            <input type="email" class="form-control newsletter-input" placeholder="Nhập email của bạn" required>
+                        </div>
+                        <div class="col-md-4">
+                            <button type="submit" class="btn btn-newsletter w-100">
+                                <i class="fas fa-paper-plane me-2"></i>Đăng ký
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h5>Green Groves</h5>
+                    <p>Chuyên cung cấp dụng cụ làm vườn chất lượng cao với giá cả hợp lý. Chúng tôi cam kết mang đến những sản phẩm tốt nhất cho khu vườn của bạn.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h5>Liên hệ</h5>
+                    <p><i class="fas fa-map-marker-alt me-2"></i>Nông Nghiệp Phố - Hà Nội<br>Phố Bưởi, Ngã Tư, Hà Nội</p>
+                    <p><i class="fas fa-phone me-2"></i>Hotline: 1900 1234</p>
+                    <p><i class="fas fa-envelope me-2"></i>info@greentools.vn</p>
+                    <p><i class="fas fa-clock me-2"></i>Thứ 2 - Thứ 6: 8:00 - 18:00</p>
+                </div>
+                
+                <div>
+                    <h5>Danh mục</h5>
+                    <a href="congcualamvuon.html">Dụng cụ làm vườn</a><br>
+                    <a href="chauvavatchua.html">Chậu và vật chứa</a><br>
+                    <a href="phukienlamvuon.html">Phụ kiện làm vườn</a><br>
+                    <a href="goiysanpham.html">Gợi ý sản phẩm</a><br>
+                    <a href="sachlienquan.html">Sách liên quan</a>
+                </div>
+                
+                <div>
+                    <h5>Hỗ trợ</h5>
+                    <a href="kythuatvameo.html">Kỹ thuật và mẹo</a><br>
+                    <a href="yeutocanthietcholamvuon.html">Yếu tố cần thiết</a><br>
+                    <a href="videogiaoduc.html">Video giáo dục</a><br>
+                    <a href="gioithieuvalienhe.html">Giới thiệu & Liên hệ</a><br>
+                    <a href="#">Chính sách bảo hành</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Green Groves. Bảo lưu mọi quyền.</p>
+                <i class="fas fa-map-marker-alt me-1"></i>
+                <span id="userLocation">Đang xác định vị trí...</span>
+            </div>
+        </div>
+    </footer>
+<!-- Cart Modal -->
+<div class="modal fade" id="cartModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Giỏ hàng</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div id="cartItems">
+                    <p class="text-center text-muted">Giỏ hàng trống</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-success">Thanh toán</button>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <img src="../public/image/logo.png" alt="Green Groves Logo" class="img-fluid" style="max-width: 80px;">
+            </div>
+            <h3 class="loading-text">Green Groves</h3>
+            <div class="loading-spinner">
+                <div class="spinner-border text-success" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/products.js"></script>
+    <script src="../scripts/cart.js"></script>
+    
+    <script>
+        // Newsletter form submission
+        document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            if (email) {
+                alert('Cảm ơn bạn đã đăng ký! Chúng tôi sẽ gửi thông tin mới nhất đến email của bạn.');
+                this.reset();
+            }
+        });
+
+        // Add to cart functionality
+        document.querySelectorAll('.btn-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const bookTitle = this.closest('.book-card').querySelector('.book-title').textContent;
+                alert(`Đã thêm "${bookTitle}" vào giỏ hàng!`);
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add loading animation to buttons
+        document.querySelectorAll('.btn-featured, .btn-newsletter').forEach(button => {
+            button.addEventListener('click', function() {
+                const originalText = this.innerHTML;
+                this.innerHTML = '<span class="loading"></span> Đang xử lý...';
+                this.disabled = true;
+                
+                setTimeout(() => {
+                    this.innerHTML = originalText;
+                    this.disabled = false;
+                }, 2000);
+            });
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in-up');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.category-card, .book-card, .featured-book').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

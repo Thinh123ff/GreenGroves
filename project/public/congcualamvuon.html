@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Công cụ làm vườn - Green Groves</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../styles/main.css">
+    
+    <style>
+        main{
+            margin-top: 10vh !important;
+        }
+        .tool-category {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .tool-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .tool-item {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border-left: 4px solid #28a745;
+        }
+        
+        .tool-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+        }
+        
+        .tool-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        
+        .tool-title {
+            color: #2c3e50;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .tool-description {
+            color: #6c757d;
+            line-height: 1.6;
+        }
+        
+        .tool-features {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0;
+        }
+        
+        .tool-features li {
+            padding: 5px 0;
+            color: #495057;
+        }
+        
+        .tool-features li:before {
+            content: "✓";
+            color: #28a745;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        
+        .category-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            border-radius: 15px;
+        }
+        
+        .category-header h2 {
+            margin: 0;
+            font-weight: 600;
+        }
+        
+        .category-header p {
+            margin: 10px 0 0 0;
+            opacity: 0.9;
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .price-tag {
+            background: #ffc107;
+            color: #212529;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        
+        .quality-badge {
+            background: #28a745;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            margin-left: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .tool-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tool-category {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Header -->
+<header id="header" class="header-section">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container" id="header-container">
+            <!-- Logo and Visit Counter -->
+            <div class="d-flex align-items-center">
+                <a class="navbar-brand me-4" href="../index.html">
+                    <div class="d-flex align-items-center">
+                        <div class="logo-icon">
+                            <img src="../public/image/logo.png" alt="Green Groves Logo" class="img-fluid" style="max-width: 50px;">
+                        </div>
+                        <div class="ms-2">
+                            <h4 class="mb-0 brand-name">Green Groves</h4>
+                            <small class="brand-subtitle">Dụng cụ làm vườn</small>
+                        </div>
+                    </div>
+                </a>
+                <div class="visit-counter d-none d-sm-block">
+                    <div class="icon-views">
+                        <i class="fas fa-eye me-1"></i>
+                        <span id="visitCount">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navigation Menu -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="titleMenuMobile">
+                    <ul class="navbar">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../index.html">
+                                <i class="fas fa-home me-1"></i>Trang chủ
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="kythuatvameo.html">
+                                <i class="fas fa-seedling me-1"></i>Kỹ thuật và mẹo
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="yeutocanthietcholamvuon.html">
+                                <i class="fas fa-list-check me-1"></i>Yếu tố cần thiết
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="chauvavatchua.html">
+                                <i class="fas fa-box me-1"></i>Chậu và vật chứa
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="phukienlamvuon.html">
+                                <i class="fas fa-puzzle-piece me-1"></i>Phụ kiện
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="goiysanpham.html">
+                                <i class="fas fa-lightbulb me-1"></i>Gợi ý sản phẩm
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="videogiaoduc.html">
+                                <i class="fas fa-video me-1"></i>Video giới thiệu
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="sachlienquan.html">
+                                <i class="fas fa-book me-1"></i>Sách liên quan
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="gioithieuvalienhe.html">
+                                <i class="fas fa-info-circle me-1"></i>Giới thiệu & Liên hệ
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="navbarMobile">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">
+                            <i class="fas fa-home me-1"></i>Trang chủ
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="kythuatvameo.html">
+                            <i class="fas fa-seedling me-1"></i>Kỹ thuật và mẹo
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="yeutocanthietcholamvuon.html">
+                            <i class="fas fa-list-check me-1"></i>Yếu tố cần thiết
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="chauvavatchua.html">
+                            <i class="fas fa-box me-1"></i>Chậu và vật chứa
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="phukienlamvuon.html">
+                            <i class="fas fa-puzzle-piece me-1"></i>Phụ kiện
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="goiysanpham.html">
+                            <i class="fas fa-lightbulb me-1"></i>Gợi ý sản phẩm
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="videogiaoduc.html">
+                            <i class="fas fa-video me-1"></i>Video giới thiệu
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sachlienquan.html">
+                            <i class="fas fa-book me-1"></i>Sách liên quan
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="gioithieuvalienhe.html">
+                            <i class="fas fa-info-circle me-1"></i>Giới thiệu & Liên hệ
+                        </a>
+                    </li>
+                </ul>
+                <!-- Menu PC dạng dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="menuDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-bars me-1"></i> Danh mục
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="menuDropdown">
+                        <li><a class="dropdown-item" href="../index.html"><i class="fas fa-home me-1"></i>Trang chủ</a></li>
+                        <li><a class="dropdown-item" href="kythuatvameo.html"><i class="fas fa-seedling me-1"></i>Kỹ thuật và mẹo</a></li>
+                        <li><a class="dropdown-item" href="yeutocanthietcholamvuon.html"><i class="fas fa-list-check me-1"></i>Yếu tố cần thiết</a></li>
+                        <li><a class="dropdown-item" href="chauvavatchua.html"><i class="fas fa-box me-1"></i>Chậu và vật chứa</a></li>
+                        <li><a class="dropdown-item" href="phukienlamvuon.html"><i class="fas fa-puzzle-piece me-1"></i>Phụ kiện</a></li>
+                        <li><a class="dropdown-item" href="goiysanpham.html"><i class="fas fa-lightbulb me-1"></i>Gợi ý sản phẩm</a></li>
+                        <li><a class="dropdown-item" href="videogiaoduc.html"><i class="fas fa-video me-1"></i>Video giới thiệu</a></li>
+                        <li><a class="dropdown-item" href="sachlienquan.html"><i class="fas fa-book me-1"></i>Sách liên quan</a></li>
+                        <li><a class="dropdown-item" href="gioithieuvalienhe.html"><i class="fas fa-info-circle me-1"></i>Giới thiệu & Liên hệ</a></li>
+                    </ul>
+                </li>
+                <div class="search-cart">
+                    <!-- Search Box -->
+                    <div class="search-box me-3">
+                        <div class="input-group">
+                            <input type="text" class="form-control search-input" id="searchInput" placeholder="Tìm kiếm sản phẩm...">
+                            <button class="btn btn-outline-success search-btn" type="button" id="searchBtn">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                        <div class="search-suggestions" id="searchSuggestions"></div>
+                    </div>
+
+                    <!-- Cart Button -->
+                    <div>
+                        <button class="btn btn-outline-success cart-btn" data-bs-toggle="modal" data-bs-target="#cartModal">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count" id="cartCount">0</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+    <!-- Main Content -->
+    <main style="margin-top: 120px; padding: 20px;">
+        <!-- Products Section -->
+        <section id="products" class="products-section py-5">
+            <div class="container">
+                <div class="section-header text-center mb-5">
+                    <h2 class="section-title">Danh sách sảm phẩm</h2>
+                    <p class="section-subtitle">Khám phá bộ sưu tập dụng cụ làm vườn chất lượng cao</p>
+                </div>
+
+                <!-- Search Results Info -->
+                <div id="searchResults" class="search-results-info mb-4" style="display: none;">
+                    <div class="alert alert-info">
+                        <i class="fas fa-search me-2"></i>
+                        <span id="searchResultsText"></span>
+                        <button type="button" class="btn btn-sm btn-outline-secondary ms-2" id="clearSearch">
+                            <i class="fas fa-times me-1"></i>Xóa tìm kiếm
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product Categories -->
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="product-categories d-flex justify-content-center flex-wrap">
+                            <button class="btn btn-outline-success me-2 mb-2 category-btn active" data-category="all">Tất cả</button>
+                            <button class="btn btn-outline-success me-2 mb-2 category-btn" data-category="tools">Dụng cụ cầm tay</button>
+                            <button class="btn btn-outline-success me-2 mb-2 category-btn" data-category="watering">Dụng cụ tưới</button>
+                            <button class="btn btn-outline-success me-2 mb-2 category-btn" data-category="furniture">Ghế làm vườn</button>
+                            <button class="btn btn-outline-success me-2 mb-2 category-btn" data-category="pots">Chậu cây</button>
+                            <button class="btn btn-outline-success me-2 mb-2 category-btn" data-category="accessory">Bạt che</button>
+                            <button class="btn btn-outline-success me-2 mb-2 category-btn" data-category="kids">Dụng cụ trẻ em</button>
+                            <button class="btn btn-outline-success me-2 mb-2 category-btn" data-category="outdoor">Dụng cụ trồng rau</button>
+                            <button class="btn btn-outline-success me-2 mb-2 category-btn" data-category="garden">Làm vườn cửa sổ</button><button class="btn btn-outline-success me-2 mb-2 category-btn" data-category="tools">Dụng cụ cầm tay</button>
+                            <button class="btn btn-outline-success me-2 mb-2 category-btn" data-category="family">Bộ vườn gia đình</button>
+                            <button class="btn btn-outline-success me-2 mb-2 category-btn" data-category="decor">Chậu treo</button>
+                            <button class="btn btn-outline-success me-2 mb-2 category-btn" data-category="safety">Đồ bảo hộ</button>
+                            <button class="btn btn-outline-success me-2 mb-2 category-btn" data-category="storage">Hộp đựng</button>
+                            <button class="btn btn-outline-success me-2 mb-2 category-btn" data-category="guide">Sách hướng dẫn</button>
+                            <button class="btn btn-outline-success me-2 mb-2 category-btn" data-category="lighting">Đèn pin</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Products Grid -->
+                <div class="row" id="productsGrid">
+                    <!-- Products will be loaded here by JavaScript -->
+                </div>
+
+                <!-- No Results Message -->
+                <div id="noResults" class="text-center py-5" style="display: none;">
+                    <i class="fas fa-search fa-3x text-muted mb-3"></i>
+                    <h5 class="text-muted">Không tìm thấy sản phẩm</h5>
+                    <p class="text-muted">Không có sản phẩm nào phù hợp với từ khóa tìm kiếm của bạn</p>
+                    <button class="btn btn-primary" id="showAllProducts">Xem tất cả sản phẩm</button>
+                </div>
+            </div>
+        </section>
+        <div class="container">
+            <!-- Page Header -->
+            <div class="category-header">
+                <h2><i class="fas fa-tools me-2"></i>Công cụ làm vườn chuyên nghiệp</h2>
+                <p>Khám phá bộ sưu tập dụng cụ chất lượng cao cho mọi nhu cầu làm vườn</p>
+            </div>
+
+            <!-- Dụng cụ cắt tỉa -->
+            <div class="tool-category">
+                <div class="category-header">
+                    <h3><i class="fas fa-cut me-2"></i>Dụng cụ cắt tỉa</h3>
+                    <p>Chuyên dụng cho việc cắt tỉa cây cối, hoa lá</p>
+                </div>
+
+                <div class="tool-grid">
+                    <div class="tool-item">
+                        <div class="tool-icon">
+                            <i class="fas fa-cut"></i>
+                        </div>
+                        <img src="image/kéo cắt cành.webp" alt="Kéo cắt cành" style="width:120px;display:block;margin:0 auto 10px auto;">
+                        <h4 class="tool-title">Kéo cắt cành <span class="quality-badge">Premium</span></h4>
+                        <p class="tool-description">Kéo cắt cành chuyên nghiệp với lưỡi thép không gỉ, tay cầm ergonomic.</p>
+                        <ul class="tool-features">
+                            <li>Lưỡi thép không gỉ cao cấp</li>
+                            <li>Tay cầm chống trượt</li>
+                            <li>Cắt được cành có đường kính 2cm</li>
+                            <li>Bảo hành 2 năm</li>
+                        </ul>
+                        <div class="price-tag">Giá: 150.000đ - 350.000đ</div>
+                        <button class="btn btn-success mt-2">Mua hàng</button>
+                    </div>
+
+                    <div class="tool-item">
+                        <div class="tool-icon">
+                            <i class="fas fa-scissors"></i>
+                        </div>
+                        <img src="image/kéo tỉa lá.jpg" alt="Kéo tỉa lá" style="width:120px;display:block;margin:0 auto 10px auto;">
+                        <h4 class="tool-title">Kéo tỉa lá</h4>
+                        <p class="tool-description">Kéo tỉa lá nhỏ gọn, phù hợp cho việc tỉa lá và hoa nhỏ.</p>
+                        <ul class="tool-features">
+                            <li>Kích thước nhỏ gọn</li>
+                            <li>Lưỡi sắc bén</li>
+                            <li>Dễ dàng thao tác</li>
+                            <li>Phù hợp cho bonsai</li>
+                        </ul>
+                        <div class="price-tag">Giá: 80.000đ - 120.000đ</div>
+                        <br>
+                        <button class="btn btn-success mt-2">Mua hàng</button>
+                    </div>
+
+                    <div class="tool-item">
+                        <div class="tool-icon">
+                            <i class="fas fa-tree"></i>
+                        </div>
+                        <img src="image/cưa cành cây.webp" alt="Cưa cành cây" style="width:120px;display:block;margin:0 auto 10px auto;">
+                        <h4 class="tool-title">Cưa cành cây <span class="quality-badge">Pro</span></h4>
+                        <p class="tool-description">Cưa cành cây chuyên nghiệp cho những cành lớn và cứng.</p>
+                        <ul class="tool-features">
+                            <li>Lưỡi cưa thép hợp kim</li>
+                            <li>Cắt được cành 5-8cm</li>
+                            <li>Tay cầm chống rung</li>
+                            <li>Thiết kế gập được</li>
+                        </ul>
+                        <div class="price-tag">Giá: 200.000đ - 450.000đ</div>
+                        <button class="btn btn-success mt-2">Mua hàng</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dụng cụ đào xới -->
+            <div class="tool-category">
+                <div class="category-header">
+                    <h3><i class="fas fa-shovel me-2"></i>Dụng cụ đào xới</h3>
+                    <p>Chuyên dụng cho việc làm đất, đào hố trồng cây</p>
+                </div>
+
+                <div class="tool-grid">
+                    <div class="tool-item">
+                        <div class="tool-icon">
+                            <i class="fas fa-shovel"></i>
+                        </div>
+                        <img src="image/xẻng đa năng.webp" alt="Xẻng đa năng" style="width:120px;display:block;margin:0 auto 10px auto;">
+                        <h4 class="tool-title">Xẻng đa năng <span class="quality-badge">Best Seller</span></h4>
+                        <p class="tool-description">Xẻng đa năng với nhiều kích thước khác nhau cho mọi nhu cầu.</p>
+                        <ul class="tool-features">
+                            <li>Thép carbon cao cấp</li>
+                            <li>Tay cầm gỗ bền bỉ</li>
+                            <li>Nhiều kích thước</li>
+                            <li>Chống gỉ sét</li>
+                        </ul>
+                        <div class="price-tag">Giá: 120.000đ - 280.000đ</div>
+                        <button class="btn btn-success mt-2">Mua hàng</button>
+                    </div>
+
+                    <div class="tool-item">
+                        <div class="tool-icon">
+                            <i class="fas fa-hand-holding"></i>
+                        </div>
+                        <img src="image/cuốc mini.jpg" alt="Cuốc mini" style="width:120px;display:block;margin:0 auto 10px auto;">
+                        <h4 class="tool-title">Cuốc mini</h4>
+                        <p class="tool-description">Cuốc mini phù hợp cho việc làm đất trong chậu và vườn nhỏ.</p>
+                        <ul class="tool-features">
+                            <li>Kích thước nhỏ gọn</li>
+                            <li>Dễ dàng thao tác</li>
+                            <li>Phù hợp cho chậu cây</li>
+                            <li>Chất liệu bền bỉ</li>
+                        </ul>
+                        <div class="price-tag">Giá: 60.000đ - 100.000đ</div>
+                        <br>
+                        <button class="btn btn-success mt-2">Mua hàng</button>
+                    </div>
+
+                    <div class="tool-item">
+                        <div class="tool-icon">
+                            <i class="fas fa-rake"></i>
+                        </div>
+                        <img src="image/cào đất.jpg" alt="Cào đất" style="width:120px;display:block;margin:0 auto 10px auto;">
+                        <h4 class="tool-title">Cào đất</h4>
+                        <p class="tool-description">Cào đất chuyên dụng để san phẳng và làm mịn bề mặt đất.</p>
+                        <ul class="tool-features">
+                            <li>Răng cào sắc bén</li>
+                            <li>Tay cầm dài thoải mái</li>
+                            <li>Làm mịn đất hiệu quả</li>
+                            <li>Thu gom lá rụng</li>
+                        </ul>
+                        <div class="price-tag">Giá: 90.000đ - 150.000đ</div>
+                        <br>
+                        <button class="btn btn-success mt-2">Mua hàng</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dụng cụ tưới nước -->
+            <div class="tool-category">
+                <div class="category-header">
+                    <h3><i class="fas fa-tint me-2"></i>Dụng cụ tưới nước</h3>
+                    <p>Hệ thống tưới nước thông minh và hiệu quả</p>
+                </div>
+
+                <div class="tool-grid">
+                    <div class="tool-item">
+                        <div class="tool-icon">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                        <img src="image/bình tưới nước.jpg" alt="Bình tưới nước" style="width:120px;display:block;margin:0 auto 10px auto;">
+                        <h4 class="tool-title">Bình tưới nước <span class="quality-badge">Smart</span></h4>
+                        <p class="tool-description">Bình tưới nước thông minh với vòi phun điều chỉnh được.</p>
+                        <ul class="tool-features">
+                            <li>Dung tích 2-5 lít</li>
+                            <li>Vòi phun điều chỉnh</li>
+                            <li>Chất liệu nhựa cao cấp</li>
+                            <li>Thiết kế ergonomic</li>
+                        </ul>
+                        <div class="price-tag">Giá: 80.000đ - 200.000đ</div>
+                        <br>
+                        <button class="btn btn-success mt-2">Mua hàng</button>
+                    </div>
+
+                    <div class="tool-item">
+                        <div class="tool-icon">
+                            <i class="fas fa-water"></i>
+                        </div>
+                        <img src="image/vòi tưới nước tự động.webp" alt="Vòi tưới tự động" style="width:120px;display:block;margin:0 auto 10px auto;">
+                        <h4 class="tool-title">Vòi tưới tự động</h4>
+                        <p class="tool-description">Hệ thống vòi tưới tự động với bộ điều khiển thời gian.</p>
+                        <ul class="tool-features">
+                            <li>Điều khiển thời gian</li>
+                            <li>Phun sương mịn</li>
+                            <li>Tiết kiệm nước</li>
+                            <li>Dễ dàng lắp đặt</li>
+                        </ul>
+                        <div class="price-tag">Giá: 150.000đ - 500.000đ</div>
+                        <br>
+                        <button class="btn btn-success mt-2">Mua hàng</button>
+                    </div>
+
+                    <div class="tool-item">
+                        <div class="tool-icon">
+                            <i class="fas fa-droplet"></i>
+                        </div>
+                        <img src="image/béc tưới nước nhỏ giọt.jpg" alt="Béc tưới nhỏ giọt" style="width:120px;display:block;margin:0 auto 10px auto;">
+                        <h4 class="tool-title">Béc tưới nhỏ giọt</h4>
+                        <p class="tool-description">Hệ thống tưới nhỏ giọt tiết kiệm nước cho từng cây.</p>
+                        <ul class="tool-features">
+                            <li>Tiết kiệm nước tối đa</li>
+                            <li>Tưới đều cho từng cây</li>
+                            <li>Dễ dàng điều chỉnh</li>
+                            <li>Phù hợp mọi loại cây</li>
+                        </ul>
+                        <div class="price-tag">Giá: 50.000đ - 120.000đ</div>
+                        <br>
+                        <button class="btn btn-success mt-2">Mua hàng</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dụng cụ bảo vệ -->
+            <div class="tool-category">
+                <div class="category-header">
+                    <h3><i class="fas fa-shield-alt me-2"></i>Dụng cụ bảo vệ</h3>
+                    <p>Bảo vệ an toàn khi làm vườn</p>
+                </div>
+
+                <div class="tool-grid">
+                    <div class="tool-item">
+                        <div class="tool-icon">
+                            <i class="fas fa-mitten"></i>
+                        </div>
+                        <img src="image/găng tay làm vườn.jpg" alt="Găng tay làm vườn" style="width:120px;display:block;margin:0 auto 10px auto;">
+                        <h4 class="tool-title">Găng tay làm vườn <span class="quality-badge">Essential</span></h4>
+                        <p class="tool-description">Găng tay chuyên dụng bảo vệ tay khi làm vườn.</p>
+                        <ul class="tool-features">
+                            <li>Chất liệu cotton + cao su</li>
+                            <li>Chống thấm nước</li>
+                            <li>Nhiều kích thước</li>
+                            <li>Dễ dàng giặt sạch</li>
+                        </ul>
+                        <div class="price-tag">Giá: 50.000đ - 120.000đ</div>
+                        <br>
+                        <button class="btn btn-success mt-2">Mua hàng</button>
+                    </div>
+
+                    <div class="tool-item">
+                        <div class="tool-icon">
+                            <i class="fas fa-hat-cowboy"></i>
+                        </div>
+                        <img src="image/mũ nón làm vườn.webp" alt="Mũ nón làm vườn" style="width:120px;display:block;margin:0 auto 10px auto;">
+                        <h4 class="tool-title">Mũ nón làm vườn</h4>
+                        <p class="tool-description">Mũ nón bảo vệ khỏi ánh nắng mặt trời khi làm vườn.</p>
+                        <ul class="tool-features">
+                            <li>Chống tia UV</li>
+                            <li>Vành rộng bảo vệ</li>
+                            <li>Thoáng mát</li>
+                            <li>Nhiều màu sắc</li>
+                        </ul>
+                        <div class="price-tag">Giá: 80.000đ - 150.000đ</div>
+                        <br><br>
+                        <button class="btn btn-success mt-2">Mua hàng</button>
+                    </div>
+
+                    <div class="tool-item">
+                        <div class="tool-icon">
+                            <i class="fas fa-boot"></i>
+                        </div>
+                        <img src="image/ủng làm vườn.webp" alt="Ủng làm vườn" style="width:120px;display:block;margin:0 auto 10px auto;">
+                        <h4 class="tool-title">Ủng làm vườn</h4>
+                        <p class="tool-description">Ủng cao su bảo vệ chân khi làm việc trong vườn ẩm ướt.</p>
+                        <ul class="tool-features">
+                            <li>Chất liệu cao su cao cấp</li>
+                            <li>Chống thấm nước</li>
+                            <li>Đế chống trượt</li>
+                            <li>Dễ dàng vệ sinh</li>
+                        </ul>
+                        <div class="price-tag">Giá: 120.000đ - 250.000đ</div>
+                        <br><br>
+                        <button class="btn btn-success mt-2">Mua hàng</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dụng cụ đo lường -->
+            <div class="tool-category">
+                <div class="category-header">
+                    <h3><i class="fas fa-ruler me-2"></i>Dụng cụ đo lường</h3>
+                    <p>Đo lường chính xác các thông số môi trường</p>
+                </div>
+
+                <div class="tool-grid">
+                    <div class="tool-item">
+                        <div class="tool-icon">
+                            <i class="fas fa-thermometer-half"></i>
+                        </div>
+                        <img src="image/máy đo độ ẩm đất.webp" alt="Máy đo độ ẩm đất" style="width:120px;display:block;margin:0 auto 10px auto;">
+                        <h4 class="tool-title">Máy đo độ ẩm đất <span class="quality-badge">Digital</span></h4>
+                        <p class="tool-description">Máy đo độ ẩm đất kỹ thuật số chính xác.</p>
+                        <ul class="tool-features">
+                            <li>Đo chính xác độ ẩm</li>
+                            <li>Màn hình LCD</li>
+                            <li>Pin tuổi thọ cao</li>
+                            <li>Dễ dàng sử dụng</li>
+                        </ul>
+                        <div class="price-tag">Giá: 200.000đ - 400.000đ</div>
+                        <br>
+                        <button class="btn btn-success mt-2">Mua hàng</button>
+                    </div>
+
+                    <div class="tool-item">
+                        <div class="tool-icon">
+                            <i class="fas fa-sun"></i>
+                        </div>
+                        <img src="image/máy đo ph đất.webp" alt="Máy đo pH đất" style="width:120px;display:block;margin:0 auto 10px auto;">
+                        <h4 class="tool-title">Máy đo pH đất</h4>
+                        <p class="tool-description">Máy đo độ pH của đất để kiểm tra độ chua kiềm.</p>
+                        <ul class="tool-features">
+                            <li>Đo pH chính xác</li>
+                            <li>Thiết kế cầm tay</li>
+                            <li>Kết quả nhanh chóng</li>
+                            <li>Phù hợp mọi loại đất</li>
+                        </ul>
+                        <div class="price-tag">Giá: 150.000đ - 300.000đ</div>
+                        <br>
+                        <button class="btn btn-success mt-2">Mua hàng</button>
+                    </div>
+
+                    <div class="tool-item">
+                        <div class="tool-icon">
+                            <i class="fas fa-ruler-combined"></i>
+                        </div>
+                        <img src="image/thước đo cây.jpg" alt="Thước đo cây" style="width:120px;display:block;margin:0 auto 10px auto;">
+                        <h4 class="tool-title">Thước đo cây</h4>
+                        <p class="tool-description">Thước đo chuyên dụng để đo chiều cao cây trồng.</p>
+                        <ul class="tool-features">
+                            <li>Thước dây 5m</li>
+                            <li>Chất liệu bền bỉ</li>
+                            <li>Dễ dàng cuộn gọn</li>
+                            <li>Đo chính xác</li>
+                        </ul>
+                        <div class="price-tag">Giá: 60.000đ - 100.000đ</div>
+                        <br>
+                        <button class="btn btn-success mt-2">Mua hàng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Green Groves</h5>
+                    <p>Chuyên cung cấp dụng cụ làm vườn chất lượng cao</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p>&copy; 2024 Green Groves. All rights reserved.</p>
+                    <i class="fas fa-map-marker-alt me-1"></i>
+                    <span id="userLocation">Đang xác định vị trí...</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+<!-- Cart Modal -->
+<div class="modal fade" id="cartModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Giỏ hàng</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div id="cartItems">
+                    <p class="text-center text-muted">Giỏ hàng trống</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-success">Thanh toán</button>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <img src="../public/image/logo.png" alt="Green Groves Logo" class="img-fluid" style="max-width: 80px;">
+            </div>
+            <h3 class="loading-text">Green Groves</h3>
+            <div class="loading-spinner">
+                <div class="spinner-border text-success" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/products.js"></script>
+    <script src="../scripts/cart.js"></script>
+</body>
+</html> 

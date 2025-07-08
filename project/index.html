@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Groves - Dụng cụ làm vườn chuyên nghiệp</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles/main.css">
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit&v=2"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header" class="header-section">
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+            <div class="container" id="header-container">
+                <!-- Logo and Visit Counter -->
+                <div class="d-flex align-items-center">
+                    <a class="navbar-brand me-4" href="index.html">
+                        <div class="d-flex align-items-center">
+                            <div class="logo-icon">
+                                <img src="./public/image/logo.png" alt="Green Groves Logo" class="img-fluid" style="max-width: 50px;">
+                            </div>
+                            <div class="ms-2">
+                                <h4 class="mb-0 brand-name">Green Groves</h4>
+                                <small class="brand-subtitle">Dụng cụ làm vườn</small>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="visit-counter d-none d-sm-block">
+                        <div class="icon-views">
+                            <i class="fas fa-eye me-1"></i>
+                            <span id="visitCount">0</span>
+                        </div>
+                        <div class="info-item mb-2">
+                            <i class="fas fa-map-marker-alt me-2 text-success"></i>
+                            <span id="userLocation">Đang xác định vị trí...</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu Toggle -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Navigation Menu -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <div class="titleMenuMobile">
+                        <ul class="navbar">
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html">
+                                    <i class="fas fa-home me-1"></i>Trang chủ
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./public/kythuatvameo.html">
+                                    <i class="fas fa-seedling me-1"></i>Kỹ thuật và mẹo
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./public/congcualamvuon.html">
+                                    <i class="fas fa-tools me-1"></i>Công cụ làm vườn
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./public/yeutocanthietcholamvuon.html">
+                                    <i class="fas fa-list-check me-1"></i>Yếu tố cần thiết
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./public/chauvavatchua.html">
+                                    <i class="fas fa-box me-1"></i>Chậu và vật chứa
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./public/phukienlamvuon.html">
+                                    <i class="fas fa-puzzle-piece me-1"></i>Phụ kiện
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./public/goiysanpham.html">
+                                    <i class="fas fa-lightbulb me-1"></i>Gợi ý sản phẩm
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./public/videogiaoduc.html">
+                                    <i class="fas fa-video me-1"></i>Video giới thiệu
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./public/sachlienquan.html">
+                                    <i class="fas fa-book me-1"></i>Sách liên quan
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./public/gioithieuvalienhe.html">
+                                    <i class="fas fa-info-circle me-1"></i>Giới thiệu & Liên hệ
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <ul class="navbarMobile">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">
+                                <i class="fas fa-home me-1"></i>Trang chủ
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./public/kythuatvameo.html">
+                                <i class="fas fa-seedling me-1"></i>Kỹ thuật và mẹo
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./public/congcualamvuon.html">
+                                <i class="fas fa-tools me-1"></i>Công cụ làm vườn
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./public/yeutocanthietcholamvuon.html">
+                                <i class="fas fa-list-check me-1"></i>Yếu tố cần thiết
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./public/chauvavatchua.html">
+                                <i class="fas fa-box me-1"></i>Chậu và vật chứa
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./public/phukienlamvuon.html">
+                                <i class="fas fa-puzzle-piece me-1"></i>Phụ kiện
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./public/goiysanpham.html">
+                                <i class="fas fa-lightbulb me-1"></i>Gợi ý sản phẩm
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./public/videogiaoduc.html">
+                                <i class="fas fa-video me-1"></i>Video giới thiệu
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./public/sachlienquan.html">
+                                <i class="fas fa-book me-1"></i>Sách liên quan
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./public/gioithieuvalienhe.html">
+                                <i class="fas fa-info-circle me-1"></i>Giới thiệu & Liên hệ
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- Menu PC dạng dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="menuDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-bars me-1"></i> Danh mục
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="menuDropdown">
+                            <li><a class="dropdown-item" href="index.html"><i class="fas fa-home me-1"></i>Trang chủ</a></li>
+                            <li><a class="dropdown-item" href="./public/kythuatvameo.html"><i class="fas fa-seedling me-1"></i>Kỹ thuật và mẹo</a></li>
+                            <li><a class="dropdown-item" href="./public/congcualamvuon.html"><i class="fas fa-tools me-1"></i>Công cụ làm vườn</a></li>
+                            <li><a class="dropdown-item" href="./public/yeutocanthietcholamvuon.html"><i class="fas fa-list-check me-1"></i>Yếu tố cần thiết</a></li>
+                            <li><a class="dropdown-item" href="./public/chauvavatchua.html"><i class="fas fa-box me-1"></i>Chậu và vật chứa</a></li>
+                            <li><a class="dropdown-item" href="./public/phukienlamvuon.html"><i class="fas fa-puzzle-piece me-1"></i>Phụ kiện</a></li>
+                            <li><a class="dropdown-item" href="./public/goiysanpham.html"><i class="fas fa-lightbulb me-1"></i>Gợi ý sản phẩm</a></li>
+                            <li><a class="dropdown-item" href="./public/videogiaoduc.html"><i class="fas fa-video me-1"></i>Video giới thiệu</a></li>
+                            <li><a class="dropdown-item" href="./public/sachlienquan.html"><i class="fas fa-book me-1"></i>Sách liên quan</a></li>
+                            <li><a class="dropdown-item" href="./public/gioithieuvalienhe.html"><i class="fas fa-info-circle me-1"></i>Giới thiệu & Liên hệ</a></li>
+                        </ul>
+                    </li>
+                    <div class="search-cart">
+                        <!-- Search Box -->
+                        <div class="search-box me-3">
+                            <div class="input-group">
+                                <input type="text" class="form-control search-input" id="searchInput" placeholder="Tìm kiếm sản phẩm...">
+                                <button class="btn btn-outline-success search-btn" type="button" id="searchBtn">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                            <div class="search-suggestions" id="searchSuggestions"></div>
+                        </div>
+
+                        <!-- User action -->
+                        <div class="user-actions">
+                            <button class="btn btn-outline-success cart-btn" data-bs-toggle="modal" data-bs-target="#cartModal">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span class="cart-count" id="cartCount">0</span>
+                            </button>
+                            <button class="btn btn-outline-primary login-btn" data-bs-toggle="modal" data-bs-target="#loginModal">
+                                <i class="fas fa-sign-in-alt me-1"></i>
+                                Đăng nhập
+                            </button>
+                        </div>
+                    </div>
+                    <div id="google_translate_element"></div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Banner Section -->
+    <section id="home" class="hero-section">
+        <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+            </div>
+            
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="hero-slide" style="background: linear-gradient(135deg, #28a745 0%, #20c997 100%);">
+                        <div class="container">
+                            <div class="row align-items-center min-vh-100">
+                                <div class="col-lg-6">
+                                    <div class="hero-content animate-slide-in-left">
+                                        <h1 class="hero-title">Dụng cụ làm vườn chuyên nghiệp</h1>
+                                        <p class="hero-subtitle">Biến khu vườn của bạn thành thiên đường xanh với những công cụ chất lượng cao</p>
+                                        <div class="hero-actions">
+                                            <a href="./public/congcualamvuon.html" class="btn btn-primary btn-lg me-3">Xem sản phẩm</a>
+                                            <a href="./public/gioithieuvalienhe.html" class="btn btn-outline-light btn-lg">Liên hệ ngay</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="hero-image animate-slide-in-right">
+                                        <img src="./public/image/b0.webp" alt="Dụng cụ làm vườn" class="img-fluid">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="carousel-item">
+                    <div class="hero-slide" style="background: linear-gradient(135deg, #6f42c1 0%, #e83e8c 100%);">
+                        <div class="container">
+                            <div class="row align-items-center min-vh-100">
+                                <div class="col-lg-6">
+                                    <div class="hero-content animate-slide-in-left">
+                                        <h1 class="hero-title">Chất lượng cao Giá cả hợp lý</h1>
+                                        <p class="hero-subtitle">Ưu đãi đặc biệt cho khách hàng mới. Miễn phí vận chuyển toàn quốc</p>
+                                        <div class="hero-actions">
+                                            <a href="./public/congcualamvuon.html" class="btn btn-primary btn-lg me-3">Mua ngay</a>
+                                            <a href="./public/goiysanpham.html" class="btn btn-outline-light btn-lg">Tìm hiểu thêm</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="hero-image animate-slide-in-right">
+                                        <img src="./public/image/b4.webp" alt="Làm vườn" class="img-fluid">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="hero-slide" style="background: linear-gradient(135deg, #fd7e14 0%, #ffc107 100%);">
+                        <div class="container">
+                            <div class="row align-items-center min-vh-100">
+                                <div class="col-lg-6">
+                                    <div class="hero-content animate-slide-in-left">
+                                        <h1 class="hero-title">Hướng dẫn chuyên nghiệp</h1>
+                                        <p class="hero-subtitle">Đội ngũ chuyên gia nhiều năm kinh nghiệm sẽ hỗ trợ bạn chọn lựa sản phẩm phù hợp</p>
+                                        <div class="hero-actions">
+                                            <a href="#contact" class="btn btn-primary btn-lg me-3">Tư vấn miễn phí</a>
+                                            <a href="./public/videogiaoduc.html" class="btn btn-outline-light btn-lg">Xem hướng dẫn</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="hero-image animate-slide-in-right">
+                                        <img src="./public/image/b9.webp" alt="Tư vấn làm vườn" class="img-fluid">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon">
+                            <i class="fas fa-shipping-fast"></i>
+                        </div>
+                        <h5>Giao hàng nhanh</h5>
+                        <p>Miễn phí vận chuyển cho đơn hàng trên 500k</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon">
+                            <i class="fas fa-medal"></i>
+                        </div>
+                        <h5>Chất lượng cao</h5>
+                        <p>Sản phẩm chính hãng, bảo hành dài hạn</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h5>Hỗ trợ 24/7</h5>
+                        <p>Tư vấn chuyên nghiệp mọi lúc mọi nơi</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon">
+                            <i class="fas fa-undo-alt"></i>
+                        </div>
+                        <h5>Đổi trả dễ dàng</h5>
+                        <p>Chính sách đổi trả trong vòng 30 ngày</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section py-5 bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <div class="about-image">
+                        <img src="https://images.pexels.com/photos/4505166/pexels-photo-4505166.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Về chúng tôi" class="img-fluid rounded shadow">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="about-content">
+                        <h2 class="section-title mb-4">Về GreenTools</h2>
+                        <p class="mb-4">Với hơn 10 năm kinh nghiệm trong lĩnh vực cung cấp dụng cụ làm vườn, GreenTools tự hào là đối tác tin cậy của hàng nghìn khách hàng trên toàn quốc.</p>
+                        <div class="about-stats row">
+                            <div class="col-4 text-center">
+                                <h3 class="stat-number">10+</h3>
+                                <p class="stat-label">Năm kinh nghiệm</p>
+                            </div>
+                            <div class="col-4 text-center">
+                                <h3 class="stat-number">5000+</h3>
+                                <p class="stat-label">Khách hàng</p>
+                            </div>
+                            <div class="col-4 text-center">
+                                <h3 class="stat-number">500+</h3>
+                                <p class="stat-label">Sản phẩm</p>
+                            </div>
+                        </div>
+                        <div class="about-features mt-4">
+                            <div class="feature-item d-flex align-items-center mb-2">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                <span>Sản phẩm chính hãng 100%</span>
+                            </div>
+                            <div class="feature-item d-flex align-items-center mb-2">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                <span>Bảo hành chính hãng dài hạn</span>
+                            </div>
+                            <div class="feature-item d-flex align-items-center">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                <span>Tư vấn chuyên nghiệp miễn phí</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section py-5">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <h2 class="section-title">Liên hệ với chúng tôi</h2>
+                <p class="section-subtitle">Chúng tôi luôn sẵn sàng hỗ trợ bạn</p>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-8 mb-4">
+                    <div class="contact-form-wrapper">
+                        <form id="contactForm" class="contact-form">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="name" class="form-label">Họ và tên *</label>
+                                    <input type="text" class="form-control" id="name" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="email" class="form-label">Email *</label>
+                                    <input type="email" class="form-control" id="email" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="phone" class="form-label">Số điện thoại</label>
+                                    <input type="tel" class="form-control" id="phone">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="subject" class="form-label">Chủ đề</label>
+                                    <select class="form-select" id="subject">
+                                        <option value="">Chọn chủ đề</option>
+                                        <option value="product">Tư vấn sản phẩm</option>
+                                        <option value="order">Đặt hàng</option>
+                                        <option value="support">Hỗ trợ kỹ thuật</option>
+                                        <option value="other">Khác</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Tin nhắn *</label>
+                                <textarea class="form-control" id="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-success btn-lg">
+                                <i class="fas fa-paper-plane me-2"></i>Gửi tin nhắn
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="contact-info">
+                        <div class="contact-item mb-4">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h5>Địa chỉ</h5>
+                                <p>123 Đường ABC, Phường XYZ<br>Quận 1, TP.HCM</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item mb-4">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h5>Điện thoại</h5>
+                                <p>Hotline: 1900 1234<br>Di động: 0901 234 567</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item mb-4">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h5>Email</h5>
+                                <p>info@greentools.vn<br>support@greentools.vn</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h5>Giờ làm việc</h5>
+                                <p>Thứ 2 - Thứ 6: 8:00 - 18:00<br>Thứ 7: 8:00 - 12:00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Modal -->
+    <div class="modal fade" id="cartModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="fas fa-shopping-cart me-2"></i>Giỏ hàng của bạn
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="cartItems">
+                        <div class="empty-cart text-center py-4">
+                            <i class="fas fa-shopping-cart fa-3x text-muted mb-3"></i>
+                            <h5 class="text-muted">Giỏ hàng trống</h5>
+                            <p class="text-muted">Hãy thêm một số sản phẩm vào giỏ hàng của bạn</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="w-100">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5>Tổng cộng: <span id="cartTotal">0đ</span></h5>
+                        </div>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Quay lại</button>
+                            <button type="button" class="btn btn-success" id="checkoutBtn">Thanh toán</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content login-modal">
+                <div class="modal-header login-header">
+                    <h5 class="modal-title">
+                        <i class="fas fa-sign-in-alt me-2"></i>Đăng nhập
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="login-welcome text-center mb-4">
+                        <div class="login-logo mb-3">
+                            <img src="./public/image/logo.png" alt="Green Groves Logo" class="img-fluid" style="max-width: 80px;">
+                        </div>
+                        <h4 class="text-success">Chào mừng trở lại!</h4>
+                        <p class="text-muted">Đăng nhập để tiếp tục mua sắm</p>
+                    </div>
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label for="loginEmail" class="form-label">
+                                <i class="fas fa-envelope me-2 text-success"></i>Email
+                            </label>
+                            <input type="email" class="form-control login-input" id="loginEmail" placeholder="Nhập email của bạn" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="loginPassword" class="form-label">
+                                <i class="fas fa-lock me-2 text-success"></i>Mật khẩu
+                            </label>
+                            <div class="password-input-group">
+                                <input type="password" class="form-control login-input" id="loginPassword" placeholder="Nhập mật khẩu" required>
+                                <button type="button" class="btn btn-outline-secondary password-toggle" id="toggleLoginPassword">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="mb-3 d-flex justify-content-between align-items-center">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="rememberMe">
+                                <label class="form-check-label" for="rememberMe">Ghi nhớ đăng nhập</label>
+                            </div>
+                            <a href="#" class="text-success text-decoration-none" id="forgotPasswordLink">
+                                <i class="fas fa-key me-1"></i>Quên mật khẩu?
+                            </a>
+                        </div>
+                        <div class="d-grid mb-3">
+                            <button type="submit" class="btn btn-success btn-lg login-submit-btn">
+                                <i class="fas fa-sign-in-alt me-2"></i>Đăng nhập
+                            </button>
+                        </div>
+
+                        <!-- Social Login Divider -->
+                        <div class="social-login-divider mb-3">
+                            <span class="divider-text">hoặc</span>
+                        </div>
+
+                        <!-- Social Login Buttons -->
+                        <div class="social-login-buttons mb-3">
+                            <div class="row g-2">
+                                <div class="col-6">
+                                    <button type="button" class="btn btn-outline-danger w-100 social-login-btn google-login-btn" id="googleLoginBtn">
+                                        <i class="fab fa-google me-2"></i>Google
+                                    </button>
+                                </div>
+                                <div class="col-6">
+                                    <button type="button" class="btn btn-outline-primary w-100 social-login-btn facebook-login-btn" id="facebookLoginBtn">
+                                        <i class="fab fa-facebook-f me-2"></i>Facebook
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <p class="text-muted mb-0">Chưa có tài khoản?
+                                <a href="#" class="text-success text-decoration-none" id="switchToRegister">
+                                    <strong>Đăng ký ngay</strong>
+                                </a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal fade" id="registerModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content register-modal">
+                <div class="modal-header register-header">
+                    <h5 class="modal-title">
+                        <i class="fas fa-user-plus me-2"></i>Đăng ký tài khoản
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="register-welcome text-center mb-4">
+                        <div class="register-logo mb-3">
+                            <img src="./public/image/logo.png" alt="Green Groves Logo" class="img-fluid" style="max-width: 80px;">
+                        </div>
+                        <h4 class="text-success">Tham gia cùng chúng tôi!</h4>
+                        <p class="text-muted">Tạo tài khoản để nhận nhiều ưu đãi</p>
+                    </div>
+                    <form id="registerForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="registerFirstName" class="form-label">
+                                    <i class="fas fa-user me-2 text-success"></i>Họ
+                                </label>
+                                <input type="text" class="form-control register-input" id="registerFirstName" placeholder="Nhập họ của bạn" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="registerLastName" class="form-label">
+                                    <i class="fas fa-user me-2 text-success"></i>Tên
+                                </label>
+                                <input type="text" class="form-control register-input" id="registerLastName" placeholder="Nhập tên của bạn" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerEmail" class="form-label">
+                                <i class="fas fa-envelope me-2 text-success"></i>Email
+                            </label>
+                            <input type="email" class="form-control register-input" id="registerEmail" placeholder="Nhập email của bạn" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerPhone" class="form-label">
+                                <i class="fas fa-phone me-2 text-success"></i>Số điện thoại
+                            </label>
+                            <input type="tel" class="form-control register-input" id="registerPhone" placeholder="Nhập số điện thoại" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerPassword" class="form-label">
+                                <i class="fas fa-lock me-2 text-success"></i>Mật khẩu
+                            </label>
+                            <div class="password-input-group">
+                                <input type="password" class="form-control register-input" id="registerPassword" placeholder="Tạo mật khẩu" required>
+                                <button type="button" class="btn btn-outline-secondary password-toggle" id="toggleRegisterPassword">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerConfirmPassword" class="form-label">
+                                <i class="fas fa-lock me-2 text-success"></i>Xác nhận mật khẩu
+                            </label>
+                            <div class="password-input-group">
+                                <input type="password" class="form-control register-input" id="registerConfirmPassword" placeholder="Nhập lại mật khẩu" required>
+                                <button type="button" class="btn btn-outline-secondary password-toggle" id="toggleRegisterConfirmPassword">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="agreeTerms" required>
+                            <label class="form-check-label" for="agreeTerms">
+                                Tôi đồng ý với <a href="#" class="text-success text-decoration-none">điều khoản sử dụng</a>
+                            </label>
+                        </div>
+                        <div class="d-grid mb-3">
+                            <button type="submit" class="btn btn-success btn-lg register-submit-btn">
+                                <i class="fas fa-user-plus me-2"></i>Đăng ký
+                            </button>
+                        </div>
+
+                        <!-- Social Login Divider -->
+                        <div class="social-login-divider mb-3">
+                            <span class="divider-text">hoặc</span>
+                        </div>
+
+                        <!-- Social Login Buttons -->
+                        <div class="social-login-buttons mb-3">
+                            <div class="row g-2">
+                                <div class="col-6">
+                                    <button type="button" class="btn btn-outline-danger w-100 social-login-btn google-login-btn" id="googleRegisterBtn">
+                                        <i class="fab fa-google me-2"></i>Google
+                                    </button>
+                                </div>
+                                <div class="col-6">
+                                    <button type="button" class="btn btn-outline-primary w-100 social-login-btn facebook-login-btn" id="facebookRegisterBtn">
+                                        <i class="fab fa-facebook-f me-2"></i>Facebook
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <p class="text-muted mb-0">Đã có tài khoản?
+                                <a href="#" class="text-success text-decoration-none" id="switchToLogin">
+                                    <strong>Đăng nhập ngay</strong>
+                                </a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer-section bg-dark text-light py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="footer-brand">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="logo-icon">
+                                <img src="./public/image/logo.png" alt="Green Groves Logo" class="img-fluid" style="max-width: 50px;">
+                            </div>
+                            <div class="ms-2">
+                                <h4 class="mb-0 text-light">GreenTools</h4>
+                                <small class="text-success">Dụng cụ làm vườn</small>
+                            </div>
+                        </div>
+                        <p class="text-muted">Đối tác tin cậy trong việc cung cấp dụng cụ làm vườn chất lượng cao, giúp bạn tạo nên những khu vườn xanh tươi.</p>
+                        <div class="social-links">
+                            <a href="#" class="text-light me-3"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="text-light me-3"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-light me-3"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="footer-title">Liên kết</h5>
+                    <ul class="footer-links">
+                        <li><a href="#home">Trang chủ</a></li>
+                        <li><a href="./public/congcualamvuon.html">Sản phẩm</a></li>
+                        <li><a href="./public/gioithieuvalienhe.html">Về chúng tôi</a></li>
+                        <li><a href="./public/gioithieuvalienhe.html">Liên hệ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="footer-title">Danh mục</h5>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-home me-1"></i> Trang chủ</a></li>
+                        <li><a href="./public/kythuatvameo.html"><i class="fas fa-seedling me-1"></i> Kỹ thuật và mẹo</a></li>
+                        <li><a href="./public/congcualamvuon.html"><i class="fas fa-tools me-1"></i> Công cụ làm vườn</a></li>
+                        <li><a href="./public/yeutocanthietcholamvuon.html"><i class="fas fa-list-check me-1"></i> Yếu tố cần thiết</a></li>
+                        <li><a href="./public/chauvavatchua.html"><i class="fas fa-box me-1"></i> Chậu và vật chứa</a></li>
+                        <li><a href="./public/phukienlamvuon.html"><i class="fas fa-puzzle-piece me-1"></i> Phụ kiện</a></li>
+                        <li><a href="./public/goiysanpham.html"><i class="fas fa-lightbulb me-1"></i> Gợi ý sản phẩm</a></li>
+                        <li><a href="./public/videogiaoduc.html"><i class="fas fa-video me-1"></i> Video giới thiệu</a></li>
+                        <li><a href="./public/sachlienquan.html"><i class="fas fa-book me-1"></i> Sách liên quan</a></li>
+                        <li><a href="./public/gioithieuvalienhe.html"><i class="fas fa-info-circle me-1"></i> Giới thiệu & Liên hệ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="footer-title">Thông tin truy cập</h5>
+                    <div class="access-info">
+                        <div class="info-item mb-2">
+                            <i class="fas fa-calendar-alt me-2 text-success"></i>
+                            <span id="currentDate"></span>
+                        </div>
+                        <div class="info-item mb-2">
+                            <i class="fas fa-clock me-2 text-success"></i>
+                            <span id="currentTime"></span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-globe me-2 text-success"></i>
+                            <span>IP: <span id="userIP">Đang tải...</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="my-4 border-secondary">
+            
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0 text-muted">&copy; 2025 GreenGroves. Bảo lưu mọi quyền.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0 text-muted">Đội ngũ<span class="text-success">GreenGroves Team</span></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <img src="./public/image/logo.png" alt="Green Groves Logo" class="img-fluid" style="max-width: 80px;">
+            </div>
+            <h3 class="loading-text">Green Groves</h3>
+            <div class="loading-spinner">
+                <div class="spinner-border text-success" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+          new google.translate.TranslateElement({
+            pageLanguage: 'vi',
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+          }, 'google_translate_element');
+        }
+      
+        function setDefaultLanguageToEnglish() {
+          var tryCount = 0;
+          var maxTries = 40; // 20s
+          var interval = setInterval(function() {
+            var select = document.querySelector('.goog-te-combo');
+            if (select) {
+              if (select.value !== 'en') {
+                select.value = 'en';
+                select.dispatchEvent(new Event('change'));
+              }
+              clearInterval(interval);
+            }
+            if (++tryCount > maxTries) clearInterval(interval);
+          }, 500);
+        }
+      
+        window.addEventListener('load', setDefaultLanguageToEnglish);
+    </script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <!-- Custom JS -->
+    <script src="scripts/main.js"></script>
+    <script src="scripts/products.js"></script>
+    <script src="scripts/cart.js"></script>
+</body>
+</html>
