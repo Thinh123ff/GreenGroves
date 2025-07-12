@@ -4,835 +4,835 @@
 const products = [
     {
         id: 1,
-        name: "Bàn chải vệ sinh",
+        name: "Cleaning Brush",
         image: "./image/bàn chải vệ sinh.webp",
-        description: "Bàn chải vệ sinh tiện dụng cho làm vườn và vệ sinh dụng cụ.",
+        description: "Convenient cleaning brush for gardening and tool maintenance.",
         category: "tools",
-        badge: "Tiện ích",
+        badge: "Utility",
         rating: 4.5,
         inStock: true,
         price: 39000,
         originalPrice: 59000,
-        keywords: ["bàn chải", "vệ sinh", "dụng cụ"]
+        keywords: ["brush", "cleaning", "tool"]
     },
     {
         id: 2,
-        name: "Béc tưới nước nhỏ giọt",
+        name: "Drip Irrigation Nozzle",
         image: "./image/béc tưới nước nhỏ giọt.jpg",
-        description: "Béc tưới nước nhỏ giọt tiết kiệm nước cho cây trồng.",
+        description: "Water-saving drip irrigation nozzle for plants.",
         category: "watering",
         badge: null,
         rating: 4.6,
         inStock: true,
         price: 49000,
         originalPrice: 69000,
-        keywords: ["béc tưới", "nhỏ giọt", "tưới cây"]
+        keywords: ["drip nozzle", "drip", "watering"]
     },
     {
         id: 3,
-        name: "Bình tưới nước",
+        name: "Watering Can",
         image: "./image/bình tưới nước.jpg",
-        description: "Bình tưới nước dung tích lớn, dễ sử dụng khi làm vườn.",
+        description: "Large capacity watering can, easy to use for gardening.",
         category: "watering",
-        badge: "Mới",
+        badge: "New",
         rating: 4.7,
         inStock: true,
         price: 59000,
         originalPrice: 79000,
-        keywords: ["bình tưới", "dụng cụ tưới", "làm vườn"]
+        keywords: ["watering can", "watering tool", "gardening"]
     },
     {
         id: 4,
-        name: "Bình xịt rửa",
+        name: "Spray Bottle",
         image: "./image/bình xịt rửa.webp",
-        description: "Bình xịt đa năng dùng để xịt rửa, tưới hoặc phun thuốc.",
+        description: "Multipurpose spray bottle for cleaning, watering, or spraying chemicals.",
         category: "watering",
         badge: null,
         rating: 4.3,
         inStock: true,
         price: 67000,
         originalPrice: 89000,
-        keywords: ["xịt rửa", "phun thuốc", "bình xịt"]
+        keywords: ["spray", "spray chemicals", "spray bottle"]
     },
     {
         id: 5,
-        name: "Bạt che nắng làm vườn",
+        name: "Garden Sunshade Tarp",
         image: "./image/bạt che nắng làm vườn.webp",
-        description: "Bạt che nắng bảo vệ cây trồng và khu vườn khỏi ánh nắng gắt.",
+        description: "Sunshade tarp protects plants and gardens from harsh sunlight.",
         category: "accessory",
-        badge: "Đề xuất",
+        badge: "Recommended",
         rating: 4.8,
         inStock: true,
         price: 99000,
         originalPrice: 119000,
-        keywords: ["bạt che", "làm vườn", "nắng"]
+        keywords: ["sunshade", "gardening", "sun"]
     },
     {
         id: 6,
-        name: "Bộ chậu tầng",
+        name: "Tiered Pot Set",
         image: "./image/bộ chậu tầng.webp",
-        description: "Bộ chậu tầng gồm nhiều kích cỡ, phù hợp trồng cây trang trí.",
+        description: "Tiered pot set with various sizes, suitable for decorative plants.",
         category: "pots",
         badge: null,
         rating: 4.4,
         inStock: true,
         price: 79000,
         originalPrice: 99000,
-        keywords: ["chậu cây", "trồng cây", "chậu tầng"]
+        keywords: ["plant pot", "planting", "tiered pot"]
     },
     {
         id: 7,
-        name: "Bộ dụng cụ làm vườn cơ bản",
+        name: "Basic Gardening Tool Set",
         image: "./image/bộ dụng cụ làm vườn cơ bản.webp",
-        description: "Bộ dụng cụ cơ bản gồm xẻng, bay, kéo cho người mới bắt đầu.",
+        description: "Basic tool set including trowel, spade, and scissors for beginners.",
         category: "tools",
-        badge: "Bán chạy",
+        badge: "Best Seller",
         rating: 4.9,
         inStock: true,
         price: 119000,
         originalPrice: 139000,
-        keywords: ["dụng cụ", "làm vườn", "cơ bản"]
+        keywords: ["tool set", "gardening", "basic"]
     },
     {
         id: 8,
-        name: "Bộ dụng cụ trồng bonsai",
+        name: "Bonsai Tool Set",
         image: "./image/bộ dụng cụ trồng bonsai.webp",
-        description: "Bộ dụng cụ chuyên dùng chăm sóc cây bonsai.",
+        description: "Specialized tool set for bonsai care.",
         category: "tools",
         badge: null,
         rating: 4.5,
         inStock: true,
         price: 109000,
         originalPrice: 129000,
-        keywords: ["bonsai", "cắt tỉa", "dụng cụ"]
+        keywords: ["bonsai", "pruning", "tool"]
     },
     {
         id: 9,
-        name: "Bộ dụng cụ trồng cây chuyên nghiệp",
+        name: "Professional Gardening Tool Set",
         image: "./image/bộ dụng cụ trồng cây chuyên nghiệp.webp",
-        description: "Bộ dụng cụ chất lượng cao dành cho người làm vườn chuyên nghiệp.",
+        description: "High-quality tool set for professional gardeners.",
         category: "tools",
-        badge: "Chuyên sâu",
+        badge: "Advanced",
         rating: 4.8,
         inStock: true,
         price: 149000,
         originalPrice: 179000,
-        keywords: ["dụng cụ", "chuyên nghiệp", "trồng cây"]
+        keywords: ["tool set", "professional", "planting"]
     },
     {
         id: 10,
-        name: "Bộ dụng cụ trồng rau thủy canh",
+        name: "Mini Plant Tool Set",
         image: "./image/bộ dụng cụ trồng cây cảnh mini.webp",
-        description: "Hỗ trợ trồng rau thủy canh tại nhà hiệu quả.",
+        description: "Supports efficient home hydroponic vegetable growing.",
         category: "tools",
-        badge: "Mới",
+        badge: "New",
         rating: 4.6,
         inStock: true,
         price: 129000,
         originalPrice: 159000,
-        keywords: ["thủy canh", "trồng rau", "dụng cụ"]
+        keywords: ["hydroponics", "vegetable growing", "tool"]
     },
     {
         id: 11,
-        name: "Bộ dụng cụ trồng rau thủy canh",
+        name: "Hydroponic Vegetable Tool Set",
         image: "./image/bộ dụng cụ trồng rau thủy canh.webp",
-        description: "Bộ dụng cụ chuyên dụng cho trồng rau thủy canh.",
+        description: "Specialized tool set for hydroponic vegetable growing.",
         category: "pets",
-        badge: "Chuyên dụng",
+        badge: "Specialized",
         rating: 4.5,
         inStock: true,
         price: 75000,
         originalPrice: 95000,
-        keywords: ["bộ dụng cụ", "trồng rau", "thủy canh"]
+        keywords: ["tool set", "vegetable growing", "hydroponics"]
     },
     {
         id: 12,
-        name: "Bộ dụng cụ vườn cho trẻ em",
+        name: "Kids' Garden Tool Set",
         image: "./image/bộ dụng cụ vườn cho trẻ em.webp",
-        description: "Bộ dụng cụ an toàn cho trẻ em chơi vườn chó.",
+        description: "Safe tool set for kids to play in the garden.",
         category: "kids",
-        badge: "An toàn",
+        badge: "Safe",
         rating: 4.3,
         inStock: true,
         price: 60000,
         originalPrice: 80000,
-        keywords: ["bộ dụng cụ", "dụng cụ vườn", "cho trẻ em"]
+        keywords: ["tool set", "garden tool", "for kids"]
     },
     {
         id: 13,
-        name: "bộ quà tặng dụng cụ làm vườn",
+        name: "Gardening Gift Set",
         image: "./image/bộ quà tặng dụng cụ làm vườn.jpg",
-        description: "Bộ quà tặng hỗ trợ làm vườn hiệu quả.",
+        description: "Gift set to support effective gardening.",
         category: "tools",
-        badge: "Hiệu quả",
+        badge: "Effective",
         rating: 4.4,
         inStock: true,
         price: 65000,
         originalPrice: 85000,
-        keywords: ["bộ quà", "quà tặng", "làm vườn"]
+        keywords: ["gift set", "gift", "gardening"]
     },
     {
         id: 14,
-        name: "Bộ trồng rau ban công",
+        name: "Balcony Vegetable Growing Set",
         image: "./image/bộ trồng rau ban công.webp",
-        description: "Bộ trồng rau dành cho không gian ban công.",
+        description: "Vegetable growing set for balcony spaces.",
         category: "outdoor",
         badge: null,
         rating: 4.5,
         inStock: true,
         price: 80000,
         originalPrice: 100000,
-        keywords: ["bộ trồng rau", "rau", "ban công", "không gian"]
+        keywords: ["vegetable set", "vegetable", "balcony", "space"]
     },
     {
         id: 15,
-        name: "Bộ tưới thông minh",
+        name: "Smart Watering Set",
         image: "./image/bộ tự tưới thông minh.webp",
-        description: "Bộ tưới thông minh tự động cho cây trồng.",
+        description: "Smart automatic watering set for plants.",
         category: "watering",
-        badge: "Thông minh",
+        badge: "Smart",
         rating: 4.7,
         inStock: true,
         price: 120000,
         originalPrice: 150000,
-        keywords: ["bộ tưới", "thông minh", "tự động"]
+        keywords: ["watering set", "smart", "automatic"]
     },
     {
         id: 16,
-        name: "Bộ vườn cửa sổ",
+        name: "Window Garden Set",
         image: "./image/bộ vườn cửa sổ.webp",
-        description: "Bộ vườn dành riêng cho không gian cửa sổ.",
+        description: "Garden set designed for window spaces.",
         category: "garden",
         badge: null,
         rating: 4.4,
         inStock: true,
         price: 90000,
         originalPrice: 110000,
-        keywords: ["bộ vườn", "cửa sở", "không gian"]
+        keywords: ["garden set", "window", "space"]
     },
     {
         id: 17,
-        name: "Bộ vườn gia đình",
+        name: "Family Garden Set",
         image: "./image/bộ vườn gia đình.jpg",
-        description: "Bộ vườn lý tưởng cho gia đình nhỏ.",
+        description: "Ideal garden set for small families.",
         category: "family",
-        badge: "Lý tưởng",
+        badge: "Ideal",
         rating: 4.6,
         inStock: true,
         price: 85000,
         originalPrice: 105000,
-        keywords: ["bộ vườn", "gia đình", "nhỏ"]
+        keywords: ["garden set", "family", "small"]
     },
     {
         id: 18,
-        name: "Chậu gấm bon sai",
+        name: "Bonsai Ceramic Pot",
         image: "./image/chậu gốm bon sai.webp",
-        description: "Chậu gấm cao cấp cho cây bonsai.",
+        description: "Premium ceramic pot for bonsai trees.",
         category: "pots",
-        badge: "Cao cấp",
+        badge: "Premium",
         rating: 4.8,
         inStock: true,
         price: 70000,
         originalPrice: 90000,
-        keywords: ["chậu gấm", "bon sai", "cao cấp"]
+        keywords: ["ceramic pot", "bonsai", "premium"]
     },
     {
         id: 19,
-        name: "Chậu gốm dài",
+        name: "Long Ceramic Pot",
         image: "./image/chậu gốm dài.jpg",
-        description: "Chậu gốm dài phong cách tự nhiên.",
+        description: "Long ceramic pot with natural style.",
         category: "pots",
-        badge: "Tự nhiên",
+        badge: "Natural",
         rating: 4.5,
         inStock: true,
         price: 50000,
         originalPrice: 70000,
-        keywords: ["chậu gốm", "chậu dài", "gốm", "tự nhiên"]
+        keywords: ["ceramic pot", "long pot", "ceramic", "natural"]
     },
     {
         id: 20,
-        name: "Chậu gốm tròn",
+        name: "Round Ceramic Pot",
         image: "./image/chậu gốm tròn.jpg",
-        description: "Chậu gốm tròn đơn giản cho cây trồng.",
+        description: "Simple round pot for planting.",
         category: "pots",
-        badge: "Đơn giản",
+        badge: "Simple",
         rating: 4.3,
         inStock: true,
         price: 45000,
         originalPrice: 65000,
-        keywords: ["chậu gốm", "tròn", "đơn giản"]
+        keywords: ["ceramic pot", "round", "simple"]
     },
     {
         id: 21,
-        name: "Chậu nhựa dài",
+        name: "Long Plastic Pot",
         image: "./image/chậu nhựa dài.jpg",
-        description: "Chậu nhựa dài bền đẹp cho vườn.",
+        description: "Long plastic pot for gardens.",
         category: "pots",
-        badge: "Bền đẹp",
+        badge: "Durable",
         rating: 4.4,
         inStock: true,
         price: 30000,
         originalPrice: 50000,
-        keywords: ["chậu nhựa", "dài", "bền đẹp"]
+        keywords: ["plastic pot", "long", "durable"]
     },
     {
         id: 22,
-        name: "Chậu nhựa tròn",
+        name: "Round Plastic Pot",
         image: "./image/chậu nhựa tròn.webp",
-        description: "Chậu nhựa trơn nhẹ nhàng cho cây.",
+        description: "Smooth round pot for plants.",
         category: "pots",
-        badge: "Nhẹ nhàng",
+        badge: "Smooth",
         rating: 4.2,
         inStock: true,
         price: 25000,
         originalPrice: 40000,
-        keywords: ["chậu nhựa", "tròn", "nhẹ nhàng"]
+        keywords: ["plastic pot", "round", "smooth"]
     },
     {
         id: 23,
-        name: "Chậu nhựa vuông",
+        name: "Square Plastic Pot",
         image: "./image/chậu nhựa vuông.webp",
-        description: "Chậu nhựa vuông đa năng sử dụng.",
+        description: "Multi-purpose square pot.",
         category: "pots",
-        badge: "Đa năng",
+        badge: "Multi-purpose",
         rating: 4.5,
         inStock: true,
         price: 35000,
         originalPrice: 55000,
-        keywords: ["chậu nhựa", "vuông", "đa năng"]
+        keywords: ["plastic pot", "square", "multi-purpose"]
     },
     {
         id: 24,
-        name: "Chậu treo",
+        name: "Wall Pot",
         image: "./image/chậu treo.jpg",
-        description: "Chậu treo trang trí cho không gian.",
+        description: "Wall pot for decoration.",
         category: "decor",
-        badge: "Trang trí",
+        badge: "Decorative",
         rating: 4.6,
         inStock: true,
         price: 40000,
         originalPrice: 60000,
-        keywords: ["chậu treo", "trang trí", "không gian"]
+        keywords: ["wall pot", "decoration", "space"]
     },
     {
         id: 25,
-        name: "Chậu tầng",
+        name: "Tiered Pot",
         image: "./image/chậu tầng.jpg",
-        description: "Chậu tầng phong cách tự nhiên.",
+        description: "Natural style tiered pot.",
         category: "pots",
-        badge: "Tự nhiên",
+        badge: "Natural",
         rating: 4.5,
         inStock: true,
         price: 55000,
         originalPrice: 75000,
-        keywords: ["chậu tầng", "tự nhiên", "phong cách"]
+        keywords: ["tiered pot", "natural", "style"]
     },
     {
         id: 26,
-        name: "Chậu tự tưới",
+        name: "Self-watering Pot",
         image: "./image/chậu tự tưới.webp",
-        description: "Chậu tự tưới tích hợp tự động.",
+        description: "Self-watering pot with integrated automatic function.",
         category: "watering",
-        badge: "Tích hợp",
+        badge: "Integrated",
         rating: 4.7,
         inStock: true,
         price: 60000,
         originalPrice: 80000,
-        keywords: ["chậu tưới", "tự tưới", "tích hợp", "tự động"]
+        keywords: ["self-watering pot", "self-watering", "integrated", "automatic"]
     },
     {
         id: 27,
-        name: "Chậu xi măng cao",
+        name: "High Concrete Pot",
         image: "./image/chậu xi măng cao.jpg",
-        description: "Chậu xi măng cao cho cây lớn.",
+        description: "High concrete pot for large plants.",
         category: "pots",
-        badge: "Cao cấp",
+        badge: "Premium",
         rating: 4.6,
         inStock: true,
         price: 80000,
         originalPrice: 100000,
-        keywords: ["chậu xi măng", "cao", "cây lớn"]
+        keywords: ["concrete pot", "high", "large plant"]
     },
     {
         id: 28,
-        name: "Chậu xi măng tròn",
+        name: "Round Concrete Pot",
         image: "./image/chậu xi măng tròn.jpg",
-        description: "Chậu xi măng tròn đơn giản.",
+        description: "Simple round concrete pot.",
         category: "pots",
-        badge: "Đơn giản",
+        badge: "Simple",
         rating: 4.4,
         inStock: true,
         price: 70000,
         originalPrice: 90000,
-        keywords: ["chậu xi măng", "tròn", "đơn giản"]
+        keywords: ["concrete pot", "round", "simple"]
     },
     {
         id: 29,
-        name: "Chậu xi măng vuông",
+        name: "Square Concrete Pot",
         image: "./image/chậu xi măng vuông.webp",
-        description: "Chậu xi măng vuông bền bỉ.",
+        description: "Durable square concrete pot.",
         category: "pots",
-        badge: "Bền bỉ",
+        badge: "Durable",
         rating: 4.5,
         inStock: true,
         price: 75000,
         originalPrice: 95000,
-        keywords: ["chậu xi măng", "vuông", "bền bỉ"]
+        keywords: ["concrete pot", "square", "durable"]
     },
     {
         id: 30,
-        name: "Cuốc mini",
+        name: "Mini Shovel",
         image: "./image/cuốc mini.jpg",
-        description: "Cuốc mini hỗ trợ tưới nhỏ giọt.",
+        description: "Mini shovel for small drip irrigation.",
         category: "tools",
-        badge: "Nhỏ gọn",
+        badge: "Compact",
         rating: 4.3,
         inStock: true,
         price: 20000,
         originalPrice: 35000,
-        keywords: ["Cuốc mini", "hỗ trợ", "nhỏ giọt"]
+        keywords: ["shovel", "small drip irrigation", "compact"]
     },
     {
         id: 31,
-        name: "Cào đất",
+        name: "Garden Trowel",
         image: "./image/cào đất.jpg",
-        description: "Cào đất cho diện tích lớn.",
+        description: "Garden trowel for large areas.",
         category: "tools",
-        badge: "Lớn",
+        badge: "Large",
         rating: 4.4,
         inStock: true,
         price: 30000,
         originalPrice: 45000,
-        keywords: ["Cào đất", "cào", "diện tích lớn"]
+        keywords: ["trowel", "garden", "large area"]
     },
     {
         id: 32,
-        name: "Cưa cành cây",
+        name: "Garden Pruning Shears",
         image: "./image/cưa cành cây.webp",
-        description: "Cưa cành cây tiện lợi cho vườn.",
+        description: "Convenient garden pruning shears.",
         category: "tools",
-        badge: "Tiện lợi",
+        badge: "Convenient",
         rating: 4.6,
         inStock: true,
         price: 50000,
         originalPrice: 70000,
-        keywords: ["cưa cành", "cây", "tiện lợi"]
+        keywords: ["pruning shears", "garden", "convenient"]
     },
     {
         id: 33,
-        name: "Dầu bảo quan",
+        name: "Preservation Oil",
         image: "./image/dầu bảo quản.jpg",
-        description: "Dầu bảo quan cho dụng cụ làm vườn.",
+        description: "Preservation oil for gardening tools.",
         category: "tools",
         badge: null,
         rating: 4.2,
         inStock: true,
         price: 25000,
         originalPrice: 40000,
-        keywords: ["dầu bảo quan", "dụng cụ", "làm vườn"]
+        keywords: ["preservation oil", "gardening tool", "oil"]
     },
     {
         id: 35,
-        name: "Ghế làm vườn",
+        name: "Garden Chair",
         image: "./image/ghế làm vườn.webp",
-        description: "Ghế làm vườn thoải mái cho người dùng.",
+        description: "Comfortable garden chair for users.",
         category: "furniture",
-        badge: "Thoải mái",
+        badge: "Comfortable",
         rating: 4.5,
         inStock: true,
         price: 70000,
         originalPrice: 90000,
-        keywords: ["ghế", "làm vườn", "thoải mái"]
+        keywords: ["chair", "garden", "comfortable"]
     },
     {
         id: 36,
-        name: "Găng tay làm vườn",
+        name: "Gardening Gloves",
         image: "./image/găng tay làm vườn.jpg",
-        description: "Găng tay bảo vệ khi làm vườn.",
+        description: "Gardening gloves for protection.",
         category: "safety",
-        badge: "Bảo vệ",
+        badge: "Protection",
         rating: 4.6,
         inStock: true,
         price: 30000,
         originalPrice: 45000,
-        keywords: ["găng tay", "làm vườn", "bảo vệ"]
+        keywords: ["gloves", "garden", "protection"]
     },
     {
         id: 37,
-        name: "Hộp đựng dụng cụ",
+        name: "Tool Box",
         image: "./image/hộp đựng dụng cụ.webp",
-        description: "Hộp đựng dụng cụ tiện lợi cho làm vườn.",
+        description: "Convenient tool box for gardening.",
         category: "storage",
-        badge: "Tiện lợi",
+        badge: "Convenient",
         rating: 4.4,
         inStock: true,
         price: 40000,
         originalPrice: 60000,
-        keywords: ["hộp dụng cụ", "đụng", "tiện lợi", "làm vườn"]
+        keywords: ["tool box", "storage", "convenient", "gardening"]
     },
     {
         id: 38,
-        name: "Hộp đựng hạt giống",
+        name: "Seed Pack Box",
         image: "./image/hộp đựng hạt giống.jpg",
-        description: "Hộp đựng hạt giống chất lượng cao.",
+        description: "High-quality seed pack box.",
         category: "storage",
-        badge: "Chất lượng",
+        badge: "High-quality",
         rating: 4.5,
         inStock: true,
         price: 35000,
         originalPrice: 50000,
-        keywords: ["hộp đựng", "hạt giống", "chất lượng"]
+        keywords: ["seed pack box", "seed", "high-quality"]
     },
     {
         id: 39,
-        name: "Khư vườn của gaia",
+        name: "Gaia Garden Guide",
         image: "./image/khu vườn của gaia.jpg",
-        description: "Khư vườn Gaia cho không gian xanh.",
+        description: "Gaia garden guide for green spaces.",
         category: "guide",
-        badge: "Xanh",
+        badge: "Green",
         rating: 4.6,
         inStock: true,
         price: 90000,
         originalPrice: 110000,
-        keywords: ["khư vườn", "gaia", "xanh"]
+        keywords: ["garden guide", "gaia", "green"]
     },
     {
         id: 40,
-        name: "Kéo cắt cành",
+        name: "Garden Pruning Scissors",
         image: "./image/kéo cắt cành.webp",
-        description: "Kéo cắt cành sắc bén cho cây.",
+        description: "Sharp garden pruning scissors.",
         category: "tools",
-        badge: "Sắc bén",
+        badge: "Sharp",
         rating: 4.7,
         inStock: true,
         price: 45000,
         originalPrice: 65000,
-        keywords: ["kéo cắt", "cành", "sắc bén"]
+        keywords: ["pruning scissors", "scissors", "sharp"]
     },
     {
         id: 41,
-        name: "Kéo tỉa lá",
+        name: "Leaf Trimming Shears",
         image: "./image/kéo tỉa lá.jpg",
-        description: "Kéo tỉa lá đa dụng cho vườn.",
+        description: "Multi-purpose leaf trimming shears.",
         category: "tools",
-        badge: "Đa dụng",
+        badge: "Multi-purpose",
         rating: 4.3,
         inStock: true,
         price: 40000,
         originalPrice: 55000,
-        keywords: ["kéo tỉa", "tỉa lá", "đa dụng"]
+        keywords: ["leaf trimming shears", "shears", "multi-purpose"]
     },
     {
         id: 43,
-        name: "làm thế nào để trồng mọi thứ",
+        name: "How to Grow Everything",
         image: "./image/làm thế nào để trồng mọi thứ.jpg",
-        description: "Hướng dẫn làm để trồng mọi loại cây.",
+        description: "Guide on how to grow various plants.",
         category: "guide",
-        badge: "Hướng dẫn",
+        badge: "Guide",
         rating: 4.5,
         inStock: true,
         price: 20000,
         originalPrice: 35000,
-        keywords: ["làm thế nào", "để trồng", "mọi thứ"]
+        keywords: ["how to", "grow", "everything"]
     },
     {
         id: 44,
-        name: "Máy đo pH đất",
+        name: "Soil pH Tester",
         image: "./image/máy đo ph đất.webp",
-        description: "Máy đo pH đất chính xác cho vườn.",
+        description: "Accurate soil pH tester for gardens.",
         category: "tools",
-        badge: "Chính xác",
+        badge: "Accurate",
         rating: 4.6,
         inStock: true,
         price: 80000,
         originalPrice: 100000,
-        keywords: ["máy đo", "pH đất", "chính xác"]
+        keywords: ["soil pH tester", "pH", "accurate"]
     },
     {
         id: 45,
-        name: "Máy đo độ ẩm đất",
+        name: "Soil Moisture Tester",
         image: "./image/máy đo độ ẩm đất.webp",
-        description: "Máy đo độ ẩm đất tiện lợi.",
+        description: "Convenient soil moisture tester.",
         category: "tools",
-        badge: "Tiện lợi",
+        badge: "Convenient",
         rating: 4.5,
         inStock: true,
         price: 70000,
         originalPrice: 90000,
-        keywords: ["máy đo", "độ ẩm đất", "tiện lợi"]
+        keywords: ["soil moisture tester", "moisture", "convenient"]
     },
     {
         id: 46,
-        name: "Mũ nón làm vườn",
+        name: "Gardening Hat",
         image: "./image/mũ nón làm vườn.webp",
-        description: "Mũ nón bảo vệ khi làm vườn.",
+        description: "Gardening hat for protection.",
         category: "safety",
-        badge: "Bảo vệ",
+        badge: "Protection",
         rating: 4.4,
         inStock: true,
         price: 35000,
         originalPrice: 50000,
-        keywords: ["mũ nón", "làm vườn", "bảo vệ"]
+        keywords: ["hat", "gardening", "protection"]
     },
     {
         id: 47,
-        name: "Một góc nhìn mới vườn",
+        name: "New Gardening Perspective",
         image: "./image/một góc nhìn mới về vườn.jpg",
-        description: "Hình ảnh mới mẻ cho khu vườn.",
+        description: "New and fresh image for gardens.",
         category: "guide",
-        badge: "Mới mẻ",
+        badge: "New",
         rating: 4.3,
         inStock: true,
         price: 25000,
         originalPrice: 40000,
-        keywords: ["một góc", "nhìn mới", "vườn"]
+        keywords: ["new perspective", "gardening", "garden"]
     },
     {
         id: 48,
-        name: "Nghệ thuật làm vườn",
+        name: "Gardening Art",
         image: "./image/nghệ thuật làm vườn.jpeg",
-        description: "Nghệ thuật hỗ trợ làm vườn hiệu quả.",
+        description: "Art to support effective gardening.",
         category: "tools",
-        badge: "Hiệu quả",
+        badge: "Effective",
         rating: 4.5,
         inStock: true,
         price: 30000,
         originalPrice: 45000,
-        keywords: ["nghệ thuật", "làm vườn", "hiệu quả"]
+        keywords: ["gardening art", "gardening", "effective"]
     },
     {
         id: 49,
-        name: "Người làm vườn hoàn hảo",
+        name: "Perfect Gardener",
         image: "./image/người làm vườn hoàn hảo.jpg",
-        description: "Hướng dẫn làm vườn hoàn hảo.",
+        description: "Guide on perfect gardening.",
         category: "guide",
-        badge: "Hoàn hảo",
+        badge: "Perfect",
         rating: 4.6,
         inStock: true,
         price: 40000,
         originalPrice: 60000,
-        keywords: ["người làm", "vườn", "hoàn hảo"]
+        keywords: ["gardener", "gardening", "perfect"]
     },
     {
         id: 50,
-        name: "Sách hướng dẫn làm vườn",
+        name: "Gardening Guide Book",
         image: "./image/sách hướng dẫn làm vườn.webp",
-        description: "Sạch hurong hướng dẫn làm vườn.",
+        description: "Clean hurong gardening guide.",
         category: "guide",
-        badge: "Hướng dẫn",
+        badge: "Guide",
         rating: 4.4,
         inStock: true,
         price: 20000,
         originalPrice: 35000,
-        keywords: ["Sách hướng dẫn", "dẫn", "làm vườn"]
+        keywords: ["gardening guide book", "guide", "gardening"]
     },
     {
         id: 51,
-        name: "Thíết kế sân vườn biệt thự",
+        name: "Luxury Garden Design for Villa",
         image: "./image/thiết kế sân vườn biệt thự'.webp",
-        description: "Thiết kế sân vườn biệt thự sang trọng.",
+        description: "Luxurious garden design for villas.",
         category: "guide",
-        badge: "Sang trọng",
+        badge: "Luxurious",
         rating: 4.7,
         inStock: true,
         price: 150000,
         originalPrice: 180000,
-        keywords: ["thiết kế", "sân vườn", "biệt thự"]
+        keywords: ["garden design", "villa", "luxurious"]
     },
     {
         id: 52,
-        name: "Thước đo cây",
+        name: "Tree Measuring Tape",
         image: "./image/thước đo cây.jpg",
-        description: "Thước đo cây chuyên dụng.",
+        description: "Specialized tree measuring tape.",
         category: "tools",
-        badge: "Chuyên dụng",
+        badge: "Specialized",
         rating: 4.5,
         inStock: true,
         price: 35000,
         originalPrice: 50000,
-        keywords: ["thước đo", "cây", "chuyên dụng"]
+        keywords: ["measuring tape", "tree", "specialized"]
     },
     {
         id: 53,
-        name: "Túi đựng dụng cụ",
+        name: "Tool Bag",
         image: "./image/túi đựng dụng cụ.webp",
-        description: "Túi đựng dụng cụ tiện lợi.",
+        description: "Convenient tool bag.",
         category: "storage",
-        badge: "Tiện lợi",
+        badge: "Convenient",
         rating: 4.3,
         inStock: true,
         price: 30000,
         originalPrice: 45000,
-        keywords: ["túi đựng", "dụng cụ", "tiện lợi"]
+        keywords: ["tool bag", "storage", "convenient"]
     },
     {
         id: 54,
-        name: "Túi đựng dụng cụ",
+        name: "Watering Bag",
         image: "./image/túi đựng dụng cụ.webp",
-        description: "Túi đựng nước tự động cho cây.",
+        description: "Automatic watering bag for plants.",
         category: "storage",
-        badge: "Tự động",
+        badge: "Automatic",
         rating: 4.6,
         inStock: true,
         price: 50000,
         originalPrice: 70000,
-        keywords: ["túi đựng", "nước", "tự động"]
+        keywords: ["watering bag", "water", "automatic"]
     },
     {
         id: 55,
-        name: "Xẻng đa năng",
+        name: "Multi-purpose Shovel",
         image: "./image/xẻng đa năng.webp",
-        description: "Xẻng đa năng cho làm vườn.",
+        description: "Multi-purpose shovel for gardening.",
         category: "tools",
-        badge: "Đa năng",
+        badge: "Multi-purpose",
         rating: 4.5,
         inStock: true,
         price: 60000,
         originalPrice: 80000,
-        keywords: ["xẻng", "đa năng", "làm vườn"]
+        keywords: ["shovel", "multi-purpose", "gardening"]
     },
     {
         id: 56,
-        name: "Đén pin làm vườn",
+        name: "Garden Lantern",
         image: "./image/đèn pin làm vườn.jpg",
-        description: "Đèn pin hỗ trợ làm vườn ban đêm.",
+        description: "Garden lantern for night gardening.",
         category: "lighting",
-        badge: "Hỗ trợ",
+        badge: "Support",
         rating: 4.4,
         inStock: true,
         price: 40000,
         originalPrice: 55000,
-        keywords: ["đèn pin", "làm vườn", "ban đêm"]
+        keywords: ["lantern", "gardening", "night"]
     },
     {
         id: 57,
-        name: "Ủng làm vườn",
+        name: "Watering Tray",
         image: "./image/ủng làm vườn.webp",
-        description: "Ủng làm vườn chống thấm nước.",
+        description: "Watering tray for water resistance.",
         category: "safety",
-        badge: "Chống thấm",
+        badge: "Water Resistance",
         rating: 4.5,
         inStock: true,
         price: 45000,
         originalPrice: 60000,
-        keywords: ["ủng", "làm vườn", "chống thấm"]
+        keywords: ["watering tray", "water resistance", "tray"]
     },
     {
         id: 58,
-        name: "Chậu xi măng vuông",
+        name: "Square Concrete Pot",
         image: "./image/chậu xi măng vuông.webp",
-        description: "Chậu xi măng vuông trang trí vườn.",
+        description: "Decorative square concrete pot for gardens.",
         category: "decor",
-        badge: "Trang trí",
+        badge: "Decorative",
         rating: 4.6,
         inStock: true,
         price: 50000,
         originalPrice: 70000,
-        keywords: ["chậu xi măng", "chậu vuông", "trang trí"]
+        keywords: ["concrete pot", "square", "decorative"]
     },
     {
         id: 59,
-        name: "Cuốc mini",
+        name: "Mini Shovel",
         image: "./image/cuốc mini.jpg",
-        description: "Cưa mini gọn nhẹ cho cây nhỏ.",
+        description: "Compact mini shovel for small plants.",
         category: "tools",
-        badge: "Gọn nhẹ",
+        badge: "Compact",
         rating: 4.3,
         inStock: true,
         price: 35000,
         originalPrice: 50000,
-        keywords: ["cuốc mini", "gọn nhẹ", "cây nhỏ"]
+        keywords: ["mini shovel", "compact", "small plant"]
     },
     {
         id: 60,
-        name: "Cào đất",
+        name: "Garden Trowel",
         image: "./image/cào đất.jpg",
-        description: "Cào đất mạnh mẽ cho tay cơ bắp.",
+        description: "Strong garden trowel for muscle strength.",
         category: "tools",
-        badge: "Mạnh mẽ",
+        badge: "Strong",
         rating: 4.5,
         inStock: true,
         price: 60000,
         originalPrice: 80000,
-        keywords: ["cào đất", "mạnh mẽ", "cây lớn"]
+        keywords: ["trowel", "strong", "large plant"]
     },
     {
         id: 61,
-        name: "Cưa cành cây",
+        name: "Garden Pruning Shears",
         image: "./image/cưa cành cây.webp",
-        description: "Cưa cành cây tiện lợi cho vườn.",
+        description: "Convenient garden pruning shears.",
         category: "tools",
-        badge: "Tiện lợi",
+        badge: "Convenient",
         rating: 4.6,
         inStock: true,
         price: 50000,
         originalPrice: 70000,
-        keywords: ["cưa cành", "cưa cây", "tiện lợi"]
+        keywords: ["pruning shears", "shears", "convenient"]
     },
     {
         id: 62,
-        name: "Dầu bảo quản",
+        name: "Preservation Oil",
         image: "./image/dầu bảo quản.jpg",
-        description: "Dầu bảo quan cho dụng cụ làm vườn.",
+        description: "Preservation oil for gardening tools.",
         category: "tools",
         badge: null,
         rating: 4.2,
         inStock: true,
         price: 25000,
         originalPrice: 40000,
-        keywords: ["dầu bảo quan", "dụng cụ", "làm vườn"]
+        keywords: ["preservation oil", "gardening tool", "oil"]
     },
     {
         id: 63,
-        name: "Van chia nước chữ y nhỏ",
+        name: "Water Flow Valve",
         image: "./image/thiết bị tưới/van-chia-nuoc-chu-y-nho3-m500x500.jpg",
-        description: "Van chia nước chữ Y nhỏ, tiện dụng để chia dòng nước cho các hệ thống tưới nhỏ.",
+        description: "Small water flow valve, convenient for dividing water from a single source to multiple watering systems.",
         category: "watering",
         badge: null,
         rating: 4.5,
         inStock: true,
         price: 22000,
         originalPrice: 30000,
-        keywords: ["van chia nước", "chia nước", "chữ y", "nhỏ"]
+        keywords: ["water flow valve", "water flow", "Y-shaped", "small"]
     },
     {
         id: 64,
-        name: "Dây phun áp lực cao",
+        name: "High Pressure Water Hose",
         image: "./image/thiết bị tưới/day-phun-ap-luc-cao-50m-2-m500x500.jpg",
-        description: "Dây phun áp lực cao 50m, bền chắc, phù hợp tưới cây và vệ sinh.",
+        description: "High pressure water hose 50m, durable, suitable for watering plants and hygiene.",
         category: "watering",
         badge: null,
         rating: 4.7,
         inStock: null,
         price: 120000,
         originalPrice: null,
-        keywords: ["dây phun", "áp lực", "cao", "phun"]
+        keywords: ["water hose", "high pressure", "pressure", "spray"]
     },
     {
         id: 65,
-        name: "Khớp nối thanh ống",
+        name: "Pipe Joint",
         image: "./image/thiết bị tưới/khop-noi-thang-ong-1-m500x500.jpg",
-        description: "Khớp nối dùng để liên kết các thanh ống tưới chắc chắn, dễ lắp.",
+        description: "Pipe joint used to connect pipes securely, easy to install.",
         category: "watering",
         badge: null,
         rating: 4.8,
         inStock: true,
         price: 150000,
         originalPrice: null,
-        keywords: ["khớp nối", "nối thanh ống", "thanh", "ống",]
+        keywords: ["pipe joint", "pipe connection", "pipe", "joint"]
     },
     {
         id: 66,
-        name: "Van chia nước chữ y",
+        name: "Water Flow Valve",
         image: "./image/thiết bị tưới/van-chia-nuoc-chu-y-6-m500x500.jpg",
-        description: "Van chia nước chữ Y giúp chia nước từ một nguồn ra hai hướng hiệu quả.",
+        description: "Water flow valve helps divide water from a single source into two directions efficiently.",
         category: "watering",
         badge: null,
         rating: 4.5,
         inStock: true,
         price: 180000,
         originalPrice: 200000,
-        keywords: ["van chia", "chia nước", "chữ y",]
+        keywords: ["water flow valve", "water flow", "Y-shaped"]
     },
 ];
 
@@ -970,7 +970,7 @@ function performSearch() {
     
     // Show search results info
     $('#searchResults').show();
-    $('#searchResultsText').text(`Tìm thấy ${searchResults.length} sản phẩm cho "${query}"`);
+    $('#searchResultsText').text(`Found ${searchResults.length} products for "${query}"`);
     
     // Reset category filter
     $('.category-btn').removeClass('active');
@@ -1098,9 +1098,9 @@ function createProductCard(product) {
                     <div class="product-actions">
                         <button class="btn btn-add-cart" onclick="addToCart(${product.id})">
                             <i class="fas fa-cart-plus me-1"></i>
-                            Thêm vào giỏ
+                            Add to Cart
                         </button>
-                        <button class="btn btn-wishlist" onclick="toggleWishlist(${product.id})" title="Yêu thích">
+                        <button class="btn btn-wishlist" onclick="toggleWishlist(${product.id})" title="Wishlist">
                             <i class="far fa-heart"></i>
                         </button>
                     </div>
@@ -1158,7 +1158,7 @@ function initializeProductEvents() {
             const filteredResults = category === 'all' ? searchResults : 
                 searchResults.filter(p => p.category === category);
             
-            $('#searchResultsText').text(`Tìm thấy ${filteredResults.length} sản phẩm cho "${currentSearchQuery}" trong danh mục "${getCategoryName(category)}"`);
+            $('#searchResultsText').text(`Found ${filteredResults.length} products for "${currentSearchQuery}" in category "${getCategoryName(category)}"`);
         }
     });
     
@@ -1173,11 +1173,11 @@ function initializeProductEvents() {
 // Get category name in Vietnamese
 function getCategoryName(category) {
     const categoryNames = {
-        'all': 'Tất cả',
-        'tools': 'Dụng cụ cầm tay',
-        'watering': 'Tưới nước',
-        'fertilizer': 'Phân bón',
-        'pots': 'Chậu cây'
+        'all': 'All',
+        'tools': 'Hand Tools',
+        'watering': 'Watering',
+        'fertilizer': 'Fertilizers',
+        'pots': 'Plant Pots'
     };
     return categoryNames[category] || category;
 }
@@ -1186,12 +1186,12 @@ function getCategoryName(category) {
 function addToCart(productId) {
     const product = products.find(p => p.id === productId);
     if (!product) {
-        showAlert('Không tìm thấy sản phẩm!', 'danger');
+        showAlert('Product not found!', 'danger');
         return;
     }
     
     if (!product.inStock) {
-        showAlert('Sản phẩm hiện đang hết hàng!', 'warning');
+        showAlert('Product is out of stock!', 'warning');
         return;
     }
     
@@ -1223,12 +1223,12 @@ function addToCart(productId) {
     updateCartDisplay();
     
     // Show success message
-    showAlert(`Đã thêm "${product.name}" vào giỏ hàng!`, 'success');
+    showAlert(`Added "${product.name}" to cart!`, 'success');
     
     // Add visual feedback
     const button = $(`.product-card[data-product-id="${productId}"] .btn-add-cart`);
     const originalText = button.html();
-    button.html('<i class="fas fa-check me-1"></i>Đã thêm');
+    button.html('<i class="fas fa-check me-1"></i>Added');
     button.addClass('btn-success').removeClass('btn-add-cart');
     
     setTimeout(() => {
@@ -1255,12 +1255,12 @@ function toggleWishlist(productId) {
         // Remove from wishlist
         wishlist = wishlist.filter(id => id !== productId);
         button.removeClass('fas').addClass('far');
-        showAlert(`Đã xóa "${product.name}" khỏi danh sách yêu thích!`, 'info');
+        showAlert(`Removed "${product.name}" from wishlist!`, 'info');
     } else {
         // Add to wishlist
         wishlist.push(productId);
         button.removeClass('far').addClass('fas');
-        showAlert(`Đã thêm "${product.name}" vào danh sách yêu thích!`, 'success');
+        showAlert(`Added "${product.name}" to wishlist!`, 'success');
     }
     
     // Save to localStorage

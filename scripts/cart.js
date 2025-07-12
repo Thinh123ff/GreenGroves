@@ -49,7 +49,7 @@ function setupCartEvents() {
     
     // Clear cart event
     $(document).on('click', '#clearCart', function() {
-        if (confirm('Bạn có chắc chắn muốn xóa tất cả sản phẩm khỏi giỏ hàng?')) {
+        if (confirm('Are you sure you want to remove all items from the cart?')) {
             clearCart();
         }
     });
@@ -76,12 +76,12 @@ function saveCart(cart) {
 function addToCart(productId, quantity = 1) {
     const product = getProductById(productId);
     if (!product) {
-        showAlert('Không tìm thấy sản phẩm!', 'danger');
+        showAlert('Product not found!', 'danger');
         return false;
     }
     
     if (!product.inStock) {
-        showAlert('Sản phẩm hiện đang hết hàng!', 'warning');
+        showAlert('This product is currently out of stock!', 'warning');
         return false;
     }
     
@@ -104,7 +104,7 @@ function addToCart(productId, quantity = 1) {
     }
     
     saveCart(cart);
-    showAlert(`Đã thêm "${product.name}" vào giỏ hàng!`, 'success');
+    showAlert(`Added "${product.name}" to cart!`, 'success');
     
     // Trigger cart animation
     animateCartIcon();
@@ -118,7 +118,7 @@ function removeFromCart(productId) {
     const itemIndex = cart.findIndex(item => item.id === productId);
     
     if (itemIndex === -1) {
-        showAlert('Không tìm thấy sản phẩm trong giỏ hàng!', 'warning');
+        showAlert('Product not found in cart!', 'warning');
         return false;
     }
     
@@ -126,7 +126,7 @@ function removeFromCart(productId) {
     cart.splice(itemIndex, 1);
     
     saveCart(cart);
-    showAlert(`Đã xóa "${removedItem.name}" khỏi giỏ hàng!`, 'info');
+    showAlert(`Removed "${removedItem.name}" from cart!`, 'info');
     
     // Update cart modal if open
     if ($('#cartModal').hasClass('show')) {
@@ -142,7 +142,7 @@ function updateQuantity(productId, change) {
     const item = cart.find(item => item.id === productId);
     
     if (!item) {
-        showAlert('Không tìm thấy sản phẩm trong giỏ hàng!', 'warning');
+        showAlert('Product not found in cart!', 'warning');
         return false;
     }
     
@@ -156,7 +156,7 @@ function updateQuantity(productId, change) {
     // Check stock availability
     const product = getProductById(productId);
     if (product && product.maxQuantity && newQuantity > product.maxQuantity) {
-        showAlert(`Chỉ có thể đặt tối đa ${product.maxQuantity} sản phẩm này!`, 'warning');
+        showAlert(`You can only order up to ${product.maxQuantity} of this product!`, 'warning');
         return false;
     }
     
@@ -184,14 +184,14 @@ function setQuantity(productId, quantity) {
     const item = cart.find(item => item.id === productId);
     
     if (!item) {
-        showAlert('Không tìm thấy sản phẩm trong giỏ hàng!', 'warning');
+        showAlert('Product not found in cart!', 'warning');
         return false;
     }
     
     // Check stock availability
     const product = getProductById(productId);
     if (product && product.maxQuantity && quantity > product.maxQuantity) {
-        showAlert(`Chỉ có thể đặt tối đa ${product.maxQuantity} sản phẩm này!`, 'warning');
+        showAlert(`You can only order up to ${product.maxQuantity} of this product!`, 'warning');
         return false;
     }
     
@@ -218,7 +218,7 @@ function clearCart() {
         updateCartModal();
     }
     
-    showAlert('Đã xóa tất cả sản phẩm khỏi giỏ hàng!', 'info');
+    showAlert('All items have been removed from the cart!', 'info');
 }
 
 // Calculate cart totals
@@ -287,9 +287,9 @@ function updateCartModal() {
         cartItemsContainer.html(`
             <div class="empty-cart text-center py-4">
                 <i class="fas fa-shopping-cart fa-3x text-muted mb-3"></i>
-                <h5 class="text-muted">Giỏ hàng trống</h5>
-                <p class="text-muted">Hãy thêm một số sản phẩm vào giỏ hàng của bạn</p>
-                <button class="btn btn-primary" data-bs-dismiss="modal">Tiếp tục mua sắm</button>
+                <h5 class="text-muted">Cart is empty</h5>
+                <p class="text-muted">Please add some products to your cart</p>
+                <button class="btn btn-primary" data-bs-dismiss="modal">Continue shopping</button>
             </div>
         `);
         
@@ -333,10 +333,10 @@ function createCartItemHTML(item) {
                     </button>
                 </div>
                 <div class="cart-item-subtotal">
-                    Thành tiền: <strong>${formatCurrency(item.price * item.quantity)}</strong>
+                    Subtotal: <strong>${formatCurrency(item.price * item.quantity)}</strong>
                 </div>
             </div>
-            <button class="cart-item-remove" data-product-id="${item.id}" title="Xóa sản phẩm">
+            <button class="cart-item-remove" data-product-id="${item.id}" title="Remove product">
                 <i class="fas fa-trash"></i>
             </button>
         </div>
@@ -353,28 +353,28 @@ function updateCartTotals(totals) {
         totalsContainer.html(`
             <div class="cart-totals">
                 <div class="d-flex justify-content-between mb-2">
-                    <span>Tạm tính (${totals.itemCount} sản phẩm):</span>
+                    <span>Subtotal (${totals.itemCount} items):</span>
                     <span>${formatCurrency(totals.subtotal)}</span>
                 </div>
                 <div class="d-flex justify-content-between mb-2">
-                    <span>Phí vận chuyển:</span>
+                    <span>Shipping fee:</span>
                     <span class="${totals.shipping === 0 ? 'text-success' : ''}">
-                        ${totals.shipping === 0 ? 'Miễn phí' : formatCurrency(totals.shipping)}
+                        ${totals.shipping === 0 ? 'Free' : formatCurrency(totals.shipping)}
                     </span>
                 </div>
                 <div class="d-flex justify-content-between mb-2">
-                    <span>Thuế VAT (10%):</span>
+                    <span>VAT (10%):</span>
                     <span>${formatCurrency(totals.tax)}</span>
                 </div>
                 ${totals.discount > 0 ? `
                     <div class="d-flex justify-content-between mb-2 text-success">
-                        <span>Giảm giá:</span>
+                        <span>Discount:</span>
                         <span>-${formatCurrency(totals.discount)}</span>
                     </div>
                 ` : ''}
                 <hr>
                 <div class="d-flex justify-content-between">
-                    <strong>Tổng cộng:</strong>
+                    <strong>Total:</strong>
                     <strong class="text-primary">${formatCurrency(totals.total)}</strong>
                 </div>
             </div>
@@ -387,7 +387,7 @@ function processCheckout() {
     const cart = getCart();
     
     if (cart.length === 0) {
-        showAlert('Giỏ hàng của bạn đang trống!', 'warning');
+        showAlert('Your cart is empty!', 'warning');
         return;
     }
     
@@ -396,20 +396,20 @@ function processCheckout() {
     // Show checkout confirmation
     const confirmHTML = `
         <div class="checkout-confirmation">
-            <h5>Xác nhận đặt hàng</h5>
-            <p>Tổng giá trị đơn hàng: <strong class="text-primary">${formatCurrency(totals.total)}</strong></p>
-            <p>Số lượng sản phẩm: <strong>${totals.itemCount}</strong></p>
-            <p class="text-muted">Chúng tôi sẽ liên hệ với bạn để xác nhận đơn hàng trong thời gian sớm nhất.</p>
+            <h5>Order Confirmation</h5>
+            <p>Total order value: <strong class="text-primary">${formatCurrency(totals.total)}</strong></p>
+            <p>Number of items: <strong>${totals.itemCount}</strong></p>
+            <p class="text-muted">We will contact you to confirm your order as soon as possible.</p>
         </div>
     `;
     
     // Show modal or inline confirmation
-    if (confirm(`Xác nhận đặt hàng với tổng giá trị ${formatCurrency(totals.total)}?`)) {
+    if (confirm(`Confirm order with total value ${formatCurrency(totals.total)}?`)) {
         // Simulate order processing
         const checkoutBtn = $('#checkoutBtn');
         const originalText = checkoutBtn.html();
         
-        checkoutBtn.html('<i class="fas fa-spinner fa-spin me-2"></i>Đang xử lý...').prop('disabled', true);
+        checkoutBtn.html('<i class="fas fa-spinner fa-spin me-2"></i>Processing...').prop('disabled', true);
         
         setTimeout(() => {
             // Generate order ID
@@ -428,7 +428,7 @@ function processCheckout() {
             clearCart();
             
             // Show success message
-            showAlert(`Đặt hàng thành công! Mã đơn hàng: ${orderId}`, 'success');
+            showAlert(`Order placed successfully! Order ID: ${orderId}`, 'success');
             
             // Close modal
             $('#cartModal').modal('hide');
@@ -464,29 +464,29 @@ function showOrderSuccess(orderId, total) {
                 <div class="modal-content">
                     <div class="modal-header bg-success text-white">
                         <h5 class="modal-title">
-                            <i class="fas fa-check-circle me-2"></i>Đặt hàng thành công!
+                            <i class="fas fa-check-circle me-2"></i>Order placed successfully!
                         </h5>
                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                     </div>
                     <div class="modal-body text-center">
                         <div class="mb-4">
                             <i class="fas fa-shopping-bag fa-3x text-success mb-3"></i>
-                            <h4>Cảm ơn bạn đã đặt hàng!</h4>
-                            <p class="text-muted">Đơn hàng của bạn đã được tiếp nhận và đang được xử lý.</p>
+                            <h4>Thank you for your order!</h4>
+                            <p class="text-muted">Your order has been received and is being processed.</p>
                         </div>
                         <div class="order-details bg-light p-3 rounded">
-                            <p><strong>Mã đơn hàng:</strong> ${orderId}</p>
-                            <p><strong>Tổng giá trị:</strong> ${formatCurrency(total)}</p>
-                            <p><strong>Thời gian:</strong> ${new Date().toLocaleString('vi-VN')}</p>
+                            <p><strong>Order ID:</strong> ${orderId}</p>
+                            <p><strong>Total value:</strong> ${formatCurrency(total)}</p>
+                            <p><strong>Time:</strong> ${new Date().toLocaleString('en-US')}</p>
                         </div>
                         <p class="mt-3 text-muted">
-                            Chúng tôi sẽ liên hệ với bạn trong vòng 24 giờ để xác nhận đơn hàng.
+                            We will contact you within 24 hours to confirm your order.
                         </p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Đóng</button>
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="button" class="btn btn-primary" onclick="window.location.reload()">
-                            Tiếp tục mua sắm
+                            Continue shopping
                         </button>
                     </div>
                 </div>

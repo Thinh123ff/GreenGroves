@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chậu và vật chứa - Green Groves</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../styles/main.css">
+    
+    <style>
+        main{
+            margin-top: 15vh !important;
+        }
+        .pot-category {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .pot-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .pot-item {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border-left: 4px solid #28a745;
+        }
+        
+        .pot-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+        }
+        
+        .pot-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        
+        .pot-title {
+            color: #2c3e50;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .pot-description {
+            color: #6c757d;
+            line-height: 1.6;
+        }
+        
+        .pot-features {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0;
+        }
+        
+        .pot-features li {
+            padding: 5px 0;
+            color: #495057;
+        }
+        
+        .pot-features li:before {
+            content: "✓";
+            color: #28a745;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        
+        .category-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            border-radius: 15px;
+        }
+        
+        .category-header h2 {
+            margin: 0;
+            font-weight: 600;
+        }
+        
+        .category-header p {
+            margin: 10px 0 0 0;
+            opacity: 0.9;
+        }
+        
+        .pot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .price-tag {
+            background: #ffc107;
+            color: #212529;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        
+        .quality-badge {
+            background: #28a745;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            margin-left: 10px;
+        }
+        
+        .size-info {
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            margin: 10px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .pot-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pot-category {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Header -->
+<header id="header" class="header-section">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container" id="header-container">
+            <!-- Logo and Visit Counter -->
+            <div class="d-flex align-items-center">
+                <a class="navbar-brand me-4" href="../index.html">
+                    <div class="d-flex align-items-center">
+                        <div class="logo-icon">
+                            <img src="../public/image/logo.png" alt="Green Groves Logo" class="img-fluid" style="max-width: 50px;">
+                        </div>
+                        <div class="ms-2">
+                            <h4 class="mb-0 brand-name">Green Groves</h4>
+                            <small class="brand-subtitle">Dụng cụ làm vườn</small>
+                        </div>
+                    </div>
+                </a>
+                <div class="visit-counter d-none d-sm-block">
+                    <div class="icon-views">
+                        <i class="fas fa-eye me-1"></i>
+                        <span id="visitCount">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navigation Menu -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="titleMenuMobile">
+                    <ul class="navbar">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../index.html">
+                                <i class="fas fa-home me-1"></i>Trang chủ
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="kythuatvameo.html">
+                                <i class="fas fa-seedling me-1"></i>Kỹ thuật và mẹo
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="congcualamvuon.html">
+                                <i class="fas fa-tools me-1"></i>Công cụ làm vườn
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="yeutocanthietcholamvuon.html">
+                                <i class="fas fa-list-check me-1"></i>Yếu tố cần thiết
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="phukienlamvuon.html">
+                                <i class="fas fa-puzzle-piece me-1"></i>Phụ kiện
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="goiysanpham.html">
+                                <i class="fas fa-lightbulb me-1"></i>Gợi ý sản phẩm
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="videogiaoduc.html">
+                                <i class="fas fa-video me-1"></i>Video giới thiệu
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="sachlienquan.html">
+                                <i class="fas fa-book me-1"></i>Sách liên quan
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="gioithieuvalienhe.html">
+                                <i class="fas fa-info-circle me-1"></i>Giới thiệu & Liên hệ
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="navbarMobile">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">
+                            <i class="fas fa-home me-1"></i>Trang chủ
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="kythuatvameo.html">
+                            <i class="fas fa-seedling me-1"></i>Kỹ thuật và mẹo
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="congcualamvuon.html">
+                            <i class="fas fa-tools me-1"></i>Công cụ làm vườn
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="yeutocanthietcholamvuon.html">
+                            <i class="fas fa-list-check me-1"></i>Yếu tố cần thiết
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="phukienlamvuon.html">
+                            <i class="fas fa-puzzle-piece me-1"></i>Phụ kiện
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="goiysanpham.html">
+                            <i class="fas fa-lightbulb me-1"></i>Gợi ý sản phẩm
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="videogiaoduc.html">
+                            <i class="fas fa-video me-1"></i>Video giới thiệu
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sachlienquan.html">
+                            <i class="fas fa-book me-1"></i>Sách liên quan
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="gioithieuvalienhe.html">
+                            <i class="fas fa-info-circle me-1"></i>Giới thiệu & Liên hệ
+                        </a>
+                    </li>
+                </ul>
+                <!-- Menu PC dạng dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="menuDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-bars me-1"></i> Danh mục
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="menuDropdown">
+                        <li><a class="dropdown-item" href="../index.html"><i class="fas fa-home me-1"></i>Trang chủ</a></li>
+                        <li><a class="dropdown-item" href="kythuatvameo.html"><i class="fas fa-seedling me-1"></i>Kỹ thuật và mẹo</a></li>
+                        <li><a class="dropdown-item" href="congcualamvuon.html"><i class="fas fa-tools me-1"></i>Công cụ làm vườn</a></li>
+                        <li><a class="dropdown-item" href="yeutocanthietcholamvuon.html"><i class="fas fa-list-check me-1"></i>Yếu tố cần thiết</a></li>
+                        <li><a class="dropdown-item" href="phukienlamvuon.html"><i class="fas fa-puzzle-piece me-1"></i>Phụ kiện</a></li>
+                        <li><a class="dropdown-item" href="goiysanpham.html"><i class="fas fa-lightbulb me-1"></i>Gợi ý sản phẩm</a></li>
+                        <li><a class="dropdown-item" href="videogiaoduc.html"><i class="fas fa-video me-1"></i>Video giới thiệu</a></li>
+                        <li><a class="dropdown-item" href="sachlienquan.html"><i class="fas fa-book me-1"></i>Sách liên quan</a></li>
+                        <li><a class="dropdown-item" href="gioithieuvalienhe.html"><i class="fas fa-info-circle me-1"></i>Giới thiệu & Liên hệ</a></li>
+                    </ul>
+                </li>
+                <div class="search-cart">
+                    <!-- Search Box -->
+                    <div class="search-box me-3">
+                        <div class="input-group">
+                            <input type="text" class="form-control search-input" id="searchInput" placeholder="Tìm kiếm sản phẩm...">
+                            <button class="btn btn-outline-success search-btn" type="button" id="searchBtn">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                        <div class="search-suggestions" id="searchSuggestions"></div>
+                    </div>
+
+                    <!-- Cart Button -->
+                    <div>
+                        <button class="btn btn-outline-success cart-btn" data-bs-toggle="modal" data-bs-target="#cartModal">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count" id="cartCount">0</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+    <!-- Main Content -->
+    <main style="margin-top: 120px; padding: 20px;">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="category-header">
+                <h2><i class="fas fa-pot-food me-2"></i>Chậu và vật chứa trồng cây</h2>
+                <p>Khám phá bộ sưu tập chậu đẹp và chất lượng cho mọi loại cây trồng</p>
+            </div>
+
+            <!-- Chậu nhựa -->
+            <div class="pot-category">
+                <div class="category-header">
+                    <h3><i class="fas fa-recycle me-2"></i>Chậu nhựa</h3>
+                    <p>Chậu nhựa nhẹ, bền và giá cả hợp lý</p>
+                </div>
+                
+                <div class="pot-grid">
+                    <div class="pot-item">
+                        <div class="pot-icon">
+                            <i class="fas fa-recycle"></i>
+                        </div>
+                        <img src="image/chậu nhựa tròn.webp" alt="Chậu nhựa tròn" style="width:120px;display:block;margin:0 auto 10px auto;">
+                        <h4 class="pot-title">Chậu nhựa tròn <span class="quality-badge">Best Seller</span></h4>
+                        <p class="pot-description">Chậu nhựa tròn với thiết kế đơn giản, phù hợp mọi loại cây.</p>
+                        <div class="size-info">
+                            <i class="fas fa-ruler me-1"></i>
+                            Kích thước: 10cm, 15cm, 20cm, 25cm, 30cm
+                        </div>
+                        <ul class="pot-features">
+                            <li>Chất liệu nhựa PP cao cấp</li>
+                            <li>Chống tia UV</li>
+                            <li>Lỗ thoát nước tốt</li>
+                            <li>Nhiều màu sắc</li>
+                        </ul>
+                        <div class="price-tag">Giá: 15.000đ - 80.000đ</div>
+                        <br>
+                        <button class="btn btn-success mt-2">Mua hàng</button>
+                    </div>
+
+                    <div class="pot-item">
+                        <div class="pot-icon">
+                            <i class="fas fa-square"></i>
+                        </div>
+                        <img src="image/chậu nhựa vuông.webp" alt="Chậu nhựa vuông" style="width:120px;display:block;margin:0 auto 10px auto;">
+                        <h4 class="pot-title">Chậu nhựa vuông</h4>
+                        <p class="pot-description">Chậu nhựa vuông tiết kiệm không gian, phù hợp trồng nhiều cây.</p>
+                        <div class="size-info">
+                            <i class="fas fa-ruler me-1"></i>
+                            Kích thước: 12x12cm, 15x15cm, 20x20cm
+                        </div>
+                        <ul class="pot-features">
+                            <li>Thiết kế vuông gọn</li>
+                            <li>Dễ dàng xếp chồng</li>
+                            <li>Tiết kiệm không gian</li>
+                            <li>Phù hợp trồng rau</li>
+                        </ul>
+                        <div class="price-tag">Giá: 20.000đ - 60.000đ</div>
+                        <br>
+                        <button class="btn btn-success mt-2">Mua hàng</button>
+                    </div>
+
+                    <div class="pot-item">
+                        <div class="pot-icon">
+                            <i class="fas fa-ellipsis-h"></i>
+                        </div>
+                        <img src="image/chậu nhựa dài.jpg" alt="Chậu nhựa dài" style="width:120px;display:block;margin:0 auto 10px auto;">
+                        <h4 class="pot-title">Chậu nhựa dài <span class="quality-badge">Premium</span></h4>
+                        <p class="pot-description">Chậu nhựa dài phù hợp trồng rau và cây leo.</p>
+                        <div class="size-info">
+                            <i class="fas fa-ruler me-1"></i>
+                            Kích thước: 40x15cm, 60x20cm, 80x25cm
+                        </div>
+                        <ul class="pot-features">
+                            <li>Thiết kế dài rộng</li>
+                            <li>Phù hợp trồng rau</li>
+                            <li>Nhiều lỗ thoát nước</li>
+                            <li>Chống nứt vỡ</li>
+                        </ul>
+                        <div class="price-tag">Giá: 50.000đ - 150.000đ</div>
+                        <br>
+                        <button class="btn btn-success mt-2">Mua hàng</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chậu gốm sứ -->
+            <div class="pot-category">
+                <div class="category-header">
+                    <h3><i class="fas fa-ceramic me-2"></i>Chậu gốm sứ</h3>
+                    <p>Chậu gốm sứ đẹp mắt, phù hợp trang trí</p>
+                </div>
+                
+                <div class="pot-grid">
+                    <div class="pot-item">
+                        <div class="pot-icon">
+                            <i class="fas fa-ceramic"></i>
+                        </div>
+                        <img src="image/chậu gốm tròn.jpg" alt="Chậu gốm tròn" style="width:120px;display:block;margin:0 auto 10px auto;">
+                        <h4 class="pot-title">Chậu gốm tròn <span class="quality-badge">Artistic</span></h4>
+                        <p class="pot-description">Chậu gốm tròn với hoa văn đẹp mắt, phù hợp trang trí.</p>
+                        <div class="size-info">
+                            <i class="fas fa-ruler me-1"></i>
+                            Kích thước: 15cm, 20cm, 25cm, 30cm
+                        </div>
+                        <ul class="pot-features">
+                            <li>Gốm sứ cao cấp</li>
+                            <li>Hoa văn đẹp mắt</li>
+                            <li>Thoáng khí tốt</li>
+                            <li>Phù hợp bonsai</li>
+                        </ul>
+                        <div class="price-tag">Giá: 80.000đ - 300.000đ</div>
+                        <br>
+                        <button class="btn btn-success mt-2">Mua hàng</button>
+                    </div>
+
+                    <div class="pot-item">
+                        <div class="pot-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <img src="image/chậu gốm dài.jpg" alt="Chậu gốm dài" style="width:120px;display:block;margin:0 auto 10px auto;">
+                        <h4 class="pot-title">Chậu gốm dài</h4>
+                        <p class="pot-description">Chậu gốm dài với màu sắc tươi sáng, tạo điểm nhấn cho không gian.</p>
+                        <div class="size-info">
+                            <i class="fas fa-ruler me-1"></i>
+                            Kích thước: 12cm, 18cm, 22cm, 28cm
+                        </div>
+                        <ul class="pot-features">
+                            <li>Màu sắc tươi sáng</li>
+                            <li>Men bóng đẹp</li>
+                            <li>Chất liệu bền bỉ</li>
+                            <li>Dễ dàng vệ sinh</li>
+                        </ul>
+                        <div class="price-tag">Giá: 60.000đ - 200.000đ</div>
+                        <br>
+                        <button class="btn btn-success mt-2">Mua hàng</button>
+                    </div>
+
+                    <div class="pot-item">
+                        <div class="pot-icon">
+                            <i class="fas fa-mountain"></i>
+                        </div>
+                        <img src="image/chậu gốm bon sai.webp" alt="Chậu gốm bonsai" style="width:120px;display:block;margin:0 auto 10px auto;">
+                        <h4 class="pot-title">Chậu gốm bonsai</h4>
+                        <p class="pot-description">Chậu gốm chuyên dụng cho bonsai với thiết kế đặc biệt.</p>
+                        <div class="size-info">
+                            <i class="fas fa-ruler me-1"></i>
+                            Kích thước: 8x12cm, 10x15cm, 12x18cm
+                        </div>
+                        <ul class="pot-features">
+                            <li>Thiết kế bonsai chuyên dụng</li>
+                            <li>Lỗ thoát nước nhiều</li>
+                            <li>Chất liệu gốm đặc biệt</li>
+                            <li>Phù hợp cây mini</li>
+                        </ul>
+                        <div class="price-tag">Giá: 100.000đ - 400.000đ</div>
+                        <br>
+                        <button class="btn btn-success mt-2">Mua hàng</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chậu xi măng -->
+            <div class="pot-category">
+                <div class="category-header">
+                    <h3><i class="fas fa-cubes me-2"></i>Chậu xi măng</h3>
+                    <p>Chậu xi măng bền bỉ, phù hợp cây lớn</p>
+                </div>
+                
+                <div class="pot-grid">
+                    <div class="pot-item">
+                        <div class="pot-icon">
+                            <i class="fas fa-cubes"></i>
+                        </div>
+                        <img src="image/chậu xi măng tròn.jpg" alt="Chậu xi măng tròn" style="width:120px;display:block;margin:0 auto 10px auto;">
+                        <h4 class="pot-title">Chậu xi măng tròn <span class="quality-badge">Heavy Duty</span></h4>
+                        <p class="pot-description">Chậu xi măng tròn chắc chắn, phù hợp cây lớn và ngoài trời.</p>
+                        <div class="size-info">
+                            <i class="fas fa-ruler me-1"></i>
+                            Kích thước: 30cm, 40cm, 50cm, 60cm
+                        </div>
+                        <ul class="pot-features">
+                            <li>Xi măng cao cấp</li>
+                            <li>Chịu lực tốt</li>
+                            <li>Phù hợp ngoài trời</li>
+                            <li>Tuổi thọ cao</li>
+                        </ul>
+                        <div class="price-tag">Giá: 150.000đ - 500.000đ</div>
+                        <br>
+                        <button class="btn btn-success mt-2">Mua hàng</button>
+                    </div>
+
+                    <div class="pot-item">
+                        <div class="pot-icon">
+                            <i class="fas fa-square-full"></i>
+                        </div>
+                        <img src="image/chậu xi măng vuông.webp" alt="Chậu xi măng vuông" style="width:120px;display:block;margin:0 auto 10px auto;">
+                        <h4 class="pot-title">Chậu xi măng vuông</h4>
+                        <p class="pot-description">Chậu xi măng vuông với thiết kế hiện đại, phù hợp trang trí.</p>
+                        <div class="size-info">
+                            <i class="fas fa-ruler me-1"></i>
+                            Kích thước: 25x25cm, 35x35cm, 45x45cm
+                        </div>
+                        <ul class="pot-features">
+                            <li>Thiết kế hiện đại</li>
+                            <li>Bề mặt mịn</li>
+                            <li>Dễ dàng di chuyển</li>
+                            <li>Phù hợp cây cảnh</li>
+                        </ul>
+                        <div class="price-tag">Giá: 120.000đ - 400.000đ</div>
+                        <br>
+                        <button class="btn btn-success mt-2">Mua hàng</button>
+                    </div>
+
+                    <div class="pot-item">
+                        <div class="pot-icon">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </div>
+                        <img src="image/chậu xi măng cao.jpg" alt="Chậu xi măng cao" style="width:120px;display:block;margin:0 auto 10px auto;">
+                        <h4 class="pot-title">Chậu xi măng cao</h4>
+                        <p class="pot-description">Chậu xi măng cao phù hợp cây có rễ sâu và cây leo.</p>
+                        <div class="size-info">
+                            <i class="fas fa-ruler me-1"></i>
+                            Kích thước: 20x40cm, 25x50cm, 30x60cm
+                        </div>
+                        <ul class="pot-features">
+                            <li>Chiều cao lớn</li>
+                            <li>Phù hợp cây leo</li>
+                            <li>Rễ phát triển tốt</li>
+                            <li>Chống đổ ngã</li>
+                        </ul>
+                        <div class="price-tag">Giá: 200.000đ - 600.000đ</div>
+                        <br>
+                        <button class="btn btn-success mt-2">Mua hàng</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vật chứa đặc biệt -->
+            <div class="pot-category">
+                <div class="category-header">
+                    <h3><i class="fas fa-star me-2"></i>Vật chứa đặc biệt</h3>
+                    <p>Những vật chứa độc đáo và sáng tạo</p>
+                </div>
+                
+                <div class="pot-grid">
+                    <div class="pot-item">
+                        <div class="pot-icon">
+                            <i class="fas fa-tree"></i>
+                        </div>
+                        <img src="image/chậu treo.jpg" alt="Chậu treo" style="width:120px;display:block;margin:0 auto 10px auto;">
+                        <h4 class="pot-title">Chậu treo <span class="quality-badge">Hanging</span></h4>
+                        <p class="pot-description">Chậu treo phù hợp trồng cây cảnh và hoa treo.</p>
+                        <div class="size-info">
+                            <i class="fas fa-ruler me-1"></i>
+                            Kích thước: 15cm, 20cm, 25cm
+                        </div>
+                        <ul class="pot-features">
+                            <li>Thiết kế treo đẹp</li>
+                            <li>Tiết kiệm không gian</li>
+                            <li>Phù hợp ban công</li>
+                            <li>Dây treo bền bỉ</li>
+                        </ul>
+                        <div class="price-tag">Giá: 80.000đ - 200.000đ</div>
+                        <br>
+                        <button class="btn btn-success mt-2">Mua hàng</button>
+                    </div>
+
+                    <div class="pot-item">
+                        <div class="pot-icon">
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                        <img src="image/chậu tầng.jpg" alt="Chậu tầng" style="width:120px;display:block;margin:0 auto 10px auto;">
+                        <h4 class="pot-title">Chậu tầng</h4>
+                        <p class="pot-description">Chậu tầng cho phép trồng nhiều loại cây trong một không gian.</p>
+                        <div class="size-info">
+                            <i class="fas fa-ruler me-1"></i>
+                            Kích thước: 3 tầng, 5 tầng, 7 tầng
+                        </div>
+                        <ul class="pot-features">
+                            <li>Thiết kế tầng độc đáo</li>
+                            <li>Tiết kiệm không gian</li>
+                            <li>Phù hợp trồng rau</li>
+                            <li>Dễ dàng chăm sóc</li>
+                        </ul>
+                        <div class="price-tag">Giá: 200.000đ - 500.000đ</div>
+                        <br>
+                        <button class="btn btn-success mt-2">Mua hàng</button>
+                    </div>
+
+                    <div class="pot-item">
+                        <div class="pot-icon">
+                            <i class="fas fa-recycle"></i>
+                        </div>
+                        <img src="image/chậu tự tưới.webp" alt="Chậu tự tưới" style="width:120px;display:block;margin:0 auto 10px auto;">
+                        <h4 class="pot-title">Chậu tự tưới <span class="quality-badge">Smart</span></h4>
+                        <p class="pot-description">Chậu tự tưới với hệ thống giữ ẩm thông minh.</p>
+                        <div class="size-info">
+                            <i class="fas fa-ruler me-1"></i>
+                            Kích thước: 20cm, 25cm, 30cm
+                        </div>
+                        <ul class="pot-features">
+                            <li>Hệ thống tự tưới</li>
+                            <li>Tiết kiệm thời gian</li>
+                            <li>Phù hợp người bận rộn</li>
+                            <li>Giữ ẩm tốt</li>
+                        </ul>
+                        <div class="price-tag">Giá: 150.000đ - 350.000đ</div>
+                        <br>
+                        <button class="btn btn-success mt-2">Mua hàng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Green Groves</h5>
+                    <p>Chuyên cung cấp dụng cụ làm vườn chất lượng cao</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p>&copy; 2024 Green Groves. All rights reserved.</p>
+                    <i class="fas fa-map-marker-alt me-1"></i>
+                    <span id="userLocation">Đang xác định vị trí...</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+<!-- Cart Modal -->
+<div class="modal fade" id="cartModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Giỏ hàng</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div id="cartItems">
+                    <p class="text-center text-muted">Giỏ hàng trống</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-success">Thanh toán</button>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <img src="../public/image/logo.png" alt="Green Groves Logo" class="img-fluid" style="max-width: 80px;">
+            </div>
+            <h3 class="loading-text">Green Groves</h3>
+            <div class="loading-spinner">
+                <div class="spinner-border text-success" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/products.js"></script>
+    <script src="../scripts/cart.js"></script>
+</body>
+</html>

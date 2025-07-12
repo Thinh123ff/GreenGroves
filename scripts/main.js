@@ -12,6 +12,18 @@ $(document).ready(function() {
     
     // Setup animations
     setupAnimations();
+
+    // Chuyển modal đăng nhập sang đăng ký và ngược lại
+    $('#switchToRegister').on('click', function(e) {
+        e.preventDefault();
+        $('#loginModal').modal('hide');
+        $('#registerModal').modal('show');
+    });
+    $('#switchToLogin').on('click', function(e) {
+        e.preventDefault();
+        $('#registerModal').modal('hide');
+        $('#loginModal').modal('show');
+    });
 });
 
 // Initialize website functionality
@@ -98,13 +110,13 @@ function initializeVisitCounter() {
         visitCount = visitCount ? parseInt(visitCount) + 1 : 1;
 
         localStorage.setItem('greentools_visit_count', visitCount);
-        localStorage.setItem('greentools_visited', 'true'); // đánh dấu đã vào
+        localStorage.setItem('greentools_visited', 'true'); // marked as visited
 
-        $('#visitCount').text(visitCount.toLocaleString('vi-VN'));
+        $('#visitCount').text(visitCount.toLocaleString('en-US'));
         animateCounter('#visitCount', 0, visitCount, 2000);
     } else {
         const currentCount = localStorage.getItem('greentools_visit_count');
-        $('#visitCount').text(currentCount.toLocaleString('vi-VN'));
+        $('#visitCount').text(currentCount.toLocaleString('en-US'));
     }
 }
 
@@ -120,7 +132,7 @@ function animateCounter(selector, start, end, duration) {
             current = end;
             clearInterval(timer);
         }
-        element.text(Math.floor(current).toLocaleString('vi-VN'));
+        element.text(Math.floor(current).toLocaleString('en-US'));
     }, 16);
 }
 
@@ -133,22 +145,22 @@ function getUserLocation() {
                 const lon = position.coords.longitude;
                 
                 // Use reverse geocoding to get location name
-                fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=vi`)
+                fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=en`)
                     .then(response => response.json())
                     .then(data => {
-                        const location = `${data.city || data.locality || 'Không xác định'}, ${data.countryName}`;
+                        const location = `${data.city || data.locality || 'Unknown'}, ${data.countryName}`;
                         $('#userLocation').text(location);
                     })
                     .catch(error => {
-                        $('#userLocation').text('Việt Nam');
+                        $('#userLocation').text('Unknown');
                     });
             },
             function(error) {
-                $('#userLocation').text('Việt Nam');
+                $('#userLocation').text('Unknown');
             }
         );
     } else {
-        $('#userLocation').text('Việt Nam');
+        $('#userLocation').text('Unknown');
     }
 }
 
@@ -160,7 +172,7 @@ function getUserIP() {
             $('#userIP').text(data.ip);
         })
         .catch(error => {
-            $('#userIP').text('Không xác định');
+            $('#userIP').text('Unknown');
         });
 }
 
@@ -188,8 +200,8 @@ function updateDateTime() {
         hour12: false
     };
     
-    const dateStr = now.toLocaleDateString('vi-VN', options);
-    const timeStr = now.toLocaleTimeString('vi-VN', timeOptions);
+    const dateStr = now.toLocaleDateString('en-GB', options);
+    const timeStr = now.toLocaleTimeString('en-GB', timeOptions);
     
     $('#currentDate').text(dateStr);
     $('#currentTime').text(timeStr);
@@ -310,26 +322,26 @@ function handleContactForm() {
     
     // Validate form
     if (!formData.name || !formData.email || !formData.message) {
-        showAlert('Vui lòng điền đầy đủ thông tin bắt buộc!', 'warning');
+        showAlert('Please fill in all required information!', 'warning');
         return;
     }
     
     // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
-        showAlert('Vui lòng nhập email hợp lệ!', 'warning');
+        showAlert('Please enter a valid email address!', 'warning');
         return;
     }
     
     // Show loading
     const submitBtn = $('#contactForm button[type="submit"]');
     const originalText = submitBtn.html();
-    submitBtn.html('<i class="fas fa-spinner fa-spin me-2"></i>Đang gửi...');
+    submitBtn.html('<i class="fas fa-spinner fa-spin me-2"></i>Sending...');
     submitBtn.prop('disabled', true);
     
     // Simulate form submission
     setTimeout(function() {
-        showAlert('Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi trong thời gian sớm nhất.', 'success');
+        showAlert('Thank you for contacting us! We will respond as soon as possible.', 'success');
         $('#contactForm')[0].reset();
         
         // Reset button
@@ -368,17 +380,17 @@ function handleCheckout() {
     const cartItems = JSON.parse(localStorage.getItem('greentools_cart') || '[]');
     
     if (cartItems.length === 0) {
-        showAlert('Giỏ hàng của bạn đang trống!', 'warning');
+        showAlert('Your cart is empty!', 'warning');
         return;
     }
     
     // Show checkout confirmation
     const total = calculateCartTotal();
-    const confirmMessage = `Xác nhận thanh toán đơn hàng trị giá ${total.toLocaleString('vi-VN')}đ?`;
+    const confirmMessage = `Confirm payment for an order worth ${total.toLocaleString('en-US')}đ?`;
     
     if (confirm(confirmMessage)) {
         // Simulate checkout process
-        showAlert('Đặt hàng thành công! Chúng tôi sẽ liên hệ với bạn sớm nhất.', 'success');
+        showAlert('Order placed successfully! We will contact you as soon as possible.', 'success');
         
         // Clear cart
         localStorage.removeItem('greentools_cart');
@@ -448,11 +460,11 @@ function adjustLayoutForScreenSize() {
 
 // Utility functions
 function formatCurrency(amount) {
-    return amount.toLocaleString('vi-VN') + 'đ';
+    return amount.toLocaleString('en-US') + 'đ';
 }
 
 function formatDate(date) {
-    return date.toLocaleDateString('vi-VN', {
+    return date.toLocaleDateString('en-GB', {
         year: 'numeric',
         month: '2-digit',
         day: '2-digit'
@@ -460,7 +472,7 @@ function formatDate(date) {
 }
 
 function formatTime(date) {
-    return date.toLocaleTimeString('vi-VN', {
+    return date.toLocaleTimeString('en-GB', {
         hour: '2-digit',
         minute: '2-digit',
         second: '2-digit',
@@ -483,6 +495,26 @@ function initializeBootstrapComponents() {
     // Initialize popovers
     $('[data-bs-toggle="popover"]').popover();
 }
+
+function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    }, 'google_translate_element');
+  }
+
+  window.addEventListener('load', function() {
+    var tryCount = 0;
+    var maxTries = 40; // tối đa 20s
+    var interval = setInterval(function() {
+      var span = document.querySelector('#google_translate_element span span');
+      if (span && span.innerHTML.includes('Chọn Ngôn ngữ')) {
+       span.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-globe-icon lucide-globe"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg> EN';
+       clearInterval(interval);
+      }
+      if (++tryCount > maxTries) clearInterval(interval);
+     }, 500);
+  });
 
 // Call initialization when document is ready
 $(document).ready(function() {
