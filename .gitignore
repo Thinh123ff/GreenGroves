@@ -25,3 +25,4 @@ dist-ssr
 .env
 project/vendor/google/auth/tests/fixtures/private.pem
 project/vendor/google/auth/tests/fixtures/private.pem
+project/vendor/google/auth/tests/fixtures/private.pem
