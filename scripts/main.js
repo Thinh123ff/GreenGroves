@@ -82,7 +82,8 @@ function setupEventListeners() {
     
     // Checkout button
     $('#checkoutBtn').on('click', function() {
-        handleCheckout();
+        // Khi ấn checkout chỉ mở modal shipping, không đặt hàng, không confirm
+        $('#shippingModal').modal('show');
     });
     
     // Back to top button

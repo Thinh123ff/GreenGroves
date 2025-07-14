@@ -1065,8 +1065,15 @@ function createProductCard(product) {
     const discountPercent = product.originalPrice ? 
         Math.round((1 - product.price / product.originalPrice) * 100) : 0;
     
-    const badgeHtml = product.badge ? 
-        `<div class="product-badge">${product.badge}</div>` : '';
+    // Badge: nếu là 'New' thì style màu cam, còn lại giữ nguyên
+    let badgeHtml = '';
+    if (product.badge) {
+        if (product.badge.toLowerCase() === 'new') {
+            badgeHtml = `<div class="product-badge" style="background:#fc8a00; color:#fff;">${product.badge}</div>`;
+        } else {
+            badgeHtml = `<div class="product-badge">${product.badge}</div>`;
+        }
+    }
     
     const originalPriceHtml = product.originalPrice ? 
         `<span class="price-original">${formatCurrency(product.originalPrice)}</span>` : '';
@@ -1076,8 +1083,8 @@ function createProductCard(product) {
     
     const starsHtml = generateStarRating(product.rating);
     
-    const cardElement = $(`
-        <div class="col-lg-4 col-md-6 mb-4">
+    const cardElement = $(
+        `<div class="col-lg-4 col-md-6 mb-4">
             <div class="product-card" data-category="${product.category}" data-product-id="${product.id}">
                 <div class="product-image">
                     <img src="${product.image}" alt="${product.name}" loading="lazy">
@@ -1106,8 +1113,8 @@ function createProductCard(product) {
                     </div>
                 </div>
             </div>
-        </div>
-    `);
+        </div>`
+    );
     
     return cardElement;
 }

@@ -674,7 +674,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-success">Checkout</button>
+                <button type="button" class="btn btn-success" id="checkoutBtn">Checkout</button>
             </div>
         </div>
     </div>
@@ -702,5 +702,122 @@
     <script src="../scripts/main.js"></script>
     <script src="../scripts/products.js"></script>
     <script src="../scripts/cart.js"></script>
+<!-- Shipping Info Modal (nâng cấp) -->
+<div class="modal fade" id="shippingModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form id="shippingForm">
+        <div class="modal-header">
+          <h5 class="modal-title">Thông tin giao hàng</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="shippingName" class="form-label">Họ và tên <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="shippingName" name="name" required placeholder="Nhập họ tên đầy đủ">
+          </div>
+          <div class="mb-3">
+            <label for="shippingPhone" class="form-label">Số điện thoại <span class="text-danger">*</span></label>
+            <input type="tel" class="form-control" id="shippingPhone" name="phone" required pattern="^0[0-9]{9,10}$" placeholder="VD: 0987654321">
+          </div>
+          <div class="mb-3">
+            <label for="shippingEmail" class="form-label">Email <span class="text-danger">*</span></label>
+            <input type="email" class="form-control" id="shippingEmail" name="email" required placeholder="Nhập email nhận thông báo">
+          </div>
+          <div class="mb-3">
+            <label for="shippingAddress" class="form-label">Địa chỉ nhận hàng <span class="text-danger">*</span></label>
+            <textarea class="form-control" id="shippingAddress" name="address" required placeholder="Số nhà, đường, phường/xã, quận/huyện, tỉnh/thành"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="shippingNote" class="form-label">Ghi chú đơn hàng</label>
+            <textarea class="form-control" id="shippingNote" name="note" placeholder="Ghi chú cho shop (nếu có)"></textarea>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Phương thức thanh toán</label>
+            <select class="form-select" id="shippingPayment" name="payment">
+              <option value="cod">Thanh toán khi nhận hàng (COD)</option>
+              <option value="bank">Chuyển khoản ngân hàng</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Tóm tắt đơn hàng</label>
+            <div id="orderSummary"></div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success w-100">Xác nhận đặt hàng</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<script>
+// Cập nhật tóm tắt đơn hàng khi mở modal shipping
+$('#shippingModal').on('show.bs.modal', function() {
+  const items = JSON.parse(localStorage.getItem('greentools_cart') || '[]');
+  let html = '<ul class="list-group">';
+  let total = 0;
+  items.forEach(item => {
+    html += `<li class="list-group-item d-flex justify-content-between align-items-center">
+      ${item.name} <span>${item.quantity} x ${item.price.toLocaleString('vi-VN')}đ</span>
+    </li>`;
+    total += item.quantity * item.price;
+  });
+  html += `</ul><div class="mt-2 text-end"><strong>Tổng cộng: ${total.toLocaleString('vi-VN')}đ</strong></div>`;
+  $('#orderSummary').html(html);
+});
+// Sửa sự kiện nút Checkout để mở modal shipping
+$(document).on('click', '#checkoutBtn', function() {
+  const items = JSON.parse(localStorage.getItem('greentools_cart') || '[]');
+  if (!items.length) {
+    alert('Giỏ hàng trống!');
+    return;
+  }
+  $('#cartModal').modal('hide');
+  setTimeout(function() {
+    $('#shippingModal').modal('show');
+  }, 400);
+});
+// Validate form trước khi gửi
+$('#shippingForm').on('submit', async function(e) {
+  e.preventDefault();
+  const customerInfo = {
+    name: $('#shippingName').val().trim(),
+    phone: $('#shippingPhone').val().trim(),
+    email: $('#shippingEmail').val().trim(),
+    address: $('#shippingAddress').val().trim(),
+    note: $('#shippingNote').val().trim(),
+    payment: $('#shippingPayment').val()
+  };
+  if (!customerInfo.name || !customerInfo.phone.match(/^0[0-9]{9,10}$/) || !customerInfo.email || !customerInfo.address) {
+    alert('Vui lòng nhập đầy đủ và đúng định dạng các trường bắt buộc!');
+    return;
+  }
+  const items = JSON.parse(localStorage.getItem('greentools_cart') || '[]');
+  if (!items.length) {
+    alert('Giỏ hàng trống!');
+    return;
+  }
+  const orderData = { items, customerInfo };
+  try {
+    const response = await fetch('http://localhost:3000/api/order', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(orderData)
+    });
+    const result = await response.json();
+    if (result.success) {
+      alert('Đặt hàng thành công! Vui lòng kiểm tra email xác nhận.');
+      localStorage.removeItem('greentools_cart');
+      $('#shippingModal').modal('hide');
+      updateCartDisplay && updateCartDisplay();
+    } else {
+      alert('Có lỗi khi đặt hàng: ' + result.message);
+    }
+  } catch (err) {
+    alert('Không thể kết nối server!');
+  }
+});
+</script>
 </body>
 </html>

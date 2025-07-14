@@ -55,10 +55,56 @@ function setupCartEvents() {
     });
     
     // Checkout event
-    $('#checkoutBtn').on('click', function() {
-        processCheckout();
+    $(document).on('click', '#checkoutBtn', function() {
+        // Khi ấn checkout chỉ mở modal shipping, không đặt hàng, không confirm
+        $('#shippingModal').modal('show');
     });
 }
+
+let isOrdering = false;
+$(document).on('submit', '#shippingForm', function(e) {
+    e.preventDefault();
+    if (isOrdering) return;
+    isOrdering = true;
+    const cart = getCart();
+    if (cart.length === 0) {
+        showAlert('Giỏ hàng trống!', 'warning');
+        isOrdering = false;
+        return;
+    }
+    // Lấy thông tin khách hàng từ form
+    const shippingData = {
+        name: $(this).find('[name="name"]').val(),
+        phone: $(this).find('[name="phone"]').val(),
+        address: $(this).find('[name="address"]').val(),
+        email: $(this).find('[name="email"]').val(),
+        payment: $(this).find('[name="payment"]').val() || 'cod',
+        note: $(this).find('[name="note"]').val() || ''
+    };
+    fetch('http://localhost:3000/api/order', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            items: cart,
+            customerInfo: shippingData
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+        isOrdering = false;
+        if (data.success) {
+            clearCart();
+            $('#shippingModal').modal('hide');
+            showAlert('Đặt hàng thành công! Vui lòng kiểm tra email xác nhận.', 'success');
+        } else {
+            showAlert('Có lỗi khi đặt hàng: ' + data.message, 'danger');
+        }
+    })
+    .catch(() => {
+        isOrdering = false;
+        showAlert('Không thể gửi đơn hàng. Vui lòng thử lại sau!', 'danger');
+    });
+});
 
 // Get cart from localStorage
 function getCart() {

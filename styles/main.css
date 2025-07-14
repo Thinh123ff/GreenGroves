@@ -355,6 +355,16 @@ body {
     border-color: #db4437;
     color: #db4437;
     background: white;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border-radius: 8px;
+    padding: 0.6rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 1.1rem;
+    transition: all 0.2s;
 }
 
 .google-login-btn:hover {
@@ -362,19 +372,6 @@ body {
     color: white;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(219, 68, 55, 0.3);
-}
-
-.facebook-login-btn {
-    border-color: #4267B2;
-    color: #4267B2;
-    background: white;
-}
-
-.facebook-login-btn:hover {
-    background: #4267B2;
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(66, 103, 178, 0.3);
 }
 
 .social-login-btn:active {
@@ -879,6 +876,13 @@ body {
     font-weight: 600;
     z-index: 10;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Ensure product badge always visible, even when not hovered */
+.product-badge {
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
 .product-info {
