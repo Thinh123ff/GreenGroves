@@ -746,7 +746,7 @@
             <div class="modal-body">
                 <div class="login-welcome text-center mb-4">
                     <div class="login-logo mb-3">
-                        <img src="./public/image/logo.png" alt="Green Groves Logo" class="img-fluid" style="max-width: 80px;">
+                        <img src="../public/image/logo.png" alt="Green Groves Logo" class="img-fluid" style="max-width: 80px;">
                     </div>
                     <h4 class="text-success">Welcome back!</h4>
                     <p class="text-muted">Login to continue shopping</p>
@@ -826,7 +826,7 @@
             <div class="modal-body">
                 <div class="register-welcome text-center mb-4">
                     <div class="register-logo mb-3">
-                        <img src="./public/image/logo.png" alt="Green Groves Logo" class="img-fluid" style="max-width: 80px;">
+                        <img src="../public/image/logo.png" alt="Green Groves Logo" class="img-fluid" style="max-width: 80px;">
                     </div>
                     <h4 class="text-success">Join us!</h4>
                     <p class="text-muted">Create an account to receive many offers</p>
@@ -1005,107 +1005,122 @@
             window.location.href = authUrl;
         });
     
-        // Kiểm tra đã đăng nhập chưa
-        $.get('google_login.php?get_user=1', function(data) {
-            if (data && data.picture) {
-                // Ẩn nút login
-                $('.user-actions .login-btn').hide();
-                // Xóa avatar cũ nếu có
-                $('#userAvatar').remove();
-                // Thêm avatar
-                $('.user-actions').append(`
-                    <div id="userAvatar" style="display:inline-block;position:relative;cursor:pointer;">
-                        <img src="${data.picture}" alt="avatar" style="width:40px;height:40px;border-radius:50%;border:2px solid #28a745;object-fit:cover;">
-                        <div id="userDropdown" style="display:none;position:absolute;right:0;top:48px;min-width:220px;background:#fff;border:1px solid #ccc;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.15);z-index:9999;padding:16px 12px 12px 12px;text-align:center;">
-                            <div style='font-weight:500;margin-bottom:8px;'>${data.email}</div>
-                            <a href="logout.php" class="btn btn-outline-danger btn-sm w-100">
-                                <i class="fas fa-sign-out-alt me-2"></i>Đăng xuất
-                            </a>
-                        </div>
-                    </div>
-                `);
-                // Sự kiện click avatar
-                $(document).on('click', '#userAvatar img', function(e) {
-                    e.stopPropagation();
-                    $('#userDropdown').toggle();
-                });
-                // Ẩn popup khi click ra ngoài
-                $(document).on('click', function(e) {
-                    if (!$(e.target).closest('#userAvatar').length) {
-                        $('#userDropdown').hide();
-                    }
-                });
+        // Đăng ký tài khoản thường
+        $('#registerForm').on('submit', function(e) {
+            e.preventDefault();
+            const data = {
+                email: $('#registerEmail').val(),
+                password: $('#registerPassword').val(),
+                full_name: $('#registerFirstName').val() + ' ' + $('#registerLastName').val()
+            };
+            fetch('backend/auth/register.php', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(data)
+            })
+            .then(res => res.json())
+            .then(res => {
+                if (res.success) {
+                    alert('Đăng ký thành công! Vui lòng đăng nhập.');
+                    // Chuyển sang popup đăng nhập
+                    $('#loginModal').modal('show');
+                    $('#registerModal').modal('hide');
+                } else {
+                    alert(res.message);
+                }
+            });
+        });
+    
+        // Đăng nhập tài khoản thường
+        $('#loginForm').on('submit', function(e) {
+            e.preventDefault();
+            const data = {
+                email: $('#loginEmail').val(),
+                password: $('#loginPassword').val()
+            };
+            fetch('backend/auth/login.php', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(data)
+            })
+            .then(res => res.json())
+            .then(res => {
+                if (res.success) {
+                    location.reload();
+                } else {
+                    alert(res.message);
+                }
+            });
+        });
+    
+        // Sửa sự kiện nút Checkout để mở modal shipping
+        $(document).on('click', '#checkoutBtn', function() {
+          $('#cartModal').modal('hide');
+          setTimeout(function() {
+            $('#shippingModal').modal('show');
+          }, 400);
+        });
+    
+        // Cập nhật tóm tắt đơn hàng khi mở modal shipping
+        $('#shippingModal').on('show.bs.modal', function() {
+          const items = JSON.parse(localStorage.getItem('greentools_cart') || '[]');
+          let html = '<ul class="list-group">';
+          let total = 0;
+          items.forEach(item => {
+            html += `<li class="list-group-item d-flex justify-content-between align-items-center">
+              ${item.name} <span>${item.quantity} x ${item.price.toLocaleString('vi-VN')}đ</span>
+            </li>`;
+            total += item.quantity * item.price;
+          });
+          html += `</ul><div class="mt-2 text-end"><strong>Tổng cộng: ${total.toLocaleString('vi-VN')}đ</strong></div>`;
+          $('#orderSummary').html(html);
+        });
+    
+        // Validate form trước khi gửi
+        $('#shippingForm').on('submit', async function(e) {
+          e.preventDefault();
+          var $btn = $(this).find('button[type="submit"]');
+          var originalHtml = $btn.html();
+          $btn.prop('disabled', true).html('<span class="spinner-border spinner-border-sm me-2"></span>Đang xử lý...');
+          const customerInfo = {
+            name: $('#shippingName').val().trim(),
+            phone: $('#shippingPhone').val().trim(),
+            email: $('#shippingEmail').val().trim(),
+            address: $('#shippingAddress').val().trim(),
+            note: $('#shippingNote').val().trim(),
+            payment: $('#shippingPayment').val()
+          };
+          if (!customerInfo.name || !customerInfo.phone.match(/^0[0-9]{9,10}$/) || !customerInfo.email || !customerInfo.address) {
+            alert('Vui lòng nhập đầy đủ và đúng định dạng các trường bắt buộc!');
+            return;
+          }
+          const items = JSON.parse(localStorage.getItem('greentools_cart') || '[]');
+          if (!items.length) {
+            alert('Giỏ hàng trống!');
+            return;
+          }
+          const orderData = { items, customerInfo };
+          try {
+            const response = await fetch('http://localhost:3000/api/order', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(orderData)
+            });
+            const result = await response.json();
+            if (result.success) {
+              alert('Đặt hàng thành công! Vui lòng kiểm tra email xác nhận.');
+              localStorage.removeItem('greentools_cart');
+              $('#shippingModal').modal('hide');
+              updateCartDisplay && updateCartDisplay();
+            } else {
+              alert('Có lỗi khi đặt hàng: ' + result.message);
             }
-        }, 'json');
+          } catch (err) {
+            alert('Không thể kết nối máy chủ!');
+          }
+          $btn.prop('disabled', false).html(originalHtml);
+        });
     });
     </script>
-    <script>
-// Cập nhật tóm tắt đơn hàng khi mở modal shipping
-$('#shippingModal').on('show.bs.modal', function() {
-  const items = JSON.parse(localStorage.getItem('greentools_cart') || '[]');
-  let html = '<ul class="list-group">';
-  let total = 0;
-  items.forEach(item => {
-    html += `<li class="list-group-item d-flex justify-content-between align-items-center">
-      ${item.name} <span>${item.quantity} x ${item.price.toLocaleString('vi-VN')}đ</span>
-    </li>`;
-    total += item.quantity * item.price;
-  });
-  html += `</ul><div class="mt-2 text-end"><strong>Tổng cộng: ${total.toLocaleString('vi-VN')}đ</strong></div>`;
-  $('#orderSummary').html(html);
-});
-// Sửa sự kiện nút Checkout để mở modal shipping
-$(document).on('click', '#checkoutBtn', function() {
-  const items = JSON.parse(localStorage.getItem('greentools_cart') || '[]');
-  if (!items.length) {
-    alert('Giỏ hàng trống!');
-    return;
-  }
-  $('#cartModal').modal('hide');
-  setTimeout(function() {
-    $('#shippingModal').modal('show');
-  }, 400);
-});
-// Validate form trước khi gửi
-$('#shippingForm').on('submit', async function(e) {
-  e.preventDefault();
-  const customerInfo = {
-    name: $('#shippingName').val().trim(),
-    phone: $('#shippingPhone').val().trim(),
-    email: $('#shippingEmail').val().trim(),
-    address: $('#shippingAddress').val().trim(),
-    note: $('#shippingNote').val().trim(),
-    payment: $('#shippingPayment').val()
-  };
-  if (!customerInfo.name || !customerInfo.phone.match(/^0[0-9]{9,10}$/) || !customerInfo.email || !customerInfo.address) {
-    alert('Vui lòng nhập đầy đủ và đúng định dạng các trường bắt buộc!');
-    return;
-  }
-  const items = JSON.parse(localStorage.getItem('greentools_cart') || '[]');
-  if (!items.length) {
-    alert('Giỏ hàng trống!');
-    return;
-  }
-  const orderData = { items, customerInfo };
-  try {
-    const response = await fetch('http://localhost:3000/api/order', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(orderData)
-    });
-    const result = await response.json();
-    if (result.success) {
-      alert('Đặt hàng thành công! Vui lòng kiểm tra email xác nhận.');
-      localStorage.removeItem('greentools_cart');
-      $('#shippingModal').modal('hide');
-      updateCartDisplay && updateCartDisplay();
-    } else {
-      alert('Có lỗi khi đặt hàng: ' + result.message);
-    }
-  } catch (err) {
-    alert('Không thể kết nối server!');
-  }
-});
-</script>
 </body>
 </html> 

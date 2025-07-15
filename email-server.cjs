@@ -72,30 +72,49 @@ app.post('/api/order', async (req, res) => {
     orderDetails.items.forEach(item => {
         totalAmount += item.quantity * item.price;
     });
-    // Nội dung email gửi cho shop
+    // Nội dung email gửi cho shop (giao diện giống email khách, chỉ khác nội dung)
     let emailContentShop = `
-      <h2>Đơn hàng mới từ website Green Groves!</h2>
-      ${customerInfoHtml}
-      <h3>Chi tiết sản phẩm:</h3>
-      ${productTable}
-      <p><strong>Tổng cộng:</strong> ${totalAmount.toLocaleString('vi-VN')}đ</p>
-      <p>Vui lòng kiểm tra đơn hàng và liên hệ với khách hàng.</p>
+      <div style="font-family:Arial,sans-serif;max-width:600px;margin:auto;background:#f9f9f9;padding:32px 24px;border-radius:12px;border:1px solid #e0e0e0;">
+        <div style="text-align:center;margin-bottom:24px;">
+          <img src='https://i.imgur.com/2yaf2wb.png' alt='Green Groves' style='height:48px;margin-bottom:8px;'>
+          <h2 style="color:#388e3c;margin:0;font-size:26px;">Có đơn hàng mới từ <span style='color:#2e7d32;'>Green Groves</span>!</h2>
+        </div>
+        <p style="font-size:16px;">Khách hàng <strong>${orderDetails.customerInfo.name}</strong> vừa đặt hàng trên website. Thông tin chi tiết:</p>
+        <div style="background:#fff;border-radius:8px;padding:16px 20px;margin:18px 0 24px 0;border:1px solid #e0e0e0;">
+          ${customerInfoHtml}
+        </div>
+        <h3 style="color:#388e3c;font-size:18px;margin-bottom:8px;">Chi tiết sản phẩm</h3>
+        ${productTable}
+        <p style="margin-top:12px;font-size:16px;"><strong>Tổng cộng:</strong> <span style='color:#d32f2f;font-size:18px;'>${totalAmount.toLocaleString('vi-VN')}đ</span></p>
+        <p style="margin-top:18px;font-size:15px;">Vui lòng kiểm tra đơn hàng và liên hệ với khách hàng để xác nhận/giao hàng.</p>
+        <div style="margin:28px 0 0 0;padding:16px 0 0 0;border-top:1px solid #e0e0e0;">
+          <p style="font-size:15px;margin-bottom:4px;color:#388e3c;"><b>Green Groves - Đối tác tin cậy của bạn!</b></p>
+          <p style="font-size:14px;margin:0;color:#888;">Địa chỉ shop: 10A P. Nguyễn Lân, Phương Liệt, Thanh Xuân, Hà Nội 100000, Vietnam</p>
+          <p style="font-size:13px;color:#aaa;margin-top:8px;">Đây là email tự động, vui lòng không trả lời email này.</p>
+        </div>
+      </div>
     `;
     // Nội dung email gửi cho khách hàng
     let emailContentCustomer = `
-      <div style="font-family:Arial,sans-serif;max-width:600px;margin:auto;">
-        <h2 style="color:#388e3c;">Cảm ơn bạn đã đặt hàng tại Green Groves!</h2>
-        <p>Xin chào <strong>${orderDetails.customerInfo.name}</strong>,</p>
-        <p>Chúng tôi đã nhận được đơn hàng của bạn với thông tin như sau:</p>
-        ${customerInfoHtml}
-        <h3>Chi tiết sản phẩm:</h3>
+      <div style="font-family:Arial,sans-serif;max-width:600px;margin:auto;background:#f9f9f9;padding:32px 24px;border-radius:12px;border:1px solid #e0e0e0;">
+        <div style="text-align:center;margin-bottom:24px;">
+          <img src='https://i.imgur.com/2yaf2wb.png' alt='Green Groves' style='height:48px;margin-bottom:8px;'>
+          <h2 style="color:#388e3c;margin:0;font-size:26px;">Cảm ơn bạn đã đặt hàng tại <span style='color:#2e7d32;'>Green Groves</span>!</h2>
+        </div>
+        <p style="font-size:16px;">Xin chào <strong>${orderDetails.customerInfo.name}</strong>,</p>
+        <p style="font-size:15px;">Chúng tôi rất cảm ơn bạn đã tin tưởng lựa chọn sản phẩm của <b>Green Groves</b>. Đơn hàng của bạn đã được ghi nhận với thông tin như sau:</p>
+        <div style="background:#fff;border-radius:8px;padding:16px 20px;margin:18px 0 24px 0;border:1px solid #e0e0e0;">
+          ${customerInfoHtml}
+        </div>
+        <h3 style="color:#388e3c;font-size:18px;margin-bottom:8px;">Chi tiết sản phẩm</h3>
         ${productTable}
-        <p style="margin-top:8px;"><strong>Tổng cộng:</strong> ${totalAmount.toLocaleString('vi-VN')}đ</p>
-        <p style="margin-top:16px;">Chúng tôi sẽ liên hệ xác nhận và giao hàng trong thời gian sớm nhất.</p>
-        <p style="margin-top:8px;">Nếu có bất kỳ thắc mắc nào, bạn vui lòng liên hệ lại với chúng tôi qua email <a href="mailto:${process.env.SHOP_EMAIL}">${process.env.SHOP_EMAIL}</a> hoặc số điện thoại trên website.</p>
-        <p style="margin-top:16px;color:#388e3c;"><strong>Green Groves kính chúc bạn nhiều sức khỏe và niềm vui trong công việc làm vườn!</strong></p>
-        <hr style="margin:24px 0;">
-        <div style="font-size:13px;color:#888;">Đây là email tự động, vui lòng không trả lời email này.</div>
+        <p style="margin-top:12px;font-size:16px;"><strong>Tổng cộng:</strong> <span style='color:#d32f2f;font-size:18px;'>${totalAmount.toLocaleString('vi-VN')}đ</span></p>
+        <p style="margin-top:18px;font-size:15px;">Chúng tôi sẽ liên hệ xác nhận và giao hàng trong thời gian sớm nhất.<br>Nếu có bất kỳ thắc mắc nào, bạn vui lòng liên hệ lại với chúng tôi qua email <a href="mailto:${process.env.SHOP_EMAIL}" style="color:#388e3c;">${process.env.SHOP_EMAIL}</a> hoặc số điện thoại trên website.</p>
+        <div style="margin:28px 0 0 0;padding:16px 0 0 0;border-top:1px solid #e0e0e0;">
+          <p style="font-size:15px;margin-bottom:4px;color:#388e3c;"><b>Green Groves kính chúc bạn nhiều sức khỏe và niềm vui trong công việc làm vườn!</b></p>
+          <p style="font-size:14px;margin:0;color:#888;">Địa chỉ shop: 10A P. Nguyễn Lân, Phương Liệt, Thanh Xuân, Hà Nội 100000, Vietnam</p>
+          <p style="font-size:13px;color:#aaa;margin-top:8px;">Đây là email tự động, vui lòng không trả lời email này.</p>
+        </div>
       </div>
     `;
     // Gửi cho shop

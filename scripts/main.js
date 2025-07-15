@@ -517,7 +517,45 @@ function googleTranslateElementInit() {
      }, 500);
   });
 
-// Call initialization when document is ready
+// Hàm dùng chung: thay thế nút login thành avatar nếu đã đăng nhập (dùng cho mọi trang)
+function handleUserLoginAvatar() {
+    $.get('/project/google_login.php?get_user=1', function(data) {
+        if (data && (data.picture || data.email)) {
+            $('.user-actions .login-btn').hide();
+            $('#userAvatar').remove();
+            let avatarHtml = '';
+            if (data.picture) {
+                avatarHtml = `<img src="${data.picture}" alt="avatar" style="width:40px;height:40px;border-radius:50%;border:2px solid #28a745;object-fit:cover;">`;
+            } else {
+                const firstChar = data.email ? data.email.charAt(0).toUpperCase() : '?';
+                avatarHtml = `<div style=\"width:40px;height:40px;border-radius:50%;background:#28a745;color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:bold;border:2px solid #28a745;\">${firstChar}</div>`;
+            }
+            $('.user-actions').append(`
+                <div id=\"userAvatar\" style=\"display:inline-block;position:relative;cursor:pointer;\">
+                    ${avatarHtml}
+                    <div id=\"userDropdown\" style=\"display:none;position:absolute;right:0;top:48px;min-width:220px;background:#fff;border:1px solid #ccc;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.15);z-index:9999;padding:16px 12px 12px 12px;text-align:center;\">
+                        <div style='font-weight:500;margin-bottom:8px;'>${data.email}</div>
+                        <a href="/project/logout.php" class="btn btn-outline-danger btn-sm w-100">
+                            <i class="fas fa-sign-out-alt me-2"></i>Đăng xuất
+                        </a>
+                    </div>
+                </div>
+            `);
+            // Sự kiện click avatar
+            $(document).on('click', '#userAvatar img, #userAvatar div', function(e) {
+                e.stopPropagation();
+                $('#userDropdown').toggle();
+            });
+            // Ẩn popup khi click ra ngoài
+            $(document).on('click', function(e) {
+                if (!$(e.target).closest('#userAvatar').length) {
+                    $('#userDropdown').hide();
+                }
+            });
+        }
+    }, 'json');
+}
+
 $(document).ready(function() {
-    initializeBootstrapComponents();
+    handleUserLoginAvatar(); // Luôn gọi hàm này khi load trang để đồng bộ avatar/login trên mọi trang
 });

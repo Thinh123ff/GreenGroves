@@ -157,7 +157,7 @@
     </style>
 </head>
 <body>
-<!-- Header -->
+<!-- Header, user-actions, login-btn, login/register modal, script xử lý login/avatar sẽ được chèn giống index.html -->
 <header id="header" class="header-section">
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container" id="header-container">
@@ -315,10 +315,14 @@
                     </div>
 
                     <!-- Cart Button -->
-                    <div>
+                    <div class="user-actions">
                         <button class="btn btn-outline-success cart-btn" data-bs-toggle="modal" data-bs-target="#cartModal">
                             <i class="fas fa-shopping-cart"></i>
                             <span class="cart-count" id="cartCount">0</span>
+                        </button>
+                        <button class="btn btn-outline-primary login-btn" data-bs-toggle="modal" data-bs-target="#loginModal">
+                            <i class="fas fa-sign-in-alt me-1"></i>
+                            Login
                         </button>
                     </div>
                 </div>
@@ -719,6 +723,194 @@
         </div>
     </main>
 
+    <!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content login-modal">
+            <div class="modal-header login-header">
+                <h5 class="modal-title">
+                    <i class="fas fa-sign-in-alt me-2"></i>Login
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="login-welcome text-center mb-4">
+                    <div class="login-logo mb-3">
+                        <img src="../public/image/logo.png" alt="Green Groves Logo" class="img-fluid" style="max-width: 80px;">
+                    </div>
+                    <h4 class="text-success">Welcome back!</h4>
+                    <p class="text-muted">Login to continue shopping</p>
+                </div>
+                <form id="loginForm">
+                    <div class="mb-3">
+                        <label for="loginEmail" class="form-label">
+                            <i class="fas fa-envelope me-2 text-success"></i>Email
+                        </label>
+                        <input type="email" class="form-control login-input" id="loginEmail" placeholder="Enter your email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="loginPassword" class="form-label">
+                            <i class="fas fa-lock me-2 text-success"></i>Password
+                        </label>
+                        <div class="password-input-group">
+                            <input type="password" class="form-control login-input" id="loginPassword" placeholder="Enter your password" required>
+                            <button type="button" class="btn btn-outline-secondary password-toggle" id="toggleLoginPassword">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mb-3 d-flex justify-content-between align-items-center">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="rememberMe">
+                            <label class="form-check-label" for="rememberMe">Remember me</label>
+                        </div>
+                        <a href="#" class="text-success text-decoration-none" id="forgotPasswordLink">
+                            <i class="fas fa-key me-1"></i>Forgot password?
+                        </a>
+                    </div>
+                    <div class="d-grid mb-3">
+                        <button type="submit" class="btn btn-success btn-lg login-submit-btn">
+                            <i class="fas fa-sign-in-alt me-2"></i>Login
+                        </button>
+                    </div>
+
+                    <!-- Social Login Divider -->
+                    <div class="social-login-divider mb-3">
+                        <span class="divider-text">or</span>
+                    </div>
+
+                    <!-- Social Login Buttons -->
+                    <div class="social-login-buttons mb-3">
+                        <div class="row g-2">
+                            <div class="col-12">
+                                <button type="button" class="btn btn-outline-danger w-100 social-login-btn google-login-btn" id="googleLoginBtn">
+                                    <i class="fab fa-google me-2"></i>Đăng nhập bằng Google
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <p class="text-muted mb-0">Don't have an account?
+                            <a href="#" class="text-success text-decoration-none" id="switchToRegister">
+                                <strong>Register now</strong>
+                            </a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Register Modal -->
+<div class="modal fade" id="registerModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content register-modal">
+            <div class="modal-header register-header">
+                <h5 class="modal-title">
+                    <i class="fas fa-user-plus me-2"></i>Register Account
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="register-welcome text-center mb-4">
+                    <div class="register-logo mb-3">
+                        <img src="../public/image/logo.png" alt="Green Groves Logo" class="img-fluid" style="max-width: 80px;">
+                    </div>
+                    <h4 class="text-success">Join us!</h4>
+                    <p class="text-muted">Create an account to receive many offers</p>
+                </div>
+                <form id="registerForm">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="registerFirstName" class="form-label">
+                                <i class="fas fa-user me-2 text-success"></i>First Name
+                            </label>
+                            <input type="text" class="form-control register-input" id="registerFirstName" placeholder="Enter your first name" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="registerLastName" class="form-label">
+                                <i class="fas fa-user me-2 text-success"></i>Last Name
+                            </label>
+                            <input type="text" class="form-control register-input" id="registerLastName" placeholder="Enter your last name" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="registerEmail" class="form-label">
+                            <i class="fas fa-envelope me-2 text-success"></i>Email
+                        </label>
+                        <input type="email" class="form-control register-input" id="registerEmail" placeholder="Enter your email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="registerPhone" class="form-label">
+                            <i class="fas fa-phone me-2 text-success"></i>Phone Number
+                        </label>
+                        <input type="tel" class="form-control register-input" id="registerPhone" placeholder="Enter your phone number" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="registerPassword" class="form-label">
+                            <i class="fas fa-lock me-2 text-success"></i>Password
+                        </label>
+                        <div class="password-input-group">
+                            <input type="password" class="form-control register-input" id="registerPassword" placeholder="Create a password" required>
+                            <button type="button" class="btn btn-outline-secondary password-toggle" id="toggleRegisterPassword">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="registerConfirmPassword" class="form-label">
+                            <i class="fas fa-lock me-2 text-success"></i>Confirm Password
+                        </label>
+                        <div class="password-input-group">
+                            <input type="password" class="form-control register-input" id="registerConfirmPassword" placeholder="Re-enter password" required>
+                            <button type="button" class="btn btn-outline-secondary password-toggle" id="toggleRegisterConfirmPassword">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="agreeTerms" required>
+                        <label class="form-check-label" for="agreeTerms">
+                            I agree to the <a href="#" class="text-success text-decoration-none">terms of use</a>
+                        </label>
+                    </div>
+                    <div class="d-grid mb-3">
+                        <button type="submit" class="btn btn-success btn-lg register-submit-btn">
+                            <i class="fas fa-user-plus me-2"></i>Register
+                        </button>
+                    </div>
+
+                    <!-- Social Login Divider -->
+                    <div class="social-login-divider mb-3">
+                        <span class="divider-text">or</span>
+                    </div>
+
+                    <!-- Social Login Buttons -->
+                    <div class="social-login-buttons mb-3">
+                        <div class="row g-2">
+                            <div class="col-12">
+                                <button type="button" class="btn btn-outline-danger w-100 social-login-btn google-login-btn" id="googleRegisterBtn">
+                                    <i class="fab fa-google me-2"></i>Đăng ký bằng Google
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <p class="text-muted mb-0">Already have an account?
+                            <a href="#" class="text-success text-decoration-none" id="switchToLogin">
+                                <strong>Login now</strong>
+                            </a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
     <!-- Footer -->
     <footer class="bg-dark text-light py-4 mt-5">
         <div class="container">
@@ -829,47 +1021,72 @@
     <script src="../scripts/products.js"></script>
     <script src="../scripts/cart.js"></script>
     <script>
-        // Lưu lại URL hiện tại khi bấm login
-        $('.login-btn').on('click', function() {
-          localStorage.setItem('redirectAfterLogin', window.location.href);
+        $(document).ready(function() {
+        // Xử lý login Google
+        $('#googleLoginBtn').on('click', function() {
+            const clientId = '1022441040470-fr7mdmd7jd4pkodqoc2gn2uc3p1lajpv.apps.googleusercontent.com';
+            const redirectUri = encodeURIComponent('http://localhost/project/project/backend/auth/google_callback.php');
+            const scope = encodeURIComponent('email profile');
+            const authUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}&response_type=code&access_type=online`;
+            window.location.href = authUrl;
         });
-        // Hiển thị avatar nếu đã đăng nhập
-        $.get('google_login.php?get_user=1', function(data) {
-          if (data && data.picture) {
-            $('.user-actions .login-btn').hide();
-            $('#userAvatar').remove();
-            $('.user-actions').append(`
-              <div id="userAvatar" style="display:inline-block;position:relative;cursor:pointer;">
-                <img src="${data.picture}" alt="avatar" style="width:40px;height:40px;border-radius:50%;border:2px solid #28a745;object-fit:cover;">
-                <div id="userDropdown" style="display:none;position:absolute;right:0;top:48px;min-width:220px;background:#fff;border:1px solid #ccc;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.15);z-index:9999;padding:16px 12px 12px 12px;text-align:center;">
-                  <div style='font-weight:500;margin-bottom:8px;'>${data.email}</div>
-                  <a href="logout.php" class="btn btn-outline-danger btn-sm w-100">
-                    <i class="fas fa-sign-out-alt me-2"></i>Đăng xuất
-                  </a>
-                </div>
-              </div>
-            `);
-            // Sự kiện click avatar
-            $(document).on('click', '#userAvatar img', function(e) {
-              e.stopPropagation();
-              $('#userDropdown').toggle();
+    
+        // Đăng ký tài khoản thường
+        $('#registerForm').on('submit', function(e) {
+            e.preventDefault();
+            const data = {
+                email: $('#registerEmail').val(),
+                password: $('#registerPassword').val(),
+                full_name: $('#registerFirstName').val() + ' ' + $('#registerLastName').val()
+            };
+            fetch('backend/auth/register.php', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(data)
+            })
+            .then(res => res.json())
+            .then(res => {
+                if (res.success) {
+                    alert('Đăng ký thành công! Vui lòng đăng nhập.');
+                    // Chuyển sang popup đăng nhập
+                    $('#loginModal').modal('show');
+                    $('#registerModal').modal('hide');
+                } else {
+                    alert(res.message);
+                }
             });
-            // Ẩn popup khi click ra ngoài
-            $(document).on('click', function(e) {
-              if (!$(e.target).closest('#userAvatar').length) {
-                $('#userDropdown').hide();
-              }
+        });
+    
+        // Đăng nhập tài khoản thường
+        $('#loginForm').on('submit', function(e) {
+            e.preventDefault();
+            const data = {
+                email: $('#loginEmail').val(),
+                password: $('#loginPassword').val()
+            };
+            fetch('backend/auth/login.php', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(data)
+            })
+            .then(res => res.json())
+            .then(res => {
+                if (res.success) {
+                    location.reload();
+                } else {
+                    alert(res.message);
+                }
             });
-          }
-        }, 'json');
-        // Sau khi login thành công ở callback, redirect về trang cũ nếu có
-        if (window.location.search.includes('login_success')) {
-          var redirectUrl = localStorage.getItem('redirectAfterLogin');
-          if (redirectUrl) {
-            window.location.href = redirectUrl;
-            localStorage.removeItem('redirectAfterLogin');
-          }
-        }
+        });
+    
+        // Sửa sự kiện nút Checkout để mở modal shipping
+        $(document).on('click', '#checkoutBtn', function() {
+          $('#cartModal').modal('hide');
+          setTimeout(function() {
+            $('#shippingModal').modal('show');
+          }, 400);
+        });
+    
         // Cập nhật tóm tắt đơn hàng khi mở modal shipping
         $('#shippingModal').on('show.bs.modal', function() {
           const items = JSON.parse(localStorage.getItem('greentools_cart') || '[]');
@@ -881,24 +1098,16 @@
             </li>`;
             total += item.quantity * item.price;
           });
-          html += `</ul><div class=\"mt-2 text-end\"><strong>Tổng cộng: ${total.toLocaleString('vi-VN')}đ</strong></div>`;
+          html += `</ul><div class="mt-2 text-end"><strong>Tổng cộng: ${total.toLocaleString('vi-VN')}đ</strong></div>`;
           $('#orderSummary').html(html);
         });
-        // Sửa sự kiện nút Checkout để mở modal shipping
-        $(document).on('click', '#checkoutBtn', function() {
-          const items = JSON.parse(localStorage.getItem('greentools_cart') || '[]');
-          if (!items.length) {
-            alert('Giỏ hàng trống!');
-            return;
-          }
-          $('#cartModal').modal('hide');
-          setTimeout(function() {
-            $('#shippingModal').modal('show');
-          }, 400);
-        });
+    
         // Validate form trước khi gửi
         $('#shippingForm').on('submit', async function(e) {
           e.preventDefault();
+          var $btn = $(this).find('button[type="submit"]');
+          var originalHtml = $btn.html();
+          $btn.prop('disabled', true).html('<span class="spinner-border spinner-border-sm me-2"></span>Đang xử lý...');
           const customerInfo = {
             name: $('#shippingName').val().trim(),
             phone: $('#shippingPhone').val().trim(),
@@ -933,9 +1142,11 @@
               alert('Có lỗi khi đặt hàng: ' + result.message);
             }
           } catch (err) {
-            alert('Không thể kết nối server!');
+            alert('Không thể kết nối máy chủ!');
           }
+          $btn.prop('disabled', false).html(originalHtml);
         });
-        </script>
+    });
+    </script>
 </body>
 </html>
