@@ -1,4 +1,5 @@
 <?php
+ini_set('session.cookie_path', '/');
 session_start();
 
 $client_id = '1022441040470-fr7mdmd7jd4pkodqoc2gn2uc3p1lajpv.apps.googleusercontent.com';
@@ -27,13 +28,13 @@ if (isset($_GET['code'])) {
     $result = file_get_contents($token_url, false, $context);
     $response = json_decode($result, true);
     if (isset($response['access_token'])) {
-        // Lấy thông tin user
+        // Lấy thông tin users
         $access_token = $response['access_token'];
         $user_info = file_get_contents('https://www.googleapis.com/oauth2/v2/userinfo?access_token=' . $access_token);
         $user = json_decode($user_info, true);
         // Lưu user vào session
         $_SESSION['user'] = $user;
-        
+        $_SESSION['user_email'] = $user['email'];
         // Chuyển về trang chủ
         header('Location: /project/index.html');
         exit;

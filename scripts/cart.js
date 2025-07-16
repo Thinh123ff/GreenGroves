@@ -62,13 +62,15 @@ function setupCartEvents() {
 }
 
 let isOrdering = false;
-$(document).on('submit', '#shippingForm', function(e) {
+$(document).on('submit', '#shippingForm', async function(e) {
     e.preventDefault();
     if (isOrdering) return;
     isOrdering = true;
-    const cart = getCart();
-    if (cart.length === 0) {
-        showAlert('Giỏ hàng trống!', 'warning');
+    // Lấy giỏ hàng từ backend (phải await!)
+    const cart = await getCart();
+    console.log('DEBUG cart on submit:', cart);
+    if (!Array.isArray(cart) || cart.length === 0) {
+        showAlert('Cart is empty!', 'warning');
         isOrdering = false;
         return;
     }
@@ -95,196 +97,133 @@ $(document).on('submit', '#shippingForm', function(e) {
         if (data.success) {
             clearCart();
             $('#shippingModal').modal('hide');
-            showAlert('Đặt hàng thành công! Vui lòng kiểm tra email xác nhận.', 'success');
+            showAlert('Order placed successfully! Please check your confirmation email.', 'success');
         } else {
-            showAlert('Có lỗi khi đặt hàng: ' + data.message, 'danger');
+            showAlert('There was an error placing the order: ' + data.message, 'danger');
         }
     })
     .catch(() => {
         isOrdering = false;
-        showAlert('Không thể gửi đơn hàng. Vui lòng thử lại sau!', 'danger');
+        showAlert('Unable to submit order. Please try again later!', 'danger');
     });
 });
 
-// Get cart from localStorage
-function getCart() {
-    const cartData = localStorage.getItem('greentools_cart');
-    return cartData ? JSON.parse(cartData) : [];
+// --- Định nghĩa các hàm gọi API backend cho giỏ hàng ---
+async function apiAddToCart(productId, quantity) {
+    const res = await fetch('/project/project/backend/api/cart_add.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `product_id=${productId}&quantity=${quantity}`
+    });
+    return res.json();
 }
 
-// Save cart to localStorage
-function saveCart(cart) {
-    localStorage.setItem('greentools_cart', JSON.stringify(cart));
-    updateCartDisplay();
+async function apiRemoveFromCart(productId) {
+    const res = await fetch('/project/project/backend/api/cart_delete.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `product_id=${productId}`
+    });
+    return res.json();
 }
 
-// Add item to cart
-function addToCart(productId, quantity = 1) {
+async function apiGetCart() {
+    const res = await fetch('/project/project/backend/api/cart_get.php');
+    return res.json();
+}
+
+// --- Ghi đè các hàm thao tác giỏ hàng để dùng API ---
+
+async function getCart() {
+    const res = await fetch('/project/project/backend/api/cart_get.php');
+    const cartRaw = await res.json();
+    // Map dữ liệu từ API với products.js
+    return cartRaw.map(item => {
+        const prod = getProductById(Number(item.product_id));
+        return prod ? {
+            ...prod,
+            quantity: Number(item.quantity)
+        } : null;
+    }).filter(Boolean);
+}
+
+async function addToCart(productId, quantity = 1) {
     const product = getProductById(productId);
     if (!product) {
         showAlert('Product not found!', 'danger');
         return false;
     }
-    
     if (!product.inStock) {
         showAlert('This product is currently out of stock!', 'warning');
         return false;
     }
-    
-    const cart = getCart();
-    const existingItem = cart.find(item => item.id === productId);
-    
-    if (existingItem) {
-        existingItem.quantity += quantity;
-        existingItem.updatedAt = new Date().toISOString();
+    const data = await apiAddToCart(productId, quantity);
+    if (data.success) {
+        showAlert(`Added "${product.name}" to cart!`, 'success');
+        animateCartIcon();
+        await updateCartDisplay();
+        if ($('#cartModal').is(':visible')) await updateCartModal();
+        return true;
     } else {
-        cart.push({
-            id: product.id,
-            name: product.name,
-            price: product.price,
-            image: product.image,
-            quantity: quantity,
-            addedAt: new Date().toISOString(),
-            updatedAt: new Date().toISOString()
-        });
+        showAlert('You need to log in to add to cart!', 'warning');
+        return false;
     }
-    
-    saveCart(cart);
-    showAlert(`Added "${product.name}" to cart!`, 'success');
-    
-    // Trigger cart animation
-    animateCartIcon();
-    
+}
+
+async function removeFromCart(productId) {
+    await apiRemoveFromCart(productId);
+    await updateCartDisplay();
+    if ($('#cartModal').is(':visible')) await updateCartModal();
     return true;
 }
 
-// Remove item from cart
-function removeFromCart(productId) {
-    const cart = getCart();
-    const itemIndex = cart.findIndex(item => item.id === productId);
-    
-    if (itemIndex === -1) {
-        showAlert('Product not found in cart!', 'warning');
-        return false;
-    }
-    
-    const removedItem = cart[itemIndex];
-    cart.splice(itemIndex, 1);
-    
-    saveCart(cart);
-    showAlert(`Removed "${removedItem.name}" from cart!`, 'info');
-    
-    // Update cart modal if open
-    if ($('#cartModal').hasClass('show')) {
-        updateCartModal();
-    }
-    
-    return true;
-}
-
-// Update item quantity
-function updateQuantity(productId, change) {
-    const cart = getCart();
-    const item = cart.find(item => item.id === productId);
-    
-    if (!item) {
-        showAlert('Product not found in cart!', 'warning');
-        return false;
-    }
-    
+async function updateQuantity(productId, change) {
+    const cart = await getCart();
+    const item = cart.find(i => i.id === productId || i.product_id === productId);
+    if (!item) return false;
     const newQuantity = item.quantity + change;
-    
     if (newQuantity <= 0) {
-        removeFromCart(productId);
-        return true;
+        await removeFromCart(productId);
+    } else {
+        await addToCart(productId, newQuantity);
     }
-    
-    // Check stock availability
-    const product = getProductById(productId);
-    if (product && product.maxQuantity && newQuantity > product.maxQuantity) {
-        showAlert(`You can only order up to ${product.maxQuantity} of this product!`, 'warning');
-        return false;
-    }
-    
-    item.quantity = newQuantity;
-    item.updatedAt = new Date().toISOString();
-    
-    saveCart(cart);
-    
-    // Update cart modal if open
-    if ($('#cartModal').hasClass('show')) {
-        updateCartModal();
-    }
-    
+    await updateCartDisplay();
+    if ($('#cartModal').is(':visible')) await updateCartModal();
     return true;
 }
 
-// Set exact quantity
-function setQuantity(productId, quantity) {
+async function setQuantity(productId, quantity) {
     if (quantity <= 0) {
-        removeFromCart(productId);
-        return true;
+        await removeFromCart(productId);
+    } else {
+        await addToCart(productId, quantity);
     }
-    
-    const cart = getCart();
-    const item = cart.find(item => item.id === productId);
-    
-    if (!item) {
-        showAlert('Product not found in cart!', 'warning');
-        return false;
-    }
-    
-    // Check stock availability
-    const product = getProductById(productId);
-    if (product && product.maxQuantity && quantity > product.maxQuantity) {
-        showAlert(`You can only order up to ${product.maxQuantity} of this product!`, 'warning');
-        return false;
-    }
-    
-    item.quantity = quantity;
-    item.updatedAt = new Date().toISOString();
-    
-    saveCart(cart);
-    
-    // Update cart modal if open
-    if ($('#cartModal').hasClass('show')) {
-        updateCartModal();
-    }
-    
+    await updateCartDisplay();
+    if ($('#cartModal').is(':visible')) await updateCartModal();
     return true;
 }
 
-// Clear entire cart
-function clearCart() {
-    localStorage.removeItem('greentools_cart');
-    updateCartDisplay();
-    
-    // Update cart modal if open
-    if ($('#cartModal').hasClass('show')) {
-        updateCartModal();
+async function clearCart() {
+    const cart = await getCart();
+    for (const item of cart) {
+        await apiRemoveFromCart(item.id || item.product_id);
     }
-    
+    await updateCartDisplay();
+    if ($('#cartModal').is(':visible')) await updateCartModal();
     showAlert('All items have been removed from the cart!', 'info');
 }
 
 // Calculate cart totals
-function calculateCartTotals() {
-    const cart = getCart();
-    
+function calculateCartTotals(cart) {
     const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
     const itemCount = cart.reduce((total, item) => total + item.quantity, 0);
-    
     // Calculate shipping (free shipping for orders over 500k)
     const shipping = subtotal >= 500000 ? 0 : 30000;
-    
     // Calculate tax (10%)
     const tax = Math.round(subtotal * 0.1);
-    
     // Calculate discount (if any)
     const discount = calculateDiscount(subtotal);
-    
     const total = subtotal + shipping + tax - discount;
-    
     return {
         subtotal,
         shipping,
@@ -306,9 +245,9 @@ function calculateDiscount(subtotal) {
     return 0;
 }
 
-// Update cart display (cart count badge)
-function updateCartDisplay() {
-    const cart = getCart();
+// --- Ghi đè các hàm hiển thị để đồng bộ với async ---
+async function updateCartDisplay() {
+    const cart = await getCart();
     const itemCount = cart.reduce((total, item) => total + item.quantity, 0);
     
     $('#cartCount').text(itemCount);
@@ -324,11 +263,12 @@ function updateCartDisplay() {
     $('.navbar .cart-count').text(itemCount);
 }
 
-// Update cart modal content
-function updateCartModal() {
-    const cart = getCart();
+async function updateCartModal() {
+    const cart = await getCart();
+    console.log('DEBUG cart in updateCartModal:', cart);
     const cartItemsContainer = $('#cartItems');
-    
+    const checkoutBtn = $('#checkoutBtn');
+
     if (cart.length === 0) {
         cartItemsContainer.html(`
             <div class="empty-cart text-center py-4">
@@ -338,26 +278,25 @@ function updateCartModal() {
                 <button class="btn btn-primary" data-bs-dismiss="modal">Continue shopping</button>
             </div>
         `);
-        
         $('#cartTotal').text('0đ');
-        $('#checkoutBtn').prop('disabled', true);
+        checkoutBtn.prop('disabled', true); // Disable khi giỏ hàng trống
         return;
     }
-    
+
     // Generate cart items HTML
     let cartItemsHTML = '';
     cart.forEach(item => {
         cartItemsHTML += createCartItemHTML(item);
     });
-    
+
     cartItemsContainer.html(cartItemsHTML);
-    
+
     // Update totals
-    const totals = calculateCartTotals();
+    const totals = calculateCartTotals(cart);
     updateCartTotals(totals);
-    
-    // Enable checkout button
-    $('#checkoutBtn').prop('disabled', false);
+
+    // Enable checkout button nếu có sản phẩm
+    checkoutBtn.prop('disabled', false);
 }
 
 // Create cart item HTML
@@ -437,7 +376,7 @@ function processCheckout() {
         return;
     }
     
-    const totals = calculateCartTotals();
+    const totals = calculateCartTotals(cart);
     
     // Show checkout confirmation
     const confirmHTML = `
@@ -582,7 +521,7 @@ function cleanupCart() {
 // Get cart summary for other parts of the application
 function getCartSummary() {
     const cart = getCart();
-    const totals = calculateCartTotals();
+    const totals = calculateCartTotals(cart);
     
     return {
         itemCount: totals.itemCount,

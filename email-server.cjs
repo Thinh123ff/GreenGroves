@@ -28,6 +28,14 @@ app.post('/api/order', async (req, res) => {
     if (!orderDetails || !orderDetails.items || !orderDetails.customerInfo) {
         return res.status(400).json({ success: false, message: 'Dữ liệu đơn hàng không hợp lệ.' });
     }
+    // ĐẢM BẢO orderDetails.items luôn là array
+    if (!Array.isArray(orderDetails.items)) {
+        if (orderDetails.items && typeof orderDetails.items === 'object') {
+            orderDetails.items = Object.values(orderDetails.items);
+        } else {
+            orderDetails.items = [];
+        }
+    }
 
     // Thông tin khách hàng
     let customerInfoHtml = `
@@ -72,6 +80,20 @@ app.post('/api/order', async (req, res) => {
     orderDetails.items.forEach(item => {
         totalAmount += item.quantity * item.price;
     });
+    // Thông tin ngân hàng và mã QR
+    const bankInfoHtml = `
+      <div style="margin-top:18px;">
+        <h4 style="color:#388e3c;">Thông tin chuyển khoản ngân hàng</h4>
+        <p><b>Ngân hàng:</b> Vietcombank</p>
+        <p><b>Chủ tài khoản:</b> Nguyễn Xuân Đức</p>
+        <p><b>Số tài khoản:</b> 1001201331</p>
+        <div style="margin:12px 0;">
+          <img src="https://img.vietqr.io/image/VCB-1001201331-compact2.png?accountName=Nguyen%20Xuan%20Duc" alt="QR chuyển khoản Vietcombank" style="max-width:180px;">
+        </div>
+        <p style="font-size:13px;color:#888;">Quét mã QR hoặc chuyển khoản theo thông tin trên. Nội dung: <b>Họ tên + SĐT</b></p>
+      </div>
+    `;
+
     // Nội dung email gửi cho shop (giao diện giống email khách, chỉ khác nội dung)
     let emailContentShop = `
       <div style="font-family:Arial,sans-serif;max-width:600px;margin:auto;background:#f9f9f9;padding:32px 24px;border-radius:12px;border:1px solid #e0e0e0;">
@@ -109,6 +131,7 @@ app.post('/api/order', async (req, res) => {
         <h3 style="color:#388e3c;font-size:18px;margin-bottom:8px;">Chi tiết sản phẩm</h3>
         ${productTable}
         <p style="margin-top:12px;font-size:16px;"><strong>Tổng cộng:</strong> <span style='color:#d32f2f;font-size:18px;'>${totalAmount.toLocaleString('vi-VN')}đ</span></p>
+        ${bankInfoHtml}
         <p style="margin-top:18px;font-size:15px;">Chúng tôi sẽ liên hệ xác nhận và giao hàng trong thời gian sớm nhất.<br>Nếu có bất kỳ thắc mắc nào, bạn vui lòng liên hệ lại với chúng tôi qua email <a href="mailto:${process.env.SHOP_EMAIL}" style="color:#388e3c;">${process.env.SHOP_EMAIL}</a> hoặc số điện thoại trên website.</p>
         <div style="margin:28px 0 0 0;padding:16px 0 0 0;border-top:1px solid #e0e0e0;">
           <p style="font-size:15px;margin-bottom:4px;color:#388e3c;"><b>Green Groves kính chúc bạn nhiều sức khỏe và niềm vui trong công việc làm vườn!</b></p>

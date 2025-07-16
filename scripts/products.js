@@ -1309,6 +1309,7 @@ function updateCartDisplay() {
 function getProductById(id) {
     return products.find(product => product.id === id);
 }
+window.getProductById = getProductById;
 
 // Utility function for formatting currency
 function formatCurrency(amount) {

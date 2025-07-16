@@ -24,6 +24,51 @@ $(document).ready(function() {
         $('#registerModal').modal('hide');
         $('#loginModal').modal('show');
     });
+
+    // Sửa lại sự kiện submit form đăng ký
+    $(document).on('submit', '#registerForm', function(e) {
+        e.preventDefault();
+        const firstName = $('#registerFirstName').val();
+        const lastName = $('#registerLastName').val();
+        const email = $('#registerEmail').val();
+        const password = $('#registerPassword').val();
+        // Ghép tên
+        const username = firstName + ' ' + lastName;
+        const full_name = username;
+        // Gửi bằng jQuery $.post để đảm bảo đúng định dạng x-www-form-urlencoded
+        $.post('/project/project/backend/auth/register.php', {
+            username: username,
+            password: password,
+            email: email,
+            full_name: full_name
+        }, function(res) {
+            if (res.success) {
+                alert('Đăng ký thành công! Vui lòng đăng nhập.');
+                $('#registerModal').modal('hide');
+                $('#loginModal').modal('show');
+            } else {
+                alert(res.message);
+            }
+        }, 'json');
+    });
+
+    // Sửa lại sự kiện submit form đăng nhập
+    $(document).on('submit', '#loginForm', function(e) {
+        e.preventDefault();
+        const username = $('#loginEmail').val();
+        const password = $('#loginPassword').val();
+        $.post('/project/project/backend/auth/login.php', {
+            username: username,
+            password: password
+        }, function(res) {
+            if (res.success) {
+                alert('Đăng nhập thành công!');
+                location.reload();
+            } else {
+                alert(res.message);
+            }
+        }, 'json');
+    });
 });
 
 // Initialize website functionality
@@ -552,10 +597,14 @@ function handleUserLoginAvatar() {
                     $('#userDropdown').hide();
                 }
             });
+        } else {
+            // Nếu chưa đăng nhập, đảm bảo nút login hiển thị
+            $('.user-actions .login-btn').show();
+            $('#userAvatar').remove();
         }
     }, 'json');
 }
 
 $(document).ready(function() {
-    handleUserLoginAvatar(); // Luôn gọi hàm này khi load trang để đồng bộ avatar/login trên mọi trang
+    handleUserLoginAvatar(); // Luôn gọi hàm này khi load trang để đồng bộ avatar/login trên index.html
 });

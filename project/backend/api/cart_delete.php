@@ -1,21 +1,21 @@
 <?php
-include_once '../config/config.php';
-
+ini_set('session.cookie_path', '/');
+session_start();
+require_once '../config/config.php';
 header('Content-Type: application/json');
 
-$user_id = $_POST['user_id'] ?? null;
-$product_id = $_POST['product_id'] ?? null;
-
-if (!$user_id || !$product_id) {
-    echo json_encode(['success' => false, 'message' => 'Thiếu user_id hoặc product_id']);
+if (!isset($_SESSION['user_email'])) {
+    http_response_code(401);
+    echo json_encode(['error' => 'Not logged in']);
     exit;
 }
 
-try {
-    $sql = "DELETE FROM cart WHERE user_id = ? AND product_id = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->execute([$user_id, $product_id]);
-    echo json_encode(['success' => true, 'message' => 'Đã xóa sản phẩm khỏi giỏ hàng']);
-} catch (PDOException $e) {
-    echo json_encode(['success' => false, 'message' => $e->getMessage()]);
-} 
+$user_email = $_SESSION['user_email'];
+$product_id = $_POST['product_id'];
+
+$sql = "DELETE FROM cart WHERE user_email=? AND product_id=?";
+$stmt = $conn->prepare($sql);
+$stmt->execute([$user_email, $product_id]);
+
+echo json_encode(['success' => true]);
+?> 

@@ -1,24 +1,19 @@
 <?php
-include_once '../config/config.php';
-
+ini_set('session.cookie_path', '/');
+session_start();
+require_once '../config/config.php';
 header('Content-Type: application/json');
 
-$user_id = $_GET['user_id'] ?? $_POST['user_id'] ?? null;
-
-if (!$user_id) {
-    echo json_encode(['success' => false, 'message' => 'Thiếu user_id']);
+if (!isset($_SESSION['user_email'])) {
+    http_response_code(401);
+    echo json_encode(['error' => 'Not logged in']);
     exit;
 }
 
-try {
-    $sql = "SELECT cart.product_id, cart.quantity, products.name, products.price, products.description
-            FROM cart
-            JOIN products ON cart.product_id = products.id
-            WHERE cart.user_id = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->execute([$user_id]);
-    $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    echo json_encode(['success' => true, 'data' => $items]);
-} catch (PDOException $e) {
-    echo json_encode(['success' => false, 'message' => $e->getMessage()]);
-} 
+$user_email = $_SESSION['user_email'];
+$sql = "SELECT * FROM cart WHERE user_email=?";
+$stmt = $conn->prepare($sql);
+$stmt->execute([$user_email]);
+$cart = $stmt->fetchAll(PDO::FETCH_ASSOC);
+echo json_encode($cart);
+?> 
