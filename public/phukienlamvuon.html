@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garden Accessories - Green Groves</title>
+    <link rel="icon" type="image/x-icon" href="./favicon_io/favicon.ico">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../styles/main.css">
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit&v=2"></script>
+    
+    <style>
+        main{
+            margin-top: 15vh !important;
+        }
+        .accessory-category {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .accessory-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .accessory-item {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border-left: 4px solid #28a745;
+        }
+        
+        .accessory-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+        }
+        
+        .accessory-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        
+        .accessory-title {
+            color: #2c3e50;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .accessory-description {
+            color: #6c757d;
+            line-height: 1.6;
+        }
+        
+        .accessory-features {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0;
+        }
+        
+        .accessory-features li {
+            padding: 5px 0;
+            color: #495057;
+        }
+        
+        .accessory-features li:before {
+            content: "✓";
+            color: #28a745;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        
+        .category-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            border-radius: 15px;
+        }
+        
+        .category-header h2 {
+            margin: 0;
+            font-weight: 600;
+        }
+        
+        .category-header p {
+            margin: 10px 0 0 0;
+            opacity: 0.9;
+        }
+        
+        .accessory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .price-tag {
+            background: #ffc107;
+            color: #212529;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        
+        .quality-badge {
+            background: #28a745;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            margin-left: 10px;
+        }
+        
+        .usage-info {
+            background: #e8f5e8;
+            color: #2e7d32;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            margin: 10px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .accessory-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .accessory-category {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Header, user-actions, login-btn, login/register modal, script xử lý login/avatar sẽ được chèn giống index.html -->
+<header id="header" class="header-section">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container" id="header-container">
+            <!-- Logo and Visit Counter -->
+            <div class="d-flex align-items-center">
+                <a class="navbar-brand me-4" href="../index.html">
+                    <div class="d-flex align-items-center">
+                        <div class="logo-icon">
+                            <img src="../public/image/logo.png" alt="Green Groves Logo" class="img-fluid" style="max-width: 50px;">
+                        </div>
+                        <div class="ms-2">
+                            <h4 class="mb-0 brand-name">Green Groves</h4>
+                            <small class="brand-subtitle">Gardening Tools</small>
+                        </div>
+                    </div>
+                </a>
+                <div class="visit-counter d-none d-sm-block">
+                    <div class="icon-views">
+                        <i class="fas fa-eye me-1"></i>
+                        <span id="visitCount">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navigation Menu -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="titleMenuMobile">
+                    <ul class="navbar">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../index.html">
+                                <i class="fas fa-home me-1"></i>Home
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="kythuatvameo.html">
+                                <i class="fas fa-seedling me-1"></i>Techniques & Tips
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="congcualamvuon.html">
+                                <i class="fas fa-tools me-1"></i>Gardening Tools
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="yeutocanthietcholamvuon.html">
+                                <i class="fas fa-list-check me-1"></i>Essentials
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="chauvavatchua.html">
+                                <i class="fas fa-box me-1"></i>Pots & Containers
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="goiysanpham.html">
+                                <i class="fas fa-lightbulb me-1"></i>Product Suggestions
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="videogiaoduc.html">
+                                <i class="fas fa-video me-1"></i>Introduction Video
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="sachlienquan.html">
+                                <i class="fas fa-book me-1"></i>Related Books
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="gioithieuvalienhe.html">
+                                <i class="fas fa-info-circle me-1"></i>About & Contact
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="navbarMobile">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">
+                            <i class="fas fa-home me-1"></i>Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="kythuatvameo.html">
+                            <i class="fas fa-seedling me-1"></i>Techniques & Tips
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="congcualamvuon.html">
+                            <i class="fas fa-tools me-1"></i>Gardening Tools
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="yeutocanthietcholamvuon.html">
+                            <i class="fas fa-list-check me-1"></i>Essentials
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="chauvavatchua.html">
+                            <i class="fas fa-box me-1"></i>Pots & Containers
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="goiysanpham.html">
+                            <i class="fas fa-lightbulb me-1"></i>Product Suggestions
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="videogiaoduc.html">
+                            <i class="fas fa-video me-1"></i>Introduction Video
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sachlienquan.html">
+                            <i class="fas fa-book me-1"></i>Related Books
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="gioithieuvalienhe.html">
+                            <i class="fas fa-info-circle me-1"></i>About & Contact
+                        </a>
+                    </li>
+                </ul>
+                <!-- Menu PC dạng dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="menuDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-bars me-1"></i> Categories
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="menuDropdown">
+                        <li><a class="dropdown-item" href="../index.html"><i class="fas fa-home me-1"></i>Home</a></li>
+                        <li><a class="dropdown-item" href="kythuatvameo.html"><i class="fas fa-seedling me-1"></i>Techniques & Tips</a></li>
+                        <li><a class="dropdown-item" href="congcualamvuon.html"><i class="fas fa-tools me-1"></i>Gardening Tools</a></li>
+                        <li><a class="dropdown-item" href="yeutocanthietcholamvuon.html"><i class="fas fa-list-check me-1"></i>Essentials</a></li>
+                        <li><a class="dropdown-item" href="chauvavatchua.html"><i class="fas fa-box me-1"></i>Pots & Containers</a></li>
+                        <li><a class="dropdown-item" href="goiysanpham.html"><i class="fas fa-lightbulb me-1"></i>Product Suggestions</a></li>
+                        <li><a class="dropdown-item" href="videogiaoduc.html"><i class="fas fa-video me-1"></i>Introduction Video</a></li>
+                        <li><a class="dropdown-item" href="sachlienquan.html"><i class="fas fa-book me-1"></i>Related Books</a></li>
+                        <li><a class="dropdown-item" href="gioithieuvalienhe.html"><i class="fas fa-info-circle me-1"></i>About & Contact</a></li>
+                    </ul>
+                </li>
+                <div class="search-cart">
+                    <!-- Search Box -->
+                    <div class="search-box me-3">
+                        <div class="input-group">
+                            <input type="text" class="form-control search-input" id="searchInput" placeholder="Search for products...">
+                            <button class="btn btn-outline-success search-btn" type="button" id="searchBtn">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                        <div class="search-suggestions" id="searchSuggestions"></div>
+                    </div>
+
+                    <!-- Cart Button -->
+                    <div class="user-actions">
+                        <button class="btn btn-outline-success cart-btn" data-bs-toggle="modal" data-bs-target="#cartModal">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count" id="cartCount">0</span>
+                        </button>
+                        <button class="btn btn-outline-primary login-btn" data-bs-toggle="modal" data-bs-target="#loginModal">
+                            <i class="fas fa-sign-in-alt me-1"></i>
+                            Login
+                        </button>
+                    </div>
+                </div>
+                <div id="google_translate_element"></div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+    <!-- Main Content -->
+    <main style="margin-top: 120px; padding: 20px;">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="category-header">
+                <h2><i class="fas fa-puzzle-piece me-2"></i>Garden Accessories</h2>
+                <p>Essential accessories to support effective gardening</p>
+            </div>
+
+            <!-- Product Categories -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="product-categories d-flex justify-content-center flex-wrap">
+                        <button class="btn btn-outline-success me-2 mb-2 category-btn active" data-category="all">All</button>
+                        <button class="btn btn-outline-success me-2 mb-2 category-btn" data-category="furniture">Garden Chair</button>
+                        <button class="btn btn-outline-success me-2 mb-2 category-btn" data-category="accessory">Garden Cover</button>
+                        <button class="btn btn-outline-success me-2 mb-2 category-btn" data-category="safety">Protective Gear</button>
+                        <button class="btn btn-outline-success me-2 mb-2 category-btn" data-category="lighting">Flashlight</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="row" id="productsGrid">
+                <!-- Products will be loaded here by JavaScript -->
+            </div>
+
+            <!-- No Results Message -->
+            <div id="noResults" class="text-center py-5" style="display: none;">
+                <i class="fas fa-search fa-3x text-muted mb-3"></i>
+                <h5 class="text-muted">No products found</h5>
+                <p class="text-muted">No products match your search keywords</p>
+                <button class="btn btn-primary" id="showAllProducts">Show all products</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content login-modal">
+            <div class="modal-header login-header">
+                <h5 class="modal-title">
+                    <i class="fas fa-sign-in-alt me-2"></i>Login
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="login-welcome text-center mb-4">
+                    <div class="login-logo mb-3">
+                        <img src="../public/image/logo.png" alt="Green Groves Logo" class="img-fluid" style="max-width: 80px;">
+                    </div>
+                    <h4 class="text-success">Welcome back!</h4>
+                    <p class="text-muted">Login to continue shopping</p>
+                </div>
+                <form id="loginForm">
+                    <div class="mb-3">
+                        <label for="loginEmail" class="form-label">
+                            <i class="fas fa-envelope me-2 text-success"></i>Email
+                        </label>
+                        <input type="email" class="form-control login-input" id="loginEmail" placeholder="Enter your email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="loginPassword" class="form-label">
+                            <i class="fas fa-lock me-2 text-success"></i>Password
+                        </label>
+                        <div class="password-input-group">
+                            <input type="password" class="form-control login-input" id="loginPassword" placeholder="Enter your password" required>
+                            <button type="button" class="btn btn-outline-secondary password-toggle" id="toggleLoginPassword">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mb-3 d-flex justify-content-between align-items-center">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="rememberMe">
+                            <label class="form-check-label" for="rememberMe">Remember me</label>
+                        </div>
+                        <a href="#" class="text-success text-decoration-none" id="forgotPasswordLink">
+                            <i class="fas fa-key me-1"></i>Forgot password?
+                        </a>
+                    </div>
+                    <div class="d-grid mb-3">
+                        <button type="submit" class="btn btn-success btn-lg login-submit-btn">
+                            <i class="fas fa-sign-in-alt me-2"></i>Login
+                        </button>
+                    </div>
+
+                    <!-- Social Login Divider -->
+                    <div class="social-login-divider mb-3">
+                        <span class="divider-text">or</span>
+                    </div>
+
+                    <!-- Social Login Buttons -->
+                    <div class="social-login-buttons mb-3">
+                        <div class="row g-2">
+                            <div class="col-12">
+                                <button type="button" class="btn btn-outline-danger w-100 social-login-btn google-login-btn" id="googleLoginBtn">
+                                    <i class="fab fa-google me-2"></i>Sign in with Google
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <p class="text-muted mb-0">Don't have an account?
+                            <a href="#" class="text-success text-decoration-none" id="switchToRegister">
+                                <strong>Register now</strong>
+                            </a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Register Modal -->
+<div class="modal fade" id="registerModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content register-modal">
+            <div class="modal-header register-header">
+                <h5 class="modal-title">
+                    <i class="fas fa-user-plus me-2"></i>Register Account
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="register-welcome text-center mb-4">
+                    <div class="register-logo mb-3">
+                        <img src="../public/image/logo.png" alt="Green Groves Logo" class="img-fluid" style="max-width: 80px;">
+                    </div>
+                    <h4 class="text-success">Join us!</h4>
+                    <p class="text-muted">Create an account to receive many offers</p>
+                </div>
+                <form id="registerForm">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="registerFirstName" class="form-label">
+                                <i class="fas fa-user me-2 text-success"></i>First Name
+                            </label>
+                            <input type="text" class="form-control register-input" id="registerFirstName" placeholder="Enter your first name" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="registerLastName" class="form-label">
+                                <i class="fas fa-user me-2 text-success"></i>Last Name
+                            </label>
+                            <input type="text" class="form-control register-input" id="registerLastName" placeholder="Enter your last name" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="registerEmail" class="form-label">
+                            <i class="fas fa-envelope me-2 text-success"></i>Email
+                        </label>
+                        <input type="email" class="form-control register-input" id="registerEmail" placeholder="Enter your email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="registerPhone" class="form-label">
+                            <i class="fas fa-phone me-2 text-success"></i>Phone Number
+                        </label>
+                        <input type="tel" class="form-control register-input" id="registerPhone" placeholder="Enter your phone number" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="registerPassword" class="form-label">
+                            <i class="fas fa-lock me-2 text-success"></i>Password
+                        </label>
+                        <div class="password-input-group">
+                            <input type="password" class="form-control register-input" id="registerPassword" placeholder="Create a password" required>
+                            <button type="button" class="btn btn-outline-secondary password-toggle" id="toggleRegisterPassword">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="registerConfirmPassword" class="form-label">
+                            <i class="fas fa-lock me-2 text-success"></i>Confirm Password
+                        </label>
+                        <div class="password-input-group">
+                            <input type="password" class="form-control register-input" id="registerConfirmPassword" placeholder="Re-enter password" required>
+                            <button type="button" class="btn btn-outline-secondary password-toggle" id="toggleRegisterConfirmPassword">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="agreeTerms" required>
+                        <label class="form-check-label" for="agreeTerms">
+                            I agree to the <a href="#" class="text-success text-decoration-none">terms of use</a>
+                        </label>
+                    </div>
+                    <div class="d-grid mb-3">
+                        <button type="submit" class="btn btn-success btn-lg register-submit-btn">
+                            <i class="fas fa-user-plus me-2"></i>Register
+                        </button>
+                    </div>
+
+                    <!-- Social Login Divider -->
+                    <div class="social-login-divider mb-3">
+                        <span class="divider-text">or</span>
+                    </div>
+
+                    <!-- Social Login Buttons -->
+                    <div class="social-login-buttons mb-3">
+                        <div class="row g-2">
+                            <div class="col-12">
+                                <button type="button" class="btn btn-outline-danger w-100 social-login-btn google-login-btn" id="googleRegisterBtn">
+                                    <i class="fab fa-google me-2"></i>Sign in with Google
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <p class="text-muted mb-0">Already have an account?
+                            <a href="#" class="text-success text-decoration-none" id="switchToLogin">
+                                <strong>Login now</strong>
+                            </a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Green Groves</h5>
+                    <p>Specializing in providing high-quality gardening tools</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p>&copy; 2024 Green Groves. All rights reserved.</p>
+                    <i class="fas fa-map-marker-alt me-1"></i>
+                    <span id="userLocation">Detecting location...</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+<!-- Cart Modal -->
+<div class="modal fade" id="cartModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Cart</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div id="cartItems">
+                    <p class="text-center text-muted">Empty cart</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success" id="checkoutBtn">Checkout</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Shipping Info Modal (nâng cấp) -->
+<div class="modal fade" id="shippingModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form id="shippingForm">
+        <div class="modal-header">
+          <h5 class="modal-title">Delivery information</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="shippingName" class="form-label">Full name <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="shippingName" name="name" required placeholder="Enter full name">
+          </div>
+          <div class="mb-3">
+            <label for="shippingPhone" class="form-label">Phone number <span class="text-danger">*</span></label>
+            <input type="tel" class="form-control" id="shippingPhone" name="phone" required pattern="^0[0-9]{9,10}$" placeholder="e.g. 0987654321">
+          </div>
+          <div class="mb-3">
+            <label for="shippingEmail" class="form-label">Email <span class="text-danger">*</span></label>
+            <input type="email" class="form-control" id="shippingEmail" name="email" required placeholder="Enter email to receive notifications">
+          </div>
+          <div class="mb-3">
+            <label for="shippingAddress" class="form-label">Shipping address <span class="text-danger">*</span></label>
+            <textarea class="form-control" id="shippingAddress" name="address" required placeholder="House number, street, ward/commune, district, province/city"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="shippingNote" class="form-label">Order notes</label>
+            <textarea class="form-control" id="shippingNote" name="note" placeholder="Note for shop (if any)"></textarea>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Payment method</label>
+            <select class="form-select" id="shippingPayment" name="payment">
+              <option value="cod">Cash on Delivery (COD)</option>
+              <option value="bank">Bank Transfer</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Order Summary</label>
+            <div id="orderSummary"></div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success w-100">Order Confirmation</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <img src="../public/image/logo.png" alt="Green Groves Logo" class="img-fluid" style="max-width: 80px;">
+            </div>
+            <h3 class="loading-text">Green Groves</h3>
+            <div class="loading-spinner">
+                <div class="spinner-border text-success" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/products.js"></script>
+    <script src="../scripts/cart.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Lấy Google Client ID từ server
+            $.get('/project/backend/api/get_config.php', function(config) {
+                const clientId = config.googleClientId;
+                // Xử lý login Google
+                $('#googleLoginBtn').on('click', function() {
+                    const redirectUri = encodeURIComponent('https://greengroves.click/project/backend/auth/google_callback.php');
+                    const scope = encodeURIComponent('email profile');
+                    const authUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}&response_type=code&access_type=online`;
+                    window.location.href = authUrl;
+                });
+            });
+    
+            // Đăng ký tài khoản thường
+            $('#registerForm').on('submit', function(e) {
+                e.preventDefault();
+                const data = {
+                    email: $('#registerEmail').val(),
+                    password: $('#registerPassword').val(),
+                    full_name: $('#registerFirstName').val() + ' ' + $('#registerLastName').val()
+                };
+                fetch('backend/auth/register.php', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(data)
+                })
+                .then(res => res.json())
+                .then(res => {
+                    if (res.success) {
+                        alert('Đăng ký thành công! Vui lòng đăng nhập.');
+                        // Chuyển sang popup đăng nhập
+                        $('#loginModal').modal('show');
+                        $('#registerModal').modal('hide');
+                    } else {
+                        alert(res.message);
+                    }
+                });
+            });
+    
+            // Đăng nhập tài khoản thường
+            $('#loginForm').on('submit', function(e) {
+                e.preventDefault();
+                const data = {
+                    email: $('#loginEmail').val(),
+                    password: $('#loginPassword').val()
+                };
+                fetch('backend/auth/login.php', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(data)
+                })
+                .then(res => res.json())
+                .then(res => {
+                    if (res.success) {
+                        location.reload();
+                    } else {
+                        alert(res.message);
+                    }
+                });
+            });
+    
+            // Sửa sự kiện nút Checkout để mở modal shipping
+            $(document).on('click', '#checkoutBtn', function() {
+              $('#cartModal').modal('hide');
+              setTimeout(function() {
+                $('#shippingModal').modal('show');
+              }, 400);
+            });
+    
+            // Cập nhật tóm tắt đơn hàng khi mở modal shipping
+            $('#shippingModal').on('show.bs.modal', async function() {
+              // Lấy giỏ hàng từ backend qua API
+              let items = [];
+              try {
+                const res = await fetch('/project/backend/api/cart_get.php');
+                const cartRaw = await res.json();
+                // Map sang products.js nếu cần, hoặc lấy trực tiếp
+                items = cartRaw.map(item => {
+                  const prod = window.getProductById ? window.getProductById(Number(item.product_id)) : null;
+                  return prod ? {
+                    ...prod,
+                    quantity: Number(item.quantity)
+                  } : null;
+                }).filter(Boolean);
+              } catch (e) { items = []; }
+              let html = '<ul class="list-group">';
+              let total = 0;
+              items.forEach(item => {
+                html += `<li class="list-group-item d-flex justify-content-between align-items-center">
+                  ${item.name} <span>${item.quantity} x ${item.price.toLocaleString('vi-VN')}đ</span>
+                </li>`;
+                total += item.quantity * item.price;
+              });
+              html += `</ul><div class="mt-2 text-end"><strong>Tổng cộng: ${total.toLocaleString('vi-VN')}đ</strong></div>`;
+              $('#orderSummary').html(html);
+            });
+    
+            // Validate form trước khi gửi
+            $('#shippingForm').on('submit', async function(e) {
+              e.preventDefault();
+              var $btn = $(this).find('button[type="submit"]');
+              var originalHtml = $btn.html();
+              $btn.prop('disabled', true).html('<span class="spinner-border spinner-border-sm me-2"></span>Đang xử lý...');
+              const customerInfo = {
+                name: $('#shippingName').val().trim(),
+                phone: $('#shippingPhone').val().trim(),
+                email: $('#shippingEmail').val().trim(),
+                address: $('#shippingAddress').val().trim(),
+                note: $('#shippingNote').val().trim(),
+                payment: $('#shippingPayment').val()
+              };
+              if (!customerInfo.name || !customerInfo.phone.match(/^0[0-9]{9,10}$/) || !customerInfo.email || !customerInfo.address) {
+                alert('Vui lòng nhập đầy đủ và đúng định dạng các trường bắt buộc!');
+                return;
+              }
+              const items = JSON.parse(localStorage.getItem('greentools_cart') || '[]');
+              if (!items.length) {
+                return;
+              }
+              const orderData = { items, customerInfo };
+              try {
+                const response = await fetch('http://localhost:3000/api/order', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify(orderData)
+                });
+                const result = await response.json();
+                if (result.success) {
+                  alert('Đặt hàng thành công! Vui lòng kiểm tra email xác nhận.');
+                  localStorage.removeItem('greentools_cart');
+                  $('#shippingModal').modal('hide');
+                  updateCartDisplay && updateCartDisplay();
+                } else {
+                  alert('Có lỗi khi đặt hàng: ' + result.message);
+                }
+              } catch (err) {
+                alert('Không thể kết nối máy chủ!');
+              }
+              $btn.prop('disabled', false).html(originalHtml);
+            });
+        });
+    </script>
+</body>
+</html>

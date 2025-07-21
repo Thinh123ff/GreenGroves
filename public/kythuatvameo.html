@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gardening Techniques & Tips - Green Groves</title>
+    <link rel="icon" type="image/x-icon" href="./favicon_io/favicon.ico">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../styles/main.css">
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit&v=2"></script>
+    <style>
+        /* Card step style */
+        .main-content {
+        padding: 20px;
+        text-align: center;
+    }
+        .step-card .card {
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(40,167,69,0.08), 0 1.5px 6px rgba(32,201,151,0.08);
+            transition: box-shadow 0.3s;
+        }
+        .step-card .card:hover {
+            box-shadow: 0 8px 32px rgba(40,167,69,0.16), 0 3px 12px rgba(32,201,151,0.12);
+        }
+        .step-number {
+            box-shadow: 0 2px 8px rgba(40,167,69,0.15);
+            font-size: 2rem;
+            min-width: 60px;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #28a745 60%, #20c997 100%);
+            border: 3px solid #fff;
+        }
+        
+        .step-header h3 {
+            font-weight: 700;
+            color: #28a745;
+        }
+        .feature-item, .tool-category {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        .garden-type-card {
+            background: #f8f9fa;
+            border: 1.5px solid #e9ecef;
+            border-radius: 12px;
+            transition: box-shadow 0.2s, border 0.2s;
+        }
+        .garden-type-card:hover {
+            box-shadow: 0 2px 12px rgba(40,167,69,0.10);
+            border: 1.5px solid #28a745;
+        }
+        .soil-tips ul {
+            margin-bottom: 0;
+        }
+        .sidebar .card {
+            border-radius: 14px;
+            box-shadow: 0 2px 12px rgba(32,201,151,0.08);
+        }
+        .sidebar .card-header {
+            border-radius: 14px 14px 0 0;
+        }
+        .product-item img {
+            border: 2px solid #e9ecef;
+            background: #fff;
+        }
+        .stat-item {
+            background: rgba(255,255,255,0.12);
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            min-width: 120px;
+        }
+        .stat-item h4 {
+            color: #7eff9c;
+            font-weight: 700;
+        }
+        .stat-item i {
+            color: #007f59;
+        }
+        .alert-info, .alert-success {
+            border-radius: 10px;
+        }
+        .sidebar{
+            width: 100%;
+        }
+        @media (max-width: 991.98px) {
+            .step-card .card-body, .sidebar .card-body {
+                padding: 1.5rem !important;
+            }
+            .hero-section {
+                padding-top: 80px !important;
+            }
+        }
+        @media (max-width: 575.98px) {
+            .step-header h3 {
+                font-size: 1.1rem;
+            }
+            .step-number {
+                font-size: 1.2rem;
+                min-width: 40px;
+                min-height: 40px;
+            }
+            .stat-item {
+                min-width: 90px;
+                padding: 0.5rem 0.7rem;
+            }
+        }
+        .product-item {
+            min-width: 120px;
+            max-width: 180px;
+            margin: 0 auto;
+        }
+        @media (max-width: 767px) {
+            .card-body.d-flex {
+                flex-direction: column !important;
+                align-items: center !important;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Header -->
+<header id="header" class="header-section">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container" id="header-container">
+            <!-- Logo and Visit Counter -->
+            <div class="d-flex align-items-center">
+                <a class="navbar-brand me-4" href="../index.html">
+                    <div class="d-flex align-items-center">
+                        <div class="logo-icon">
+                            <img src="../public/image/logo.png" alt="Green Groves Logo" class="img-fluid" style="max-width: 50px;">
+                        </div>
+                        <div class="ms-2">
+                            <h4 class="mb-0 brand-name">Green Groves</h4>
+                            <small class="brand-subtitle">Gardening Tools</small>
+                        </div>
+                    </div>
+                </a>
+                <div class="visit-counter d-none d-sm-block">
+                    <div class="icon-views">
+                        <i class="fas fa-eye me-1"></i>
+                        <span id="visitCount">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navigation Menu -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="titleMenuMobile">
+                    <ul class="navbar">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../index.html">
+                                <i class="fas fa-home me-1"></i>Home
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="congcualamvuon.html">
+                                <i class="fas fa-tools me-1"></i>Gardening Tools
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="yeutocanthietcholamvuon.html">
+                                <i class="fas fa-list-check me-1"></i>Essentials
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="chauvavatchua.html">
+                                <i class="fas fa-box me-1"></i>Pots & Containers
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="phukienlamvuon.html">
+                                <i class="fas fa-puzzle-piece me-1"></i>Accessories
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="goiysanpham.html">
+                                <i class="fas fa-lightbulb me-1"></i>Product Suggestions
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="videogiaoduc.html">
+                                <i class="fas fa-video me-1"></i>Introduction Video
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="sachlienquan.html">
+                                <i class="fas fa-book me-1"></i>Related Books
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="gioithieuvalienhe.html">
+                                <i class="fas fa-info-circle me-1"></i>About & Contact
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="navbarMobile">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">
+                            <i class="fas fa-home me-1"></i>Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="congcualamvuon.html">
+                            <i class="fas fa-tools me-1"></i>Gardening Tools
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="yeutocanthietcholamvuon.html">
+                            <i class="fas fa-list-check me-1"></i>Essentials
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="chauvavatchua.html">
+                            <i class="fas fa-box me-1"></i>Pots & Containers
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="phukienlamvuon.html">
+                            <i class="fas fa-puzzle-piece me-1"></i>Accessories
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="goiysanpham.html">
+                            <i class="fas fa-lightbulb me-1"></i>Product Suggestions
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="videogiaoduc.html">
+                            <i class="fas fa-video me-1"></i>Introduction Video
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sachlienquan.html">
+                            <i class="fas fa-book me-1"></i>Related Books
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="gioithieuvalienhe.html">
+                            <i class="fas fa-info-circle me-1"></i>About & Contact
+                        </a>
+                    </li>
+                </ul>
+                <!-- Menu PC dạng dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="menuDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-bars me-1"></i> Categories
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="menuDropdown">
+                        <li><a class="dropdown-item" href="../index.html"><i class="fas fa-home me-1"></i>Home</a></li>
+                        <li><a class="dropdown-item" href="congcualamvuon.html"><i class="fas fa-tools me-1"></i>Gardening Tools</a></li>
+                        <li><a class="dropdown-item" href="yeutocanthietcholamvuon.html"><i class="fas fa-list-check me-1"></i>Essentials</a></li>
+                        <li><a class="dropdown-item" href="chauvavatchua.html"><i class="fas fa-box me-1"></i>Pots & Containers</a></li>
+                        <li><a class="dropdown-item" href="phukienlamvuon.html"><i class="fas fa-puzzle-piece me-1"></i>Accessories</a></li>
+                        <li><a class="dropdown-item" href="goiysanpham.html"><i class="fas fa-lightbulb me-1"></i>Product Suggestions</a></li>
+                        <li><a class="dropdown-item" href="videogiaoduc.html"><i class="fas fa-video me-1"></i>Introduction Video</a></li>
+                        <li><a class="dropdown-item" href="sachlienquan.html"><i class="fas fa-book me-1"></i>Related Books</a></li>
+                        <li><a class="dropdown-item" href="gioithieuvalienhe.html"><i class="fas fa-info-circle me-1"></i>About & Contact</a></li>
+                    </ul>
+                </li>
+                <div class="search-cart">
+                    <!-- User action -->
+                    <div class="user-actions">
+                        <button class="btn btn-outline-success cart-btn" data-bs-toggle="modal" data-bs-target="#cartModal">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count" id="cartCount">0</span>
+                        </button>
+                        <button class="btn btn-outline-primary login-btn" data-bs-toggle="modal" data-bs-target="#loginModal">
+                            <i class="fas fa-sign-in-alt me-1"></i>
+                            Login
+                        </button>
+                    </div>
+                </div>
+                <div id="google_translate_element"></div>
+            </div>
+    </nav>
+</header>
+
+    <!-- Hero Section -->
+    <section class="hero-section" style="background: linear-gradient(135deg, #28a745 0%, #20c997 100%); padding-top: 120px; padding-bottom: 100px;">
+        <div class="container">
+            <div class="row min-vh-50" id="content-skills">
+                <div class="col-lg-8 mx-auto text-center text-white">
+                    <h1 class="display-4 fw-bold mb-4">Gardening Techniques & Tips</h1>
+                    <p class="lead mb-4">A detailed 18-step guide to creating a beautiful garden for beginners</p>
+                    <div class="hero-stats d-flex justify-content-center gap-4">
+                        <div class="stat-item">
+                            <i class="fas fa-seedling fa-2x mb-2"></i>
+                            <h4>18 Steps</h4>
+                            <p>Detailed guide</p>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-clock fa-2x mb-2"></i>
+                            <h4>Easy to follow</h4>
+                            <p>For beginners</p>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-leaf fa-2x mb-2"></i>
+                            <h4>Practical</h4>
+                            <p>Apply immediately</p>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <!-- Introduction -->
+                    <div class="intro-section mb-5">
+                        <div class="card border-0 shadow-lg">
+                            <div class="card-body p-5">
+                                <h2 class="text-center mb-4">
+                                    <img src="../public/image/b0.webp" width="100%" height="auto" alt="Image b0">
+                                    <i class="fas fa-garden text-success me-3"></i>
+                                    Gardening - The Art of Beautifying Your Home
+                                </h2>
+                                <p class="lead text-center">
+                                    Gardens beautify your home and are a great way to relax after work.
+                                    If you're new to gardening, build your garden with the following easy steps:
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Steps Content -->
+                    <div class="steps-content">
+                        <!-- Step 1 -->
+                        <div class="step-card mb-5">
+                            <div class="card border-0 shadow-lg">
+                                <div class="card-body p-5">
+                                    <div class="step-header d-flex align-items-center mb-4">
+                                        <div class="step-number bg-success text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 60px; height: 60px; font-size: 1.5rem; font-weight: bold;">1</div>
+                                        <h3 class="mb-0">Choose the right location</h3>
+                                    </div>
+                                    <p class="lead">It's always better to start small for big success. Choose a small space to start building your garden.
+                                        Make sure your chosen space gets 5-6 hours of direct sunlight. Avoid windy spots, as wind can topple young and growing plants. Wind can also prevent pollinators from doing their job.
+                                        
+                                        Finally, consider the accessibility of your garden for watering, harvesting, and care. As the saying goes, "out of sight, out of mind."</p>
+                                </div>
+                            </div>
+                           
+                        </div>
+                        
+                        <!-- Step 2 -->
+                        <div class="step-card mb-5">
+                            <div class="card border-0 shadow-lg">
+                                <div class="card-body p-5">
+                                    <div class="step-header d-flex align-items-center mb-4">
+                                        <div class="step-number bg-success text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 60px; height: 60px; font-size: 1.5rem; font-weight: bold;">2</div>
+                                        <h3 class="mb-0">Choose your garden type</h3>
+                                    </div>
+                                    <p class="lead">After determining the right location for your garden, the next step in your gardening journey is to choose the type of garden you want.
+                                        Do you want a sea of vibrant flowers, a beautiful herb area, a kitchen garden for the aspiring chef in you, or a nutritious vegetable garden to stay healthy and fit? Whatever you choose,
+                                         start small to paint your perfect garden picture.</p>
+                                         <img src="../public/image/b2.webp" class="img-fluid" width="auto" height="auto" alt="Hình ảnh b0">
+                                        </div>
+                                
+                            </div>
+                        </div>
+                        <!-- Step 3 -->
+                        <div class="step-card mb-5">
+                            <div class="card border-0 shadow-lg">
+                                <div class="card-body p-5">
+                                    <div class="step-header d-flex align-items-center mb-4">
+                                        <div class="step-number bg-success text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 60px; height: 60px; font-size: 1.5rem; font-weight: bold;">3</div>
+                                        <h3 class="mb-0">Improve your soil</h3>
+                                    </div>
+                                    <p class="lead">Plants always benefit from nutrient-rich garden soil. Start by checking your soil's texture; it should be easy to dig and crumble in your hand.
+                                        If your soil is hard and clay-like, roots will struggle to grow. If your soil is rocky, till and remove the rocks.
+                                        
+                                        Improving soil quality isn't as hard as you think, and it brings many benefits. Add compost made from tea leaves, vegetable peels to the soil to enhance quality.</p>
+                                </div>
+                            </div>
+                         
+                        </div>
+                        <!-- Step 4 -->
+                        <div class="step-card mb-5">
+                            <div class="card border-0 shadow-lg">
+                                <div class="card-body p-5">
+                                    <div class="step-header d-flex align-items-center mb-4">
+                                        <div class="step-number bg-success text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 60px; height: 60px; font-size: 1.5rem; font-weight: bold;">4</div>
+                                        <h3 class="mb-0">Prepare basic tools</h3>
+                                    </div>
+                                    <p class="lead">Once you have a plan, you'll need some basic gardening tools to get started. Here's a list of some essentials:
+                                        Must-haves: A tool every gardener should own is pruning shears. You'll use them to trim plants and shrubs, and keep plants healthy by cutting off dead parts.
+                                        Digging tools: You'll need a few tools to dig and prepare the soil before planting. These include a shovel, trowel, and garden rake. Shovels and trowels are for digging holes, while the rake is for breaking up large clumps of soil or clearing old roots and weeds.
+                                        Watering tools: The best tools for watering your garden are hoses and watering cans. Hoses are great for big jobs like watering trees and large areas. For small and sensitive plants, a watering can is better. Young plants will thank you for gentle watering.
+                                        Weeding tools: To handle weeds and remove unwanted plants, you'll need a sharp-tipped trowel and a garden knife. These two tools help keep your garden tidy.</p>
+                                        <img src="../public/image/b4.webp" class="img-fluid" width="auto" height="auto" alt="Hình ảnh b0">  </div>
+                            </div>
+                        </div>
+                        <!-- Step 5 -->
+                        <div class="step-card mb-5">
+                            <div class="card border-0 shadow-lg">
+                                <div class="card-body p-5">
+                                    <div class="step-header d-flex align-items-center mb-4">
+                                        <div class="step-number bg-success text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 60px; height: 60px; font-size: 1.5rem; font-weight: bold;">5</div>
+                                        <h3 class="mb-0">Choose the right plants</h3>
+                                    </div>
+                                    <p class="lead">This is the most exciting part of gardening - choosing your greenery. Before rushing to plant anything, take time to research plants.
+                                        Some plants love direct sunlight, while others prefer shade. You can check this information on seed packets. Choosing native plants for your area will make things easier, especially if you're about to become a "plant parent."
+                                        
+                                        You can also look at your neighbor's garden to see what grows well or read our guide on the best vegetables to plant by month.
+                                        
+                                        These ways will give you ideas about which plants will thrive in your garden.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Step 6 -->
+                        <div class="step-card mb-5">
+                            <div class="card border-0 shadow-lg">
+                                <div class="card-body p-5">
+                                    <div class="step-header d-flex align-items-center mb-4">
+                                        <div class="step-number bg-success text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 60px; height: 60px; font-size: 1.5rem; font-weight: bold;">6</div>
+                                        <h3 class="mb-0">Plan your layout</h3>
+                                    </div>
+                                    <p class="lead">Before you start planting, make a plan!
+                                        Planning: Draw a map for each plant's location, paying attention to spacing. Like people, plants need their own space. If you plant seedlings too close together, their growth may be stunted, they may get sick, or even die.
+                                        Labeling: We all forget sometimes. To know what you planted where and to identify them, make small labels and place them next to the plants. You can get creative with labels for a unique touch.
+                                        Organizing: A great tip for beginners is to make your own garden notebook and track progress. You can add drawings, photos, labels, and notes to monitor each plant's development in different areas, then make progress reports to understand plant characteristics.</p>
+                                </div>
+                            </div>
+                         
+                        </div>
+                        <!-- Step 7 -->
+                        <div class="step-card mb-5">
+                            <div class="card border-0 shadow-lg">
+                                <div class="card-body p-5">
+                                    <div class="step-header d-flex align-items-center mb-4">
+                                        <div class="step-number bg-success text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 60px; height: 60px; font-size: 1.5rem; font-weight: bold;">7</div>
+                                        <h3 class="mb-0">Design your beds/plots</h3>
+                                    </div>
+                                    <p class="lead">After planning, decide on the type and size of your garden beds. Raised beds look attractive and are easier to work with.
+                                        Gardening in beds or blocks is more convenient than single rows. Beds should be 3-4 feet wide, narrow enough to reach the middle from both sides. The length should be about 8-10 feet, making it easy to move around without stepping on the planting area.
+                                        
+                                        Start small and leave space for each plant to grow. Seeds and seedlings are small, but mature plants can grow large, making the area crowded and hard to thrive.
+                                        
+                                        In beds, arrange plants in rows or grids. The goal is to reduce walkways and maximize planting space. This also saves time and money by only fertilizing and improving the soil in the planting area.</p>
+                                        <img src="../public/image/b7.webp" class="img-fluid" width="auto" height="auto" alt="Hình ảnh b0">  </div>
+                                    </div>
+                            </div>
+                        </div>
+                        <!-- Step 8 -->
+                        <div class="step-card mb-5">
+                            <div class="card border-0 shadow-lg">
+                                <div class="card-body p-5">
+                                    <div class="step-header d-flex align-items-center mb-4">
+                                        <div class="step-number bg-success text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 60px; height: 60px; font-size: 1.5rem; font-weight: bold;">8</div>
+                                        <h3 class="mb-0">Plant properly</h3>
+                                    </div>
+                                    <p class="lead">Once you're ready, start planting. Most seed packets have basic instructions. Try it and you'll gradually master planting skills.
+                                        Basic rule: Plant seeds at a depth 3-4 times their diameter, unless the packet says otherwise. Cover seeds with soil and water thoroughly, making sure seeds aren't exposed.
+                                        Transplanting: When moving seedlings from pots to their final spot, dig a hole twice as wide as the root ball. Loosen the soil, add organic fertilizer to boost growth. Place the root ball and cover the roots completely with soil. Water lightly after transplanting.</p>
+                                </div>
+                            </div>
+                           
+                        </div>
+                        <!-- Step 9 -->
+                        <div class="step-card mb-5">
+                            <div class="card border-0 shadow-lg">
+                                <div class="card-body p-5">
+                                    <div class="step-header d-flex align-items-center mb-4">
+                                        <div class="step-number bg-success text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 60px; height: 60px; font-size: 1.5rem; font-weight: bold;">9</div>
+                                        <h3 class="mb-0">Water properly</h3>
+                                    </div>
+                                    <p class="lead">The goal of watering is to provide enough water for plants to grow, but overwatering can cause root rot and harm plants.
+                                        The best way is to water slowly, letting water soak deep into the soil. The soil should be moist at a depth of 3-4 inches. Plants need more water in hot summer. Read our guide on summer watering for optimal plant growth.
+                                        
+                                        Plants at different growth stages need different amounts of water. Seedlings need daily watering to encourage growth and strong roots, while mature plants need watering every 2-3 days, depending on weather conditions.</p>
+                                        <img src="../public/image/b9.webp" class="img-fluid" width="auto" height="auto" alt="Hình ảnh b0">  </div>   </div>
+                            </div>
+                        </div>
+                        <!-- Step 10 -->
+                        <div class="step-card mb-5">
+                            <div class="card border-0 shadow-lg">
+                                <div class="card-body p-5">
+                                    <div class="step-header d-flex align-items-center mb-4">
+                                        <div class="step-number bg-success text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 60px; height: 60px; font-size: 1.5rem; font-weight: bold;">10</div>
+                                        <h3 class="mb-0">Add organic fertilizer</h3>
+                                    </div>
+                                    <p class="lead">There's an old saying: "Fertilizer is a gardener's best friend." Make your own organic fertilizer to boost plant growth.
+                                        Start with compost - organic material you can add to your garden to help plants grow. You can use tea bags, ground coffee, grass clippings, crushed fruit peels, etc.
+                                         Thêm phân hữu cơ vào đất giúp giữ ẩm, kích thích vi khuẩn tốt, chống sâu bệnh và giảm dấu chân carbon của bạn.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Step 11 -->
+                        <div class="step-card mb-5">
+                            <div class="card border-0 shadow-lg">
+                                <div class="card-body p-5">
+                                    <div class="step-header d-flex align-items-center mb-4">
+                                        <div class="step-number bg-success text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 60px; height: 60px; font-size: 1.5rem; font-weight: bold;">11</div>
+                                        <h3 class="mb-0">Natural pest control</h3>
+                                    </div>
+                                    <p class="lead">Pests are often attracted to stressed or undernourished plants. If your plants are healthy and well-nourished, pest problems will be less. If plants get infected, there are organic solutions.
+                                        You can make your own pesticide at home by mixing neem oil, water, and a few drops of dish soap. Shake well and spray on plants every 2 weeks to repel pests!</p>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <!-- Step 12 -->
+                        <div class="step-card mb-5">
+                            <div class="card border-0 shadow-lg">
+                                <div class="card-body p-5">
+                                    <div class="step-header d-flex align-items-center mb-4">
+                                        <div class="step-number bg-success text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 60px; height: 60px; font-size: 1.5rem; font-weight: bold;">12</div>
+                                        <h3 class="mb-0">Mulch with organic material</h3>
+                                    </div>
+                                    <p class="lead">Depending on what you plant, consider the best mulch. Why? Mulch provides nutrients to the soil and protects against erosion. Mulch is material spread or laid on the soil surface. It helps retain moisture, keeps the soil cool, prevents weeds, and makes garden beds look better. As organic mulch breaks down, it also improves soil fertility.</p>
+                                    <img src="../public/image/b12.webp" class="img-fluid" width="auto" height="auto" alt="Hình ảnh b0">  </div> </div>
+                            </div>
+                            
+                        </div>
+                        <!-- Step 13 -->
+                        <div class="step-card mb-5">
+                            <div class="card border-0 shadow-lg">
+                                <div class="card-body p-5">
+                                    <div class="step-header d-flex align-items-center mb-4">
+                                        <div class="step-number bg-success text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 60px; height: 60px; font-size: 1.5rem; font-weight: bold;">13</div>
+                                        <h3 class="mb-0">Start with easy-to-grow vegetables</h3>
+                                    </div>
+                                    <p class="lead">Nothing beats fresh vegetables from your own garden. Juicy, delicious veggies you can pick and eat right away. Each region has different planting times based on the weather, and each vegetable has its own temperature preferences. Start with easy-to-grow veggies like tomatoes, radishes, bell peppers, herbs, and leafy greens like lettuce, kale, rocket, chili. Once you're skilled, you can try growing cabbage, broccoli which require more time and effort.
+                                        Choose beginner-friendly vegetable seeds and order to grow your own kitchen garden.</p>
+                                        <img src="../public/image/b13.webp" class="img-fluid" width="auto" height="auto" alt="Hình ảnh b0">  </div> </div>
+                            </div>
+                           
+                        </div>
+                        <!-- Step 14 -->
+                        <div class="step-card mb-5">
+                            <div class="card border-0 shadow-lg">
+                                <div class="card-body p-5">
+                                    <div class="step-header d-flex align-items-center mb-4">
+                                        <div class="step-number bg-success text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 60px; height: 60px; font-size: 1.5rem; font-weight: bold;">14</div>
+                                        <h3 class="mb-0">Container gardening</h3>
+                                    </div>
+                                    <p class="lead">Container gardening is a great way to grow plants when space is limited.
+                                        Almost any flower, vegetable, herb, shrub can be grown in containers. Dwarf and compact plants are suitable for small pots. Choose plants that match the climate and the amount of sun or shade the container receives. Basil, chives, thyme, and other herbs are great for pots, placed right outside the kitchen for convenience.
+                                        
+                                        Whatever pot you choose, drainage holes are a must. Without good drainage, soil can get waterlogged and plants will die. The holes don't need to be large, but enough for excess water to escape. You'll need to water pots more often than in-ground plants, as potting soil dries out faster.</p>
+                                        <img src="../public/image/b14.webp" class="img-fluid" width="auto" height="auto" alt="Hình ảnh b0">  </div></div>
+                            </div>
+                           
+                        </div>
+                        <!-- Step 15 -->
+                        <div class="step-card mb-5">
+                            <div class="card border-0 shadow-lg">
+                                <div class="card-body p-5">
+                                    <div class="step-header d-flex align-items-center mb-4">
+                                        <div class="step-number bg-success text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 60px; height: 60px; font-size: 1.5rem; font-weight: bold;">15</div>
+                                        <h3 class="mb-0">Window box gardening</h3>
+                                    </div>
+                                    <p class="lead">Don't worry if you have a small garden or no garden at all - you can still grow greenery. Window boxes can grow everything from fruits, vegetables to perennials and annuals. They brighten up your home's exterior with flowers and greenery. Of course, not just for small spaces - large gardens also benefit from the color and height variation they bring.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Step 16 -->
+                        <div class="step-card mb-5">
+                            <div class="card border-0 shadow-lg">
+                                <div class="card-body p-5">
+                                    <div class="step-header d-flex align-items-center mb-4">
+                                        <div class="step-number bg-success text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 60px; height: 60px; font-size: 1.5rem; font-weight: bold;">16</div>
+                                        <h3 class="mb-0">Companion planting</h3>
+                                    </div>
+                                    <p class="lead">Like people, plants have their "companions." Companion planting is growing different plants together in the same area to optimize space, repel pests, and provide nutrients. Some species thrive when grown together, while others may inhibit each other's growth.
+                                        For example, tomatoes yield more (and repel mosquitoes, flies) when grown with basil. Tomato "allies" include asparagus, carrots, celery, onions, lettuce, marigolds, parsley, and spinach. Avoid planting tomatoes near cabbage, beets, corn, dill, potatoes, and rosemary.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Step 17 -->
+                        <div class="step-card mb-5">
+                            <div class="card border-0 shadow-lg">
+                                <div class="card-body p-5">
+                                    <div class="step-header d-flex align-items-center mb-4">
+                                        <div class="step-number bg-success text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 60px; height: 60px; font-size: 1.5rem; font-weight: bold;">17</div>
+                                        <h3 class="mb-0">Prune and shape properly</h3>
+                                    </div>
+                                    <p class="lead">Proper maintenance is wonderful and brings the greatest rewards for your garden. Take time to weed, prune, and tidy up the garden. If you see slow-growing plants, check the roots by gently digging around. Remove pests with appropriate measures. Water regularly and add nutrients periodically.
+                                        That's it, starting a garden isn't as scary as you think. Whether you're a gardening expert or not, you can enjoy a blooming garden every year with good planning, careful plant selection, and soil nutrition. Order seeds online and get started!</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Step 18 -->
+                        <div class="step-card mb-5">
+                            <div class="card border-0 shadow-lg">
+                                <div class="card-body p-5">
+                                    <div class="step-header d-flex align-items-center mb-4">
+                                        <div class="step-number bg-success text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 60px; height: 60px; font-size: 1.5rem; font-weight: bold;">18</div>
+                                        <h3 class="mb-0">Maintain and care regularly</h3>
+                                    </div>
+                                    <p class="lead">Regularly weed, prune leaves, check for pests, water, and fertilize to keep your garden lush and green.</p>
+                                    <img src="../public/image/b18.webp" class="img-fluid" width="auto" height="auto" alt="Hình ảnh b0">  </div>
+                                </div>
+                            </div>
+                          
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="col-lg-4">
+                    <div class="sidebar">
+                        <!-- Quick Tips -->
+                        <div class="card border-0 shadow-lg mb-4">
+                            <div class="card-header bg-success text-white">
+                                <h5 class="mb-0"><i class="fas fa-lightbulb me-2"></i>Quick Tips</h5>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-unstyled">
+                                    <li class="mb-2">
+                                        <i class="fas fa-check text-success me-2"></i>
+                                        Start with a small space
+                                    </li>
+                                    <li class="mb-2">
+                                        <i class="fas fa-check text-success me-2"></i>
+                                        Choose plants suitable for the climate
+                                    </li>
+                                    <li class="mb-2">
+                                        <i class="fas fa-check text-success me-2"></i>
+                                        Water properly
+                                    </li>
+                                    <li class="mb-2">
+                                        <i class="fas fa-check text-success me-2"></i>
+                                        Use organic fertilizer
+                                    </li>
+                                    <li class="mb-2">
+                                        <i class="fas fa-check text-success me-2"></i>
+                                        Check for pests regularly
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Related Products -->
+                        <div class="card border-0 shadow-lg mb-4">
+                            <div class="card-header bg-primary text-white">
+                                <h5 class="mb-0"><i class="fas fa-tools me-2"></i>Essential Tools</h5>
+                            </div>
+                            <div class="card-body d-flex justify-content-between align-items-stretch gap-3 flex-wrap">
+                                <div class="product-item text-center flex-fill">
+                                    <img src="image/dụng cụ cắt tỉa/keo-cat-canh-sada-kem-bao-dung-2-m500x500.jpg" alt="Pruning Shears" style="width:80px; height:80px; object-fit:cover;">
+                                    <h6 class="mt-2">Pruning Shears</h6>
+                                    <small class="text-muted">Indispensable tool</small>
+                                </div>
+                                <div class="product-item text-center flex-fill">
+                                    <img src="image/xẻng/bay-lam-dat-tramontina-3-m500x500.jpg" alt="Trowel" style="width:80px; height:80px; object-fit:cover;">
+                                    <h6 class="mt-2">Trowel</h6>
+                                    <small class="text-muted">Soil preparation</small>
+                                </div>
+                                <div class="product-item text-center flex-fill">
+                                    <img src="image/thiết bị tưới/bo-voi-tuoi-xoay-phun-xit-rua-2-m500x500.jpg" alt="Watering Nozzle" style="width:80px; height:80px; object-fit:cover;">
+                                    <h6 class="mt-2">Watering Nozzle</h6>
+                                    <small class="text-muted">Efficient watering</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Contact Info -->
+                        <div class="card border-0 shadow-lg">
+                            <div class="card-header bg-warning text-dark">
+                                <h5 class="mb-0"><i class="fas fa-headset me-2"></i>Consulting Support</h5>
+                            </div>
+                            <div class="card-body">
+                                <p class="mb-3">Need more gardening technique advice?</p>
+                                <div class="contact-info">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <i class="fas fa-phone text-success me-2"></i>
+                                        <span>0123 456 789</span>
+                                    </div>
+                                    <div class="d-flex align-items-center mb-2">
+                                        <i class="fas fa-envelope text-success me-2"></i>
+                                        <span>info@greengroves.com</span>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <i class="fas fa-clock text-success me-2"></i>
+                                        <span>8:00 - 18:00 (Mon-Sat)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content login-modal">
+            <div class="modal-header login-header">
+                <h5 class="modal-title">
+                    <i class="fas fa-sign-in-alt me-2"></i>Login
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="login-welcome text-center mb-4">
+                    <div class="login-logo mb-3">
+                        <img src="../public/image/logo.png" alt="Green Groves Logo" class="img-fluid" style="max-width: 80px;">
+                    </div>
+                    <h4 class="text-success">Welcome back!</h4>
+                    <p class="text-muted">Login to continue shopping</p>
+                </div>
+                <form id="loginForm">
+                    <div class="mb-3">
+                        <label for="loginEmail" class="form-label">
+                            <i class="fas fa-envelope me-2 text-success"></i>Email
+                        </label>
+                        <input type="email" class="form-control login-input" id="loginEmail" placeholder="Enter your email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="loginPassword" class="form-label">
+                            <i class="fas fa-lock me-2 text-success"></i>Password
+                        </label>
+                        <div class="password-input-group">
+                            <input type="password" class="form-control login-input" id="loginPassword" placeholder="Enter your password" required>
+                            <button type="button" class="btn btn-outline-secondary password-toggle" id="toggleLoginPassword">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mb-3 d-flex justify-content-between align-items-center">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="rememberMe">
+                            <label class="form-check-label" for="rememberMe">Remember me</label>
+                        </div>
+                        <a href="#" class="text-success text-decoration-none" id="forgotPasswordLink">
+                            <i class="fas fa-key me-1"></i>Forgot password?
+                        </a>
+                    </div>
+                    <div class="d-grid mb-3">
+                        <button type="submit" class="btn btn-success btn-lg login-submit-btn">
+                            <i class="fas fa-sign-in-alt me-2"></i>Login
+                        </button>
+                    </div>
+
+                    <!-- Social Login Divider -->
+                    <div class="social-login-divider mb-3">
+                        <span class="divider-text">or</span>
+                    </div>
+
+                    <!-- Social Login Buttons -->
+                    <div class="social-login-buttons mb-3">
+                        <div class="row g-2">
+                            <div class="col-12">
+                                <button type="button" class="btn btn-outline-danger w-100 social-login-btn google-login-btn" id="googleLoginBtn">
+                                    <i class="fab fa-google me-2"></i>Sign in with Google
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <p class="text-muted mb-0">Don't have an account?
+                            <a href="#" class="text-success text-decoration-none" id="switchToRegister">
+                                <strong>Register now</strong>
+                            </a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Register Modal -->
+<div class="modal fade" id="registerModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content register-modal">
+            <div class="modal-header register-header">
+                <h5 class="modal-title">
+                    <i class="fas fa-user-plus me-2"></i>Register Account
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="register-welcome text-center mb-4">
+                    <div class="register-logo mb-3">
+                        <img src="../public/image/logo.png" alt="Green Groves Logo" class="img-fluid" style="max-width: 80px;">
+                    </div>
+                    <h4 class="text-success">Join us!</h4>
+                    <p class="text-muted">Create an account to receive many offers</p>
+                </div>
+                <form id="registerForm">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="registerFirstName" class="form-label">
+                                <i class="fas fa-user me-2 text-success"></i>First Name
+                            </label>
+                            <input type="text" class="form-control register-input" id="registerFirstName" placeholder="Enter your first name" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="registerLastName" class="form-label">
+                                <i class="fas fa-user me-2 text-success"></i>Last Name
+                            </label>
+                            <input type="text" class="form-control register-input" id="registerLastName" placeholder="Enter your last name" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="registerEmail" class="form-label">
+                            <i class="fas fa-envelope me-2 text-success"></i>Email
+                        </label>
+                        <input type="email" class="form-control register-input" id="registerEmail" placeholder="Enter your email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="registerPhone" class="form-label">
+                            <i class="fas fa-phone me-2 text-success"></i>Phone Number
+                        </label>
+                        <input type="tel" class="form-control register-input" id="registerPhone" placeholder="Enter your phone number" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="registerPassword" class="form-label">
+                            <i class="fas fa-lock me-2 text-success"></i>Password
+                        </label>
+                        <div class="password-input-group">
+                            <input type="password" class="form-control register-input" id="registerPassword" placeholder="Create a password" required>
+                            <button type="button" class="btn btn-outline-secondary password-toggle" id="toggleRegisterPassword">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="registerConfirmPassword" class="form-label">
+                            <i class="fas fa-lock me-2 text-success"></i>Confirm Password
+                        </label>
+                        <div class="password-input-group">
+                            <input type="password" class="form-control register-input" id="registerConfirmPassword" placeholder="Re-enter password" required>
+                            <button type="button" class="btn btn-outline-secondary password-toggle" id="toggleRegisterConfirmPassword">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="agreeTerms" required>
+                        <label class="form-check-label" for="agreeTerms">
+                            I agree to the <a href="#" class="text-success text-decoration-none">terms of use</a>
+                        </label>
+                    </div>
+                    <div class="d-grid mb-3">
+                        <button type="submit" class="btn btn-success btn-lg register-submit-btn">
+                            <i class="fas fa-user-plus me-2"></i>Register
+                        </button>
+                    </div>
+
+                    <!-- Social Login Divider -->
+                    <div class="social-login-divider mb-3">
+                        <span class="divider-text">or</span>
+                    </div>
+
+                    <!-- Social Login Buttons -->
+                    <div class="social-login-buttons mb-3">
+                        <div class="row g-2">
+                            <div class="col-12">
+                                <button type="button" class="btn btn-outline-danger w-100 social-login-btn google-login-btn" id="googleRegisterBtn">
+                                    <i class="fab fa-google me-2"></i>Sign in with Google
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <p class="text-muted mb-0">Already have an account?
+                            <a href="#" class="text-success text-decoration-none" id="switchToLogin">
+                                <strong>Login now</strong>
+                            </a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5>Green Groves</h5>
+                    <p>Specializing in providing high-quality gardening tools and professional technical advice.</p>
+                    <div class="social-links">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="../index.html" class="text-white-50">Home</a></li>
+                        <li><a href="kythuatvameo.html" class="text-white-50">Techniques & Tips</a></li>
+                        <li><a href="congcualamvuon.html" class="text-white-50">Gardening Tools</a></li>
+                        <li><a href="gioithieuvalienhe.html" class="text-white-50">About & Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h5>Contact Information</h5>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt me-2"></i>123 ABC Street, XYZ District, HCMC</p>
+                        <p><i class="fas fa-phone me-2"></i>0123 456 789</p>
+                        <p><i class="fas fa-envelope me-2"></i>info@greengroves.com</p>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2024 Green Groves. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0">
+                        <i class="fas fa-map-marker-alt me-1"></i>
+                        <span id="userLocation">Detecting location...</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div class="modal fade" id="cartModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Cart</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="cartItems">
+                        <p class="text-center text-muted">Empty cart</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success" id="checkoutBtn">Checkout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Shipping Info Modal (nâng cấp) -->
+<div class="modal fade" id="shippingModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form id="shippingForm">
+          <div class="modal-header">
+            <h5 class="modal-title">Delivery information</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="shippingName" class="form-label">Full name <span class="text-danger">*</span></label>
+              <input type="text" class="form-control" id="shippingName" name="name" required placeholder="Enter full name">
+            </div>
+            <div class="mb-3">
+              <label for="shippingPhone" class="form-label">Phone number <span class="text-danger">*</span></label>
+              <input type="tel" class="form-control" id="shippingPhone" name="phone" required pattern="^0[0-9]{9,10}$" placeholder="e.g. 0987654321">
+            </div>
+            <div class="mb-3">
+              <label for="shippingEmail" class="form-label">Email <span class="text-danger">*</span></label>
+              <input type="email" class="form-control" id="shippingEmail" name="email" required placeholder="Enter email to receive notifications">
+            </div>
+            <div class="mb-3">
+              <label for="shippingAddress" class="form-label">Shipping address <span class="text-danger">*</span></label>
+              <textarea class="form-control" id="shippingAddress" name="address" required placeholder="House number, street, ward/commune, district, province/city"></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="shippingNote" class="form-label">Order notes</label>
+              <textarea class="form-control" id="shippingNote" name="note" placeholder="Note for shop (if any)"></textarea>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Payment method</label>
+              <select class="form-select" id="shippingPayment" name="payment">
+                <option value="cod">Cash on Delivery (COD)</option>
+                <option value="bank">Bank Transfer</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Order Summary</label>
+              <div id="orderSummary"></div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-success w-100">Order Confirmation</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <img src="../public/image/logo.png" alt="Green Groves Logo" class="img-fluid" style="max-width: 80px;">
+            </div>
+            <h3 class="loading-text">Green Groves</h3>
+            <div class="loading-spinner">
+                <div class="spinner-border text-success" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/products.js"></script>
+    <script src="../scripts/cart.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Lấy Google Client ID từ server
+            $.get('/project/backend/api/get_config.php', function(config) {
+                const clientId = config.googleClientId;
+                // Xử lý login Google
+                $('#googleLoginBtn').on('click', function() {
+                    const redirectUri = encodeURIComponent('https://greengroves.click/project/backend/auth/google_callback.php');
+                    const scope = encodeURIComponent('email profile');
+                    const authUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}&response_type=code&access_type=online`;
+                    window.location.href = authUrl;
+                });
+            });
+    
+            // Đăng ký tài khoản thường
+            $('#registerForm').on('submit', function(e) {
+                e.preventDefault();
+                const data = {
+                    email: $('#registerEmail').val(),
+                    password: $('#registerPassword').val(),
+                    full_name: $('#registerFirstName').val() + ' ' + $('#registerLastName').val()
+                };
+                fetch('backend/auth/register.php', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(data)
+                })
+                .then(res => res.json())
+                .then(res => {
+                    if (res.success) {
+                        alert('Đăng ký thành công! Vui lòng đăng nhập.');
+                        // Chuyển sang popup đăng nhập
+                        $('#loginModal').modal('show');
+                        $('#registerModal').modal('hide');
+                    } else {
+                        alert(res.message);
+                    }
+                });
+            });
+    
+            // Đăng nhập tài khoản thường
+            $('#loginForm').on('submit', function(e) {
+                e.preventDefault();
+                const data = {
+                    email: $('#loginEmail').val(),
+                    password: $('#loginPassword').val()
+                };
+                fetch('backend/auth/login.php', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(data)
+                })
+                .then(res => res.json())
+                .then(res => {
+                    if (res.success) {
+                        location.reload();
+                    } else {
+                        alert(res.message);
+                    }
+                });
+            });
+    
+            // Sửa sự kiện nút Checkout để mở modal shipping
+            $(document).on('click', '#checkoutBtn', function() {
+              $('#cartModal').modal('hide');
+              setTimeout(function() {
+                $('#shippingModal').modal('show');
+              }, 400);
+            });
+    
+            // Cập nhật tóm tắt đơn hàng khi mở modal shipping
+            $('#shippingModal').on('show.bs.modal', async function() {
+              // Lấy giỏ hàng từ backend qua API
+              let items = [];
+              try {
+                const res = await fetch('/project/backend/api/cart_get.php');
+                const cartRaw = await res.json();
+                // Map sang products.js nếu cần, hoặc lấy trực tiếp
+                items = cartRaw.map(item => {
+                  const prod = window.getProductById ? window.getProductById(Number(item.product_id)) : null;
+                  return prod ? {
+                    ...prod,
+                    quantity: Number(item.quantity)
+                  } : null;
+                }).filter(Boolean);
+              } catch (e) { items = []; }
+              let html = '<ul class="list-group">';
+              let total = 0;
+              items.forEach(item => {
+                html += `<li class="list-group-item d-flex justify-content-between align-items-center">
+                  ${item.name} <span>${item.quantity} x ${item.price.toLocaleString('vi-VN')}đ</span>
+                </li>`;
+                total += item.quantity * item.price;
+              });
+              html += `</ul><div class="mt-2 text-end"><strong>Tổng cộng: ${total.toLocaleString('vi-VN')}đ</strong></div>`;
+              $('#orderSummary').html(html);
+            });
+    
+            // Validate form trước khi gửi
+            $('#shippingForm').on('submit', async function(e) {
+              e.preventDefault();
+              var $btn = $(this).find('button[type="submit"]');
+              var originalHtml = $btn.html();
+              $btn.prop('disabled', true).html('<span class="spinner-border spinner-border-sm me-2"></span>Đang xử lý...');
+              const customerInfo = {
+                name: $('#shippingName').val().trim(),
+                phone: $('#shippingPhone').val().trim(),
+                email: $('#shippingEmail').val().trim(),
+                address: $('#shippingAddress').val().trim(),
+                note: $('#shippingNote').val().trim(),
+                payment: $('#shippingPayment').val()
+              };
+              if (!customerInfo.name || !customerInfo.phone.match(/^0[0-9]{9,10}$/) || !customerInfo.email || !customerInfo.address) {
+                alert('Vui lòng nhập đầy đủ và đúng định dạng các trường bắt buộc!');
+                return;
+              }
+              const items = JSON.parse(localStorage.getItem('greentools_cart') || '[]');
+              if (!items.length) {
+                return;
+              }
+              const orderData = { items, customerInfo };
+              try {
+                const response = await fetch('http://localhost:3000/api/order', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify(orderData)
+                });
+                const result = await response.json();
+                if (result.success) {
+                  alert('Đặt hàng thành công! Vui lòng kiểm tra email xác nhận.');
+                  localStorage.removeItem('greentools_cart');
+                  $('#shippingModal').modal('hide');
+                  updateCartDisplay && updateCartDisplay();
+                } else {
+                  alert('Có lỗi khi đặt hàng: ' + result.message);
+                }
+              } catch (err) {
+                alert('Không thể kết nối máy chủ!');
+              }
+              $btn.prop('disabled', false).html(originalHtml);
+            });
+        });
+    </script>
+</body>
+</html>
